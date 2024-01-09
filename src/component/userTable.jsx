@@ -78,6 +78,8 @@ export default function userTable() {
                     </tbody>
                 </table>
             </div>
+            <br/>
+            <br/>
         </div>
     )
 }

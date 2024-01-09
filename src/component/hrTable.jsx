@@ -66,10 +66,26 @@ export default function hrTable() {
                                 </div>
                             </td>
                         </tr>
-
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>James</td>
+                            <td>@LJames</td>
+                            <td>************</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <button id="button2" type="button" class="btn btn-warning text-light">Edit</button>
+                                </div>
+                                <div class="btn-group" role="group">
+                                    <button id="button2" type="button" class="btn btn-danger text-light">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
+            <br/>
+            <br/>
         </div>
     )
 }
