@@ -9,11 +9,12 @@ import SignUp from './routes/signup';
 import HrTable from './routes/adminMainHr';
 import UserTable from './routes/adminMainUser';
 import '../StyleComponent/index.css';
+import Homepage from './routes/HomePage';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HrTable/>,
+    element: <Homepage/>,
   },
 ]);
 
