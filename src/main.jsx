@@ -13,7 +13,7 @@ import '../StyleComponent/index.css';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HrTable/>,
+    element: <UserTable/>,
   },
 ]);
 
