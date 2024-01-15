@@ -1,12 +1,60 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import "../../StyleComponent/index.css";
+import Hr from "./hr";
 
 export default function hrTable() {
-    
+    const [count, setCount] = useState(0);
+    const [list, setList] = useState([]);
+
+    useEffect(() => {
+        console.log("Component Mounted");
+        loadData();
+
+        return unMounted;
+    }, []);
+
+    function unMounted() {
+        console.log("Component Unmounted");
+    }
+
+    function loadData() {
+        fetch('http://localhost:8080/hr/')
+            .then(response => response.json())
+            .then(hrData => {
+                let newList = hrData.map((data) =>
+                ({
+                    id: data.id,
+                    item1: data.firstName,
+                    item2: data.lastName,
+                    item3: data.email,
+                    item4: data.password
+                })
+                );
+                setList(newList);
+            });
+    }
+
+    function deleteRow(index) {
+        list.splice(index, 1);
+        const newList = [...list];
+        setList(newList);
+    }
+
+    function changeRow(index, newItem) {
+        const newList = [...list];
+        newList[index] = newItem;
+        setList(newList);
+    }
+
+
+    const hrList = list.map((item, index) =>
+        <Hr key={item.id} data={item} index={index} deleteHandler={deleteRow} changeHandler={changeRow}></Hr>
+    );
+
     return (
         <div class="card mb-4 border-0">
             <h1 class="card-header d-flex justify-content-between align-items-center mb-4 border-0 w-75">HR LIST
-            <button id="button1" type="button" class="btn btn-warning text-light btn-sm d-md-block ">ADD +</button>
+                <button id="button1" type="button" class="btn btn-warning text-light btn-sm d-md-block ">ADD +</button>
             </h1>
             <div class="card-body mb-4 border-0">
                 <table id="example1" class="table table-hover table-dark rounded-4 overflow-hidden w-75">
@@ -21,71 +69,10 @@ export default function hrTable() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>*****</td>
-                            <td class="vert-align">
-                                <div class="btn-group" role="group">
-                                    <button id="button2" type="button" class="btn btn-warning text-light">Edit</button>
-                                </div>
-                                <div class="btn-group" role="group">
-                                    <button id="button2" type="button" class="btn btn-danger text-light">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>*****</td>
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <button id="button2" type="button" class="btn btn-warning text-light">Edit</button>
-                                </div>
-                                <div class="btn-group" role="group">
-                                    <button id="button2" type="button" class="btn btn-danger text-light">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>James</td>
-                            <td>@LJames</td>
-                            <td>************</td>
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <button id="button2" type="button" class="btn btn-warning text-light">Edit</button>
-                                </div>
-                                <div class="btn-group" role="group">
-                                    <button id="button2" type="button" class="btn btn-danger text-light">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>James</td>
-                            <td>@LJames</td>
-                            <td>************</td>
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <button id="button2" type="button" class="btn btn-warning text-light">Edit</button>
-                                </div>
-                                <div class="btn-group" role="group">
-                                    <button id="button2" type="button" class="btn btn-danger text-light">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
+                        {hrList}
                     </tbody>
                 </table>
             </div>
-            <br/>
-            <br/>
         </div>
     )
 }
