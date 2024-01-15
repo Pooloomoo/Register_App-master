@@ -14,7 +14,7 @@ import Homepage from './routes/HomePage';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HrTable/>,
+    element: <UserTable/>,
   },
 ]);
 
