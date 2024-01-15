@@ -25,6 +25,7 @@ function hr(props) {
             <td>{data.item3}</td>
             <td>{data.item4}</td>
             <td>
+            <button className="btn btn-warning text-light d-md-block">EDIT</button>
             <button className="btn btn-danger btn-sm" onClick={deleteRow}>Delete</button></td>
         </tr>
     )

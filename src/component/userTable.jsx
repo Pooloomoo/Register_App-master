@@ -60,7 +60,6 @@ export default function userTable() {
             <h1 class="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11">USER LIST
             <div className="btn-group">
                 <button id="button1" type="button" class="btn btn-warning text-light d-md-block ">CREATE</button>
-                <button id="button1" type="button" class="btn btn-warning text-light d-md-block ">EDIT</button>
             </div>
             </h1>
             <div class="card-body mb-4 border-0">
@@ -74,7 +73,7 @@ export default function userTable() {
                             <th scope="col">Password</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Education</th>
-                            <th class="w-25" scope="col">Address</th>
+                            <th scope="col">Address</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>

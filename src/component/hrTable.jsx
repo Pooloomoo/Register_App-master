@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import "../../StyleComponent/index.css";
 import Hr from "./hr";
-import HrEdit from "./hrEdit";
 import {Link} from "react-router-dom";
 
 export default function hrTable() {
@@ -57,8 +56,7 @@ export default function hrTable() {
         <div class="card mb-4 border-0">
             <h1 class="card-header d-flex justify-content-between align-items-center mb-4 border-0 w-75">HR LIST
             <div className="btn-group">
-                <Link to={"./HrEdit"} id="button1" type="button" class="btn btn-warning text-light btn-sm d-md-block">ADD +</Link>
-                <button id="button1" type="button" class="btn btn-warning text-light btn-sm d-md-block ">EDIT</button>
+                <Link id="button1" type="button" class="btn btn-warning text-light btn-sm d-md-block">ADD +</Link>
             </div>
                 
             </h1>
