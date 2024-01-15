@@ -6,16 +6,21 @@ import {
 } from "react-router-dom";
 import Login from './login';
 import SignUp from './routes/signup';
-import HrTable from './routes/adminMainHr';
+import AdminMainHr from './routes/adminMainHr';
 import UserTable from './routes/adminMainUser';
 import '../StyleComponent/index.css';
 import Homepage from './routes/HomePage';
+import Edit from './routes/edit';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HrTable/>,
+    element: <AdminMainHr/>,
   },
+  {
+    path: "/edit/:id",
+    element: <Edit/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

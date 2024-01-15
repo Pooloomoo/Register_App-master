@@ -1,39 +1,20 @@
-import { Form, useLoaderData, useFetcher, } from "react-router-dom";
-import { getContact, updateContact } from "../contacts";
-
-export async function loader({params}) {
-  const contact = await getContact(params.contactId);
-  if (!contact) {
-    throw new Response("", {
-      status: 404,
-      statusText: "Not Found",
-    });
-  }
-  return { contact };
-}
-
-export async function action({ request, params }) {
-  let formData = await request.formData();
-  return updateContact(params.contactId, {
-    favorite: formData.get("favorite") === "true",
-  });
-}
+import { Form, Link} from "react-router-dom";
 
 function hr(props) {
     const { index, data } = props;
 
     // let status = index % 2;
     return (
-        <tr>
+        <tr key={index}>
             <td>{data.id}</td>
             <td>{data.item1}</td>
             <td>{data.item2}</td>
             <td>{data.item3}</td>
             <td>{data.item4}</td>
             <td>
-                <Form action="edit">
+                <Link className="" to={`/edit/${data.id}`}>
                     <button className="btn btn-warning text-light d-md-block" type="submit">Edit</button>
-                </Form>
+                </Link>
                 <Form
                     method="post"
                     action="destroy"

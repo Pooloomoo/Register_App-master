@@ -1,78 +1,71 @@
-import { Form, useLoaderData, redirect, useNavigate, } from "react-router-dom";
-import { updateContact } from "../contacts";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
-export async function action({ request, params }) {
-    const formData = await request.formData();
-    const firstName = formData.get("first");
-    const lastName = formData.get("last");
-    const updates = Object.fromEntries(formData);
-    updates.first; // "Some"
-    updates.last; // "Name"
-    await updateContact(params.contactId, updates);
-    return redirect(`/contacts/${params.contactId}`);
+function Edit() {
+  const { id } = useParams();
+  const [values, setValues] = useState({
+    id: id,
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  })
+  useEffect(() => {
+    axios.get('http://localhost:8080/hr/' + id)
+      .then(res => {
+        setValues({...values, 
+          firstName: res.data.firstName, 
+          lastName: res.data.lastName, 
+          email: res.data.email,
+          password: res.data.password
+        })
+      })
+      .catch(err => console.log(err))
+  }, [])
+
+  const navigate = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.put('http://localhost:8080/hr/' + id, values)
+      .then(res => {
+        navigate('/')
+      })
+      .catch(err => console.log(err))
   }
 
-export default function EditContact() {
-  const { contact } = useLoaderData();
-  const navigate = useNavigate();
-
   return (
-    <Form method="post" id="contact-form">
-      <p>
-        <span>Name</span>
-        <input
-          placeholder="First"
-          aria-label="First name"
-          type="text"
-          name="first"
-          defaultValue={contact.first}
-        />
-        <input
-          placeholder="Last"
-          aria-label="Last name"
-          type="text"
-          name="last"
-          defaultValue={contact.last}
-        />
-      </p>
-      <label>
-        <span>Twitter</span>
-        <input
-          type="text"
-          name="twitter"
-          placeholder="@jack"
-          defaultValue={contact.twitter}
-        />
-      </label>
-      <label>
-        <span>Avatar URL</span>
-        <input
-          placeholder="https://example.com/avatar.jpg"
-          aria-label="Avatar URL"
-          type="text"
-          name="avatar"
-          defaultValue={contact.avatar}
-        />
-      </label>
-      <label>
-        <span>Notes</span>
-        <textarea
-          name="notes"
-          defaultValue={contact.notes}
-          rows={6}
-        />
-      </label>
-      <p>
-        <button type="submit">Save</button>
-        <button
-          type="button"
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          Cancel
-        </button>
-      </p>
-    </Form>
-  );
+    <div className='d-flex w-100 vh-100 justify-content-center align-items-center'>
+      <div className='w-50 border bg-secondary text-white p-5'>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor='fname'>First Name:</label>
+            <input type='text' name='firstName' className='form-control' placeholder='Enter First Name' 
+            value={values.firstName} onChange={e => setValues({...values, firstName: e.target.value})}/>
+          </div>
+          <div>
+            <label htmlFor='lname'>Last Name:</label>
+            <input type='text' name='lastName' className='form-control' placeholder='Enter Last Name'
+            value={values.lastName} onChange={e => setValues({...values, lastName: e.target.value})}/>
+          </div>
+          <div>
+            <label htmlFor='email'>Email:</label>
+            <input type='email' name='email' className='form-control' placeholder='Enter Email' 
+            value={values.email} onChange={e => setValues({...values, email: e.target.value})}/>
+          </div>
+          <div>
+            <label htmlFor='password'>Password:</label>
+            <input type='password' name='password' className='form-control' placeholder='Enter Password' 
+            value={values.password} onChange={e => setValues({...values, password: e.target.value})}/>
+          </div><br />
+          <button className='btn btn-info'>Update</button>
+        </form>
+
+      </div>
+
+    </div>
+  )
 }
+
+export default Edit;

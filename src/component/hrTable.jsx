@@ -3,6 +3,18 @@ import "../../StyleComponent/index.css";
 import Hr from "./hr";
 import {Link} from "react-router-dom";
 
+export async function action(){
+    const contact = await createContact();
+    return redirect(`/contacts/${contact.id}/edit`);
+}
+
+export async function loader({ request }) {
+  const url = new URL(request.url);
+  const q = url.searchParams.get("q");
+  const contacts = await getContacts(q);
+  return { contacts, q };
+}
+
 export default function hrTable() {
     const [count, setCount] = useState(0);
     const [list, setList] = useState([]);
@@ -53,15 +65,15 @@ export default function hrTable() {
     );
 
     return (
-        <div class="card mb-4 border-0">
-            <h1 class="card-header d-flex justify-content-between align-items-center mb-4 border-0 w-75">HR LIST
+        <div className="card mb-4 border-0">
+            <h1 className="card-header d-flex justify-content-between align-items-center mb-4 border-0 w-75">HR LIST
             <div className="btn-group">
-                <Link id="button1" type="button" class="btn btn-warning text-light btn-sm d-md-block">ADD +</Link>
+                <Link id="button1" type="button" className="btn btn-warning text-light btn-sm d-md-block">ADD +</Link>
             </div>
                 
             </h1>
-            <div class="card-body mb-4 border-0">
-                <table id="example1" class="table table-hover table-dark rounded-4 overflow-hidden w-75">
+            <div className="card-body mb-4 border-0">
+                <table id="example1" className="table table-hover table-dark rounded-4 overflow-hidden w-75">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
