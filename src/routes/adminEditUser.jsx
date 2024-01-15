@@ -1,11 +1,11 @@
 import NavBar from "../component/navBar";
-import UserTable from "../component/userTable";
+import UserTableEdit from "../component/userTableEdit";
 import Footer from "../component/footer";
 function adminMainUser() {
     return (
     <div className="Body">
         <NavBar/>
-        <UserTable/>
+        <UserTableEdit/>
         <br/>
         <br/>
         <Footer/>

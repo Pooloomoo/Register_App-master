@@ -6,6 +6,8 @@ function adminMainHr() {
     <div className="Body">
         <NavBar/>
         <HrTable/>
+        <br/>
+        <br/>
         <Footer/>
     </div>
     )

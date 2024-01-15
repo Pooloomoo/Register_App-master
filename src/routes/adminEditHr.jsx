@@ -1,16 +1,15 @@
 import NavBar from "../component/navBar";
-import UserTable from "../component/userTable";
+import HrTableEdit from "../component/hrTableEdit";
 import Footer from "../component/footer";
-function adminMainUser() {
+function adminMainHr() {
     return (
     <div className="Body">
         <NavBar/>
-        <UserTable/>
+        <HrTableEdit/>
         <br/>
         <br/>
         <Footer/>
-        
     </div>
     )
 }
-export default adminMainUser;
+export default adminMainHr;

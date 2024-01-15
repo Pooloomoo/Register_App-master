@@ -1,8 +1,6 @@
 import { React, useState, useEffect } from "react";
 import "../../StyleComponent/index.css";
-import Hr from "./hr";
 import HrEdit from "./hrEdit";
-import {Link} from "react-router-dom";
 
 export default function hrTable() {
     const [count, setCount] = useState(0);
@@ -22,8 +20,8 @@ export default function hrTable() {
     function loadData() {
         fetch('http://localhost:8080/hr/')
             .then(response => response.json())
-            .then(hrData => {
-                let newList = hrData.map((data) =>
+            .then(hrEditData => {
+                let newList = hrEditData.map((data) =>
                 ({
                     id: data.id,
                     item1: data.firstName,
@@ -50,17 +48,13 @@ export default function hrTable() {
 
 
     const hrList = list.map((item, index) =>
-        <Hr key={item.id} data={item} index={index} deleteHandler={deleteRow} changeHandler={changeRow}></Hr>
+        <HrEdit key={item.id} data={item} index={index} deleteHandler={deleteRow} changeHandler={changeRow}></HrEdit>
     );
 
     return (
         <div class="card mb-4 border-0">
             <h1 class="card-header d-flex justify-content-between align-items-center mb-4 border-0 w-75">HR LIST
-            <div className="btn-group">
-                <Link to={"./HrEdit"} id="button1" type="button" class="btn btn-warning text-light btn-sm d-md-block">ADD +</Link>
-                <button id="button1" type="button" class="btn btn-warning text-light btn-sm d-md-block ">EDIT</button>
-            </div>
-                
+                <button id="button1" type="button" class="btn btn-warning text-light btn-sm d-md-block ">CONFIRM</button>
             </h1>
             <div class="card-body mb-4 border-0">
                 <table id="example1" class="table table-hover table-dark rounded-4 overflow-hidden w-75">

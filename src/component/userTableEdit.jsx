@@ -1,10 +1,9 @@
 import { React, useState, useEffect } from "react";
 import "../../StyleComponent/index.css";
-import Hr from "./hr";
-import HrEdit from "./hrEdit";
-import {Link} from "react-router-dom";
+import UserEdit from "./userEdit";
 
-export default function hrTable() {
+export default function userTable() {
+    
     const [count, setCount] = useState(0);
     const [list, setList] = useState([]);
 
@@ -20,16 +19,19 @@ export default function hrTable() {
     }
 
     function loadData() {
-        fetch('http://localhost:8080/hr/')
+        fetch('http://localhost:8080/user/')
             .then(response => response.json())
-            .then(hrData => {
-                let newList = hrData.map((data) =>
+            .then(userData => {
+                let newList = userData.map((data) =>
                 ({
                     id: data.id,
-                    item1: data.firstName,
-                    item2: data.lastName,
+                    item1: data.fName,
+                    item2: data.lName,
                     item3: data.email,
-                    item4: data.password
+                    item4: data.password,
+                    item5: data.phone,
+                    item6: data.education,
+                    item7: data.address
                 })
                 );
                 setList(newList);
@@ -49,33 +51,34 @@ export default function hrTable() {
     }
 
 
-    const hrList = list.map((item, index) =>
-        <Hr key={item.id} data={item} index={index} deleteHandler={deleteRow} changeHandler={changeRow}></Hr>
+    const userList = list.map((item, index) =>
+        <UserEdit key={item.id} data={item} index={index} deleteHandler={deleteRow} changeHandler={changeRow}></UserEdit>
     );
 
     return (
         <div class="card mb-4 border-0">
-            <h1 class="card-header d-flex justify-content-between align-items-center mb-4 border-0 w-75">HR LIST
+            <h1 class="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11">USER LIST
             <div className="btn-group">
-                <Link to={"./HrEdit"} id="button1" type="button" class="btn btn-warning text-light btn-sm d-md-block">ADD +</Link>
-                <button id="button1" type="button" class="btn btn-warning text-light btn-sm d-md-block ">EDIT</button>
+                <button id="button1" type="button" class="btn btn-warning text-light d-md-block ">CONFIRM</button>
             </div>
-                
             </h1>
             <div class="card-body mb-4 border-0">
-                <table id="example1" class="table table-hover table-dark rounded-4 overflow-hidden w-75">
+                <table id="example1" class="table table-hover table-dark rounded-4 overflow-hidden">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">FirstName</th>
-                            <th class="w-25" scope="col">LastName</th>
-                            <th class="w-25" scope="col">Email</th>
+                            <th scope="col">LastName</th>
+                            <th scope="col">Email</th>
                             <th scope="col">Password</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Education</th>
+                            <th class="w-25" scope="col">Address</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {hrList}
+                        {userList}
                     </tbody>
                 </table>
             </div>

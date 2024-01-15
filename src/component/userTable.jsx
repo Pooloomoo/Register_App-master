@@ -58,7 +58,10 @@ export default function userTable() {
     return (
         <div class="card mb-4 border-0">
             <h1 class="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11">USER LIST
-            <button id="button1" type="button" class="btn btn-warning text-light d-md-block ">CREATE</button>
+            <div className="btn-group">
+                <button id="button1" type="button" class="btn btn-warning text-light d-md-block ">CREATE</button>
+                <button id="button1" type="button" class="btn btn-warning text-light d-md-block ">EDIT</button>
+            </div>
             </h1>
             <div class="card-body mb-4 border-0">
                 <table id="example1" class="table table-hover table-dark rounded-4 overflow-hidden">
@@ -80,8 +83,6 @@ export default function userTable() {
                     </tbody>
                 </table>
             </div>
-            <br/>
-            <br/>
         </div>
     )
 }

@@ -10,11 +10,13 @@ import HrTable from './routes/adminMainHr';
 import UserTable from './routes/adminMainUser';
 import '../StyleComponent/index.css';
 import Homepage from './routes/HomePage';
+import HrTableEdit from './routes/adminEditHr'
+import UserTableEdit from './routes/adminEditUser';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <UserTable/>,
+    element: <UserTableEdit/>,
   },
 ]);
 
