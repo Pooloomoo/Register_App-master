@@ -1,23 +1,29 @@
+import { Form, useLoaderData, useFetcher, } from "react-router-dom";
+import { getContact, updateContact } from "../contacts";
+
+export async function loader({params}) {
+  const contact = await getContact(params.contactId);
+  if (!contact) {
+    throw new Response("", {
+      status: 404,
+      statusText: "Not Found",
+    });
+  }
+  return { contact };
+}
+
+export async function action({ request, params }) {
+  let formData = await request.formData();
+  return updateContact(params.contactId, {
+    favorite: formData.get("favorite") === "true",
+  });
+}
+
 function hr(props) {
-    const {index, data} = props;
-
-    function changeItem(event) {
-        console.log("Change Item " + index);
-        const newItem = {
-            id : data.id,
-            item: event.target.value,
-            createAt: data.createAt,
-        }
-        props.changeHandler(index, newItem);
-    }
-
-    function deleteRow(event) {
-        console.log("Delete Row " + index);
-        props.deleteHandler(index);
-    }
+    const { index, data } = props;
 
     // let status = index % 2;
-    return(
+    return (
         <tr>
             <td>{data.id}</td>
             <td>{data.item1}</td>
@@ -25,8 +31,24 @@ function hr(props) {
             <td>{data.item3}</td>
             <td>{data.item4}</td>
             <td>
-            <button className="btn btn-warning text-light d-md-block">EDIT</button>
-            <button className="btn btn-danger btn-sm" onClick={deleteRow}>Delete</button></td>
+                <Form action="edit">
+                    <button className="btn btn-warning text-light d-md-block" type="submit">Edit</button>
+                </Form>
+                <Form
+                    method="post"
+                    action="destroy"
+                    onSubmit={(event) => {
+                        if (
+                            !confirm(
+                                "Please confirm you want to delete this record."
+                            )
+                        ) {
+                            event.preventDefault();
+                        }
+                    }}
+                >
+                    <button className="btn btn-danger btn-sm" type="submit">Delete</button>
+                </Form></td>
         </tr>
     )
 }

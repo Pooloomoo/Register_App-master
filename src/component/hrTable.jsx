@@ -66,8 +66,8 @@ export default function hrTable() {
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">FirstName</th>
-                            <th class="w-25" scope="col">LastName</th>
-                            <th class="w-25" scope="col">Email</th>
+                            <th scope="col">LastName</th>
+                            <th scope="col">Email</th>
                             <th scope="col">Password</th>
                             <th scope="col">Action</th>
                         </tr>
