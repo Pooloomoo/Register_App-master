@@ -1,4 +1,4 @@
-import { Form } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 
 function hr(props) {
     const { index, data } = props;
@@ -15,9 +15,9 @@ function hr(props) {
             <td>{data.item6}</td>
             <td>{data.item7}</td>
             <td>
-                <Form action="edit">
+                <Link className="" to={`/edit/${data.id}`}>
                     <button className="btn btn-warning text-light d-md-block" type="submit">Edit</button>
-                </Form>
+                </Link>
                 <Form
                     method="post"
                     action="destroy"

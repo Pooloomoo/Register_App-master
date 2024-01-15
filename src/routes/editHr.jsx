@@ -15,6 +15,7 @@ function Edit() {
     axios.get('http://localhost:8080/hr/' + id)
       .then(res => {
         setValues({...values, 
+          id: res.data.id,
           firstName: res.data.firstName, 
           lastName: res.data.lastName, 
           email: res.data.email,
@@ -24,7 +25,7 @@ function Edit() {
       .catch(err => console.log(err))
   }, [])
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,13 +33,18 @@ function Edit() {
       .then(res => {
         navigate('/')
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err.response.data))
   }
 
   return (
     <div className='d-flex w-100 vh-100 justify-content-center align-items-center'>
       <div className='w-50 border bg-secondary text-white p-5'>
         <form onSubmit={handleSubmit}>
+        <div>
+            <label htmlFor='id'>ID Number:</label>
+            <input type='text' name='id' className='form-control' placeholder='Enter ID Number'
+              value={values.id} onChange={e => setValues({ ...values, id: e.target.value })} />
+          </div>
           <div>
             <label htmlFor='fname'>First Name:</label>
             <input type='text' name='firstName' className='form-control' placeholder='Enter First Name' 

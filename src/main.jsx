@@ -7,19 +7,20 @@ import {
 import Login from './login';
 import SignUp from './routes/signup';
 import AdminMainHr from './routes/adminMainHr';
-import UserTable from './routes/adminMainUser';
+import AdminMainUser from './routes/adminMainUser';
 import '../StyleComponent/index.css';
 import Homepage from './routes/HomePage';
-import Edit from './routes/edit';
+import EditHr from './routes/editHr';
+import EditUser from './routes/editUser'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AdminMainHr/>,
+    element: <AdminMainUser/>,
   },
   {
     path: "/edit/:id",
-    element: <Edit/>
+    element: <EditUser/>
   }
 ]);
 
