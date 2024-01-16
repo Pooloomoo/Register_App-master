@@ -16,11 +16,11 @@ import EditUser from './routes/editUser'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AdminMainUser/>,
+    element: <AdminMainHr/>,
   },
   {
     path: "/edit/:id",
-    element: <EditUser/>
+    element: <EditHr/>
   }
 ]);
 

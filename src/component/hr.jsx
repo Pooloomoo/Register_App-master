@@ -11,6 +11,8 @@ function hr(props) {
             <td>{data.item2}</td>
             <td>{data.item3}</td>
             <td>{data.item4}</td>
+            <td>{data.item5}</td>
+            <td>{data.item6}</td>
             <td>
                 <Link className="" to={`/edit/${data.id}`}>
                     <button className="btn btn-warning text-light d-md-block" type="submit">Edit</button>

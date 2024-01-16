@@ -40,7 +40,9 @@ export default function hrTable() {
                     item1: data.firstName,
                     item2: data.lastName,
                     item3: data.email,
-                    item4: data.password
+                    item4: data.password,
+                    item5: data.project.id,
+                    item6: data.project.pName
                 })
                 );
                 setList(newList);
@@ -73,7 +75,7 @@ export default function hrTable() {
                 
             </h1>
             <div className="card-body mb-4 border-0">
-                <table id="example1" className="table table-hover table-dark rounded-4 overflow-hidden w-75">
+                <table id="example1" className="table table-hover table-dark rounded-4 overflow-hidden ">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -81,6 +83,8 @@ export default function hrTable() {
                             <th scope="col">LastName</th>
                             <th scope="col">Email</th>
                             <th scope="col">Password</th>
+                            <th scope="col">Project ID</th>
+                            <th scope="col">Project Name</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>

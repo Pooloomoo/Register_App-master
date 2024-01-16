@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import NavBar from '../component/navBar';
 
 function Edit() {
   const { id } = useParams();
@@ -45,11 +46,12 @@ function Edit() {
 
   return (
     <div className='d-flex w-100 vh-100 justify-content-center align-items-center'>
-      <div className='w-50 border bg-secondary text-white p-5'>
+      <div className='w-50 border bg-dark text-white p-5'>
         <form onSubmit={handleSubmit}>
           <div>
+            <h1>EDIT USER</h1>
             <label htmlFor='id'>ID Number:</label>
-            <input type='text' name='id' className='form-control' placeholder='Enter ID Number'
+            <input disabled type='text' name='id' className='form-control' placeholder='Enter ID Number'
               value={values.id} onChange={e => setValues({ ...values, id: e.target.value })} />
           </div>
           <div>
@@ -87,7 +89,7 @@ function Edit() {
             <input type='address' name='address' className='form-control' placeholder='Enter Password'
               value={values.address} onChange={e => setValues({ ...values, address: e.target.value })} />
           </div><br />
-          <button className='btn btn-info'>Update</button>
+          <button className='btn btn-warning'>Update</button>
         </form>
 
       </div>

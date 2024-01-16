@@ -9,18 +9,26 @@ function Edit() {
     firstName: '',
     lastName: '',
     email: '',
-    password: ''
+    password: '',
+    project:{
+      id:''
+    },
   })
   useEffect(() => {
     axios.get('http://localhost:8080/hr/' + id)
       .then(res => {
-        setValues({...values, 
+        setValues({
+          ...values,
           id: res.data.id,
-          firstName: res.data.firstName, 
-          lastName: res.data.lastName, 
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
           email: res.data.email,
-          password: res.data.password
+          password: res.data.password,
+          project: {
+            id: res.data.project.id
+          }
         })
+        console.log(values.project);
       })
       .catch(err => console.log(err))
   }, [])
@@ -38,34 +46,41 @@ function Edit() {
 
   return (
     <div className='d-flex w-100 vh-100 justify-content-center align-items-center'>
-      <div className='w-50 border bg-secondary text-white p-5'>
+      <div className='w-50 border bg-dark text-white p-5'>
         <form onSubmit={handleSubmit}>
-        <div>
+          <div>
+            <h1>EDIT HR</h1>
             <label htmlFor='id'>ID Number:</label>
-            <input type='text' name='id' className='form-control' placeholder='Enter ID Number'
+            <input disabled type='text' name='id' className='form-control' placeholder='Enter ID Number'
               value={values.id} onChange={e => setValues({ ...values, id: e.target.value })} />
           </div>
           <div>
             <label htmlFor='fname'>First Name:</label>
-            <input type='text' name='firstName' className='form-control' placeholder='Enter First Name' 
-            value={values.firstName} onChange={e => setValues({...values, firstName: e.target.value})}/>
+            <input type='text' name='firstName' className='form-control' placeholder='Enter First Name'
+              value={values.firstName} onChange={e => setValues({ ...values, firstName: e.target.value })} />
           </div>
           <div>
             <label htmlFor='lname'>Last Name:</label>
             <input type='text' name='lastName' className='form-control' placeholder='Enter Last Name'
-            value={values.lastName} onChange={e => setValues({...values, lastName: e.target.value})}/>
+              value={values.lastName} onChange={e => setValues({ ...values, lastName: e.target.value })} />
           </div>
           <div>
             <label htmlFor='email'>Email:</label>
-            <input type='email' name='email' className='form-control' placeholder='Enter Email' 
-            value={values.email} onChange={e => setValues({...values, email: e.target.value})}/>
+            <input type='email' name='email' className='form-control' placeholder='Enter Email'
+              value={values.email} onChange={e => setValues({ ...values, email: e.target.value })} />
           </div>
           <div>
             <label htmlFor='password'>Password:</label>
-            <input type='password' name='password' className='form-control' placeholder='Enter Password' 
-            value={values.password} onChange={e => setValues({...values, password: e.target.value})}/>
-          </div><br />
-          <button className='btn btn-info'>Update</button>
+            <input type='password' name='password' className='form-control' placeholder='Enter Password'
+              value={values.password} onChange={e => setValues({ ...values, password: e.target.value })} />
+          </div>
+          <div>
+            <label htmlFor='pid'>Project ID:</label>
+            <input type='number' name='pid' className='form-control' placeholder='Enter Project ID'
+              value={values.project.id} onChange={e => setValues({ ...values, project: { id: e.target.value} })} />
+          </div>
+          <br />
+          <button className='btn btn-warning'>Update</button>
         </form>
 
       </div>
