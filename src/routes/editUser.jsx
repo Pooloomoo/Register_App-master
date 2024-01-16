@@ -80,12 +80,12 @@ function Edit() {
               value={values.phone} onChange={e => setValues({ ...values, phone: e.target.value })} />
           </div>
           <div>
-            <label htmlFor='education'>Password:</label>
+            <label htmlFor='education'>Education:</label>
             <input type='education' name='education' className='form-control' placeholder='Enter Password'
               value={values.education} onChange={e => setValues({ ...values, education: e.target.value })} />
           </div>
           <div>
-            <label htmlFor='address'>Password:</label>
+            <label htmlFor='address'>Address:</label>
             <input type='address' name='address' className='form-control' placeholder='Enter Password'
               value={values.address} onChange={e => setValues({ ...values, address: e.target.value })} />
           </div><br />

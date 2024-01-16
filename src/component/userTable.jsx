@@ -8,14 +8,14 @@ export default function userTable() {
     const [list, setList] = useState([]);
 
     useEffect(() => {
-        console.log("Component Mounted");
+        // console.log("Component Mounted");
         loadData();
 
         return unMounted;
     }, []);
 
     function unMounted() {
-        console.log("Component Unmounted");
+        // console.log("Component Unmounted");
     }
 
     function loadData() {
