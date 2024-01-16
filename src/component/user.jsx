@@ -1,6 +1,16 @@
 import { Form, Link } from "react-router-dom";
+import axios from "axios";
 
-function hr(props) {
+const handleDelete = (id) => {
+    axios.delete('http://localhost:8080/user/' + id)
+        .then(res => {
+            alert("Row " + id + " deleted");
+            window.location.reload();
+        })
+        .catch(err => console.log(err.response.data))
+}
+
+function user(props) {
     const { index, data } = props;
 
     // let status = index % 2;
@@ -15,27 +25,15 @@ function hr(props) {
             <td>{data.item6}</td>
             <td>{data.item7}</td>
             <td>
-                <Link className="" to={`/edit/${data.id}`}>
+                <Link className="text-decoration-none" to={`/edit/${data.id}`}>
                     <button className="btn btn-warning text-light d-md-block" type="submit">Edit</button>
                 </Link>
-                <Form
-                    method="post"
-                    action="destroy"
-                    onSubmit={(event) => {
-                        if (
-                            !confirm(
-                                "Please confirm you want to delete this record."
-                            )
-                        ) {
-                            event.preventDefault();
-                        }
-                    }}
-                >
-                    <button className="btn btn-danger btn-sm" type="submit">Delete</button>
-                </Form>
+                <button className="btn btn-danger btn-sm"
+                    onClick={() => handleDelete(data.id)}>Delete</button>
+
             </td>
         </tr>
     )
 }
 
-export default hr;
+export default user;

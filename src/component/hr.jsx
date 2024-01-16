@@ -1,4 +1,14 @@
-import { Form, Link} from "react-router-dom";
+import { Form, Link } from "react-router-dom";
+import axios from "axios";
+
+const handleDelete = (id) => {
+    axios.delete('http://localhost:8080/hr/' + id)
+        .then(res => {
+            alert("Row " + id + " deleted");
+            window.location.reload();
+        })
+        .catch(err => console.log(err.response.data))
+}
 
 function hr(props) {
     const { index, data } = props;
@@ -6,7 +16,7 @@ function hr(props) {
     // let status = index % 2;
     return (
         <tr key={index}>
-            <td>{data.id}</td>
+            <td>{index + 1}</td>
             <td>{data.item1}</td>
             <td>{data.item2}</td>
             <td>{data.item3}</td>
@@ -14,24 +24,14 @@ function hr(props) {
             <td>{data.item5}</td>
             <td>{data.item6}</td>
             <td>
-                <Link className="" to={`/edit/${data.id}`}>
+                <Link className="text-decoration-none" to={`/edit/${data.id}`}>
                     <button className="btn btn-warning text-light d-md-block" type="submit">Edit</button>
                 </Link>
-                <Form
-                    method="post"
-                    action="destroy"
-                    onSubmit={(event) => {
-                        if (
-                            !confirm(
-                                "Please confirm you want to delete this record."
-                            )
-                        ) {
-                            event.preventDefault();
-                        }
-                    }}
-                >
-                    <button className="btn btn-danger btn-sm" type="submit">Delete</button>
-                </Form></td>
+
+                <button className="btn btn-danger btn-sm"
+                    onClick={() => handleDelete(data.id)}>Delete</button>
+
+            </td>
         </tr>
     )
 }
