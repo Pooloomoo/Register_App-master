@@ -3,18 +3,6 @@ import "../../StyleComponent/index.css";
 import Hr from "./hr";
 import { Link } from "react-router-dom";
 
-export async function action() {
-    const contact = await createContact();
-    return redirect(`/contacts/${contact.id}/edit`);
-}
-
-export async function loader({ request }) {
-    const url = new URL(request.url);
-    const q = url.searchParams.get("q");
-    const contacts = await getContacts(q);
-    return { contacts, q };
-}
-
 export default function hrTable() {
     const [count, setCount] = useState(0);
     const [list, setList] = useState([]);
