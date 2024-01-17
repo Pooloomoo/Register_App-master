@@ -33,7 +33,7 @@ function HRCreateProject() {
       amount: projectAmount,
       educationLevel: projectEducation,
     };
-    axios.post("http://localhost:8080/project/", project, {
+    axios.post("http://localhost:8080/api/project/", project, {
       headers: { "Content-Type": "application/json" },
     })
       .then(() => {

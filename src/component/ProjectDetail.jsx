@@ -10,7 +10,7 @@ export default function ProjectDetail(props) {
 
   
   useEffect(() => {
-    axios.get('http://localhost:8080/status/')
+    axios.get('http://localhost:8080/api/status/')
     .then((response) => {
       setStatuses(response.data);
       const lastStatus = response.data[response.data.length - 1];
@@ -29,7 +29,7 @@ export default function ProjectDetail(props) {
       "userStatus": "Apply_Success",
     };
     try {
-      await axios.post("http://localhost:8080/status/", status, {
+      await axios.post("http://localhost:8080/api/status/", status, {
         headers: { "Content-Type": "application/json" },
       })
       console.log("New status added");
@@ -41,7 +41,7 @@ export default function ProjectDetail(props) {
         project: {id: projectId},
         status: {id: lastStatusId + 1}
       };
-      await axios.post("http://localhost:8080/userproject/", userProject, {
+      await axios.post("http://localhost:8080/api/userproject/", userProject, {
         headers: { "Content-Type": "application/json" },
       })
       console.log("New userProject added");
