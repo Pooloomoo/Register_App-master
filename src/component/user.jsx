@@ -25,7 +25,7 @@ function user(props) {
             <td>{data.item6}</td>
             <td>{data.item7}</td>
             <td>
-                <Link className="text-decoration-none" to={`/edit/${data.id}`}>
+                <Link className="text-decoration-none" to={`/edit/user/${data.id}`}>
                     <button className="btn btn-warning text-light d-md-block" type="submit">Edit</button>
                 </Link>
                 <button className="btn btn-danger btn-sm"

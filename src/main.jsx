@@ -11,17 +11,35 @@ import AdminMainUser from './routes/adminMainUser';
 import '../StyleComponent/index.css';
 import Homepage from './routes/HomePage';
 import EditHr from './routes/editHr';
-import EditUser from './routes/editUser'
+import EditUser from './routes/editUser';
+import CreateUser from './routes/createUser';
+import CreateHr from './routes/createHr';
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <AdminMainHr/>,
+  },
+  {
+    path: "/adminUser",
     element: <AdminMainUser/>,
   },
   {
-    path: "/edit/:id",
+    path: "/edit/user/:id",
     element: <EditUser/>
-  }
+  },
+  {
+    path: "/edit/hr/:id",
+    element: <EditHr/>
+  },
+  {
+    path: "/create/user",
+    element: <CreateUser/>
+  },
+  {
+    path: "/create/hr",
+    element: <CreateHr/>
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

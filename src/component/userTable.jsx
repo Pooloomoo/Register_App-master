@@ -1,9 +1,10 @@
 import { React, useState, useEffect } from "react";
 import "../../StyleComponent/index.css";
 import User from "./user";
+import { Link } from "react-router-dom";
 
 export default function userTable() {
-    
+
     const [count, setCount] = useState(0);
     const [list, setList] = useState([]);
 
@@ -50,7 +51,6 @@ export default function userTable() {
         setList(newList);
     }
 
-
     const userList = list.map((item, index) =>
         <User key={item.id} data={item} index={index} deleteHandler={deleteRow} changeHandler={changeRow}></User>
     );
@@ -58,9 +58,12 @@ export default function userTable() {
     return (
         <div className="card mb-4 border-0">
             <h1 className="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11">USER LIST
-            <div className="btn-group">
-                <button id="button1" type="button" className="btn btn-warning text-light d-md-block ">CREATE</button>
-            </div>
+                <Link className="btn-group text-decoration-none" to={`/`}>
+                    <button id="button1" type="button" className="btn btn-warning text-light d-md-block ">Switch to HR Table</button>
+                    <Link className="btn-group text-decoration-none" to={`/create/user/`}>
+                        <button id="button1" type="button" className="btn btn-warning text-light d-md-block ">CREATE</button>
+                    </Link>
+                </Link>
             </h1>
             <div className="card-body mb-4 border-0">
                 <table id="example1" className="table table-hover table-dark rounded-4 overflow-hidden">

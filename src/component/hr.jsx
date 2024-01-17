@@ -24,7 +24,7 @@ function hr(props) {
             <td>{data.item5}</td>
             <td>{data.item6}</td>
             <td>
-                <Link className="text-decoration-none" to={`/edit/${data.id}`}>
+                <Link className="text-decoration-none" to={`/edit/hr/${data.id}`}>
                     <button className="btn btn-warning text-light d-md-block" type="submit">Edit</button>
                 </Link>
 

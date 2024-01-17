@@ -1,18 +1,18 @@
 import { React, useState, useEffect } from "react";
 import "../../StyleComponent/index.css";
 import Hr from "./hr";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export async function action(){
+export async function action() {
     const contact = await createContact();
     return redirect(`/contacts/${contact.id}/edit`);
 }
 
 export async function loader({ request }) {
-  const url = new URL(request.url);
-  const q = url.searchParams.get("q");
-  const contacts = await getContacts(q);
-  return { contacts, q };
+    const url = new URL(request.url);
+    const q = url.searchParams.get("q");
+    const contacts = await getContacts(q);
+    return { contacts, q };
 }
 
 export default function hrTable() {
@@ -68,11 +68,13 @@ export default function hrTable() {
 
     return (
         <div className="card mb-4 border-0">
-            <h1 className="card-header d-flex justify-content-between align-items-center mb-4 border-0 w-75">HR LIST
-            <div className="btn-group">
-                <Link id="button1" type="button" className="btn btn-warning text-light btn-sm d-md-block">ADD +</Link>
-            </div>
-                
+            <h1 className="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11">HR LIST
+                <Link className="text-decoration-none" to={`/adminUser`}>
+                    <button id="button1" type="button" className="btn btn-warning text-light">Switch to User Table</button>
+                    <Link className="text-decoration-none" to={`/create/hr/`}>
+                        <button id="button1" type="button" className="btn btn-warning text-light">ADD +</button>
+                    </Link>
+                </Link>
             </h1>
             <div className="card-body mb-4 border-0">
                 <table id="example1" className="table table-hover table-dark rounded-4 overflow-hidden ">
