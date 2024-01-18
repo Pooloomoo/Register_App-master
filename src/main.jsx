@@ -22,7 +22,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/",
@@ -59,6 +59,22 @@ const router = createBrowserRouter([
     path: "/profile",
     element: <HRCreateProject />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/edit/user/:id",
+    element: <EditUser/>
+  },
+  {
+    path: "/edit/hr/:id",
+    element: <EditHr/>
+  },
+  {
+    path: "/create/user",
+    element: <CreateUser/>
+  },
+  {
+    path: "/create/hr",
+    element: <CreateHr/>
   },
 ]);
 /* createRoutesFromElements(

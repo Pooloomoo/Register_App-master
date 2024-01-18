@@ -1,5 +1,5 @@
-import { ACCESS_TOKEN, API_BASE_URL } from '../constants';
-import { SidebarData } from '../constants/SidebarData';
+import { ACCESS_TOKEN, API_BASE_URL } from '../../../../../../../../../Downloads/react-security-master/react-security/src/constants';
+import { SidebarData } from '../../../../../../../../../Downloads/react-security-master/react-security/src/constants/SidebarData';
 
 const request = (options) => {
   const headers = new Headers({

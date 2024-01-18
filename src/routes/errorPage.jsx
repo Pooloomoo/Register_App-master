@@ -30,7 +30,7 @@ function ErrorPage() {
         <p>
         <i>{error.statusText || error.message}</i>
         </p>
-        <Link to="/" className="btn btn-warning text-light link-dark">
+        <Link to="/" className="go-back-btn btn btn-warning text-light link-dark">
           Back to Home
         </Link>
       </div>
