@@ -8,7 +8,7 @@
     import Overlay from 'react-bootstrap/Overlay';
     import Tooltip from 'react-bootstrap/Tooltip';
 
-    const id = 1;
+    const id = 0;
 
     const USER_REGEX = /^[a-zA-Z][a-zA-Z]{3,23}$/;
     const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
@@ -148,22 +148,21 @@
                 return;
             }
             try {
-                const response = await axios.post("http://localhost:1010/users", 
-                {firstName: name, lastName, password: pwd, email, phoneNumber: phone, educationLevel: userEducation, address },
+                const response = await axios.post("http://localhost:8080/api/user/", 
+                {id,firstName: name, lastName, password: pwd, email, phoneNumber: phone, educationLevel: userEducation, address },
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );
                 console.log(response);
-                console.log(response.data);
+                console.log(response.data);         
                 console.log(response.accessToken);
                 console.log(Json.stringify(response));
                 setSuccess(true);
             } catch (error) {
                 if(!error?.response) {
                     setErrMsg("No Server Response");
-                
                 } else if (error.response.status === 409) {
                     setErrMsg("This name is already taken");
                 } else {
@@ -175,7 +174,7 @@
 
         return (
             <div>
-            {success ?(
+            {success ?( 
                 <div>
                     <NavBar />
                     <section className='content_register_complete'>
