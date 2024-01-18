@@ -2,7 +2,7 @@ import { Form, Link } from "react-router-dom";
 import axios from "axios";
 
 const handleDelete = (id) => {
-    axios.delete('http://localhost:8080/hr/' + id)
+    axios.delete('http://localhost:8080/api/hr/' + id)
         .then(res => {
             alert("Row " + id + " deleted");
             window.location.reload();

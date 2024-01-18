@@ -16,7 +16,7 @@ function CreateUser() {
     address: ''
   })
   useEffect(() => {
-    axios.get('http://localhost:8080/user/')
+    axios.get('http://localhost:8080/api/user/')
       .then(res => {
         // setValues({
         //   ...values,

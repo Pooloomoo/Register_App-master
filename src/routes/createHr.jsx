@@ -16,7 +16,7 @@ function CreateHr() {
     },
   })
   useEffect(() => {
-    axios.get('http://localhost:8080/hr/')
+    axios.get('http://localhost:8080/api/hr/')
       .then(res => {
         // setValues({
         //   ...values,

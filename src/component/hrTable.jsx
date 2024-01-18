@@ -19,7 +19,7 @@ export default function hrTable() {
     }
 
     function loadData() {
-        fetch('http://localhost:8080/hr/')
+        fetch('http://localhost:8080/api/hr/')
             .then(response => response.json())
             .then(hrData => {
                 let newList = hrData.map((data) =>

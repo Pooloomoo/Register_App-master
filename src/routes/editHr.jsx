@@ -16,7 +16,7 @@ function Edit() {
     },
   })
   useEffect(() => {
-    axios.get('http://localhost:8080/hr/' + id)
+    axios.get('http://localhost:8080/api/hr/' + id)
       .then(res => {
         setValues({
           ...values,

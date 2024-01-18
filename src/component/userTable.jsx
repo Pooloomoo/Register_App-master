@@ -20,7 +20,7 @@ export default function userTable() {
     }
 
     function loadData() {
-        fetch('http://localhost:8080/user/')
+        fetch('http://localhost:8080/api/user/')
             .then(response => response.json())
             .then(userData => {
                 let newList = userData.map((data) =>
