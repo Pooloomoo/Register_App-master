@@ -17,6 +17,13 @@ import RegisterPage from "./component/RegisterPage";
 import HrPage from "./routes/HrPage";
 import TermOfService from "./routes/TermOfService";
 import PrivacyPolicy from "./routes/PrivacyPolicy";
+import EditHr from './routes/editHr';
+import EditUser from './routes/editUser';
+import CreateUser from './routes/createUser';
+import CreateHr from './routes/createHr';
+import AdminMainHr from './routes/adminMainHr';
+import AdminMainUser from './routes/adminMainUser';
+
 
 const router = createBrowserRouter([
   {
@@ -75,6 +82,14 @@ const router = createBrowserRouter([
   {
     path: "/create/hr",
     element: <CreateHr/>
+  },
+  {
+    path: "/admin/hr",
+    element: <AdminMainHr/>,
+  },
+  {
+    path: "/admin/user",
+    element: <AdminMainUser/>,
   },
 ]);
 /* createRoutesFromElements(

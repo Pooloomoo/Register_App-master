@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 export default function userTable() {
 
-    const [count, setCount] = useState(0);
     const [list, setList] = useState([]);
 
     useEffect(() => {
@@ -26,11 +25,11 @@ export default function userTable() {
                 let newList = userData.map((data) =>
                 ({
                     id: data.id,
-                    item1: data.fName,
-                    item2: data.lName,
+                    item1: data.firstName,
+                    item2: data.lastName,
                     item3: data.email,
                     item4: data.password,
-                    item5: data.phone,
+                    item5: data.phoneNumber,
                     item6: data.education,
                     item7: data.address
                 })

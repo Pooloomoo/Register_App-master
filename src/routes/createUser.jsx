@@ -6,63 +6,51 @@ import { Link } from "react-router-dom";
 function CreateUser() {
   const { id } = useParams();
   const [values, setValues] = useState({
-    id: id,
-    fName: '',
-    lName: '',
+    id: 0,
+    firstName: 'adsa',
+    lastName: 'asdas',
     email: '',
     password: '',
-    phone: '',
-    education: '',
+    phoneNumber: 0,
+    educationLevel: '',
     address: ''
-  })
-  useEffect(() => {
-    axios.get('http://localhost:8080/api/user/')
-      .then(res => {
-        // setValues({
-        //   ...values,
-        //   id: res.data.id,
-        //   fName: res.data.fName,
-        //   lName: res.data.lName,
-        //   email: res.data.email,
-        //   password: res.data.password,
-        //   phone: res.data.phone,
-        //   education: res.data.education,
-        //   address: res.data.address
-        // })
-      })
-      .catch(err => console.log(err))
-  }, [])
+  });
+  const [education, setEducation] = useState('');
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/api/user/', values)
-      .then(res => {
-        navigate('/adminUser')
+    axios.post("http://localhost:8080/api/user/", values, {
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(() => {
+        console.log("New User added");
       })
-      .catch(err => console.log(err.response.data))
-  }
+      .catch((error) => {
+        console.error("Error adding user:", error);
+      });
+  };
 
   return (
     <div className='d-flex w-100 vh-100 justify-content-center align-items-center'>
       <div className='w-50 border bg-dark text-white p-5'>
         <form onSubmit={handleSubmit}>
-          <div>
+          {/* <div>
             <h1>CREATE USER</h1>
             <label htmlFor='id'>ID Number:</label>
             <input type='text' name='id' className='form-control' placeholder='Enter ID Number'
               onChange={e => setValues({ ...values, id: e.target.value })} />
-          </div>
+          </div> */}
           <div>
             <label htmlFor='fname'>First Name:</label>
-            <input type='text' name='fName' className='form-control' placeholder='Enter First Name'
-              onChange={e => setValues({ ...values, fName: e.target.value })} />
+            <input type='text' name='firstName' className='form-control' placeholder='Enter First Name'
+              onChange={e => setValues({ ...values, firstName: e.target.value })} />
           </div>
           <div>
             <label htmlFor='lname'>Last Name:</label>
-            <input type='text' name='lName' className='form-control' placeholder='Enter Last Name'
-              onChange={e => setValues({ ...values, lName: e.target.value })} />
+            <input type='text' name='lastName' className='form-control' placeholder='Enter Last Name'
+              onChange={e => setValues({ ...values, lastName: e.target.value })} />
           </div>
           <div>
             <label htmlFor='email'>Email:</label>
@@ -76,13 +64,30 @@ function CreateUser() {
           </div>
           <div>
             <label htmlFor='phone'>Phone:</label>
-            <input type='phone' name='phone' className='form-control' placeholder='Enter Phone Number'
-              onChange={e => setValues({ ...values, phone: e.target.value })} />
+            <input type='tel' name='phoneNumber' className='form-control' placeholder='Enter Phone Number'
+              onChange={e => setValues({ ...values, phoneNumber: e.target.value })} />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor='education'>Education:</label>
             <input type='education' name='education' className='form-control' placeholder='Enter Education'
               onChange={e => setValues({ ...values, education: e.target.value })} />
+          </div> */}
+          <div className="mb-3">
+            <label htmlFor="userEducation" className="form-label">
+              User Education:
+            </label>
+            <select
+              id="userEducation"
+              className="form-control"
+              value={values.educationLevel}
+              onChange={e => setValues({ ...values, educationLevel: e.target.value })} 
+            >
+              <option value="">Select Education</option>
+              <option value="HIGH_SCHOOL">High School</option>
+              <option value="BACHELORS_DEGREE">Bachelor's Degree</option>
+              <option value="MASTERS_DEGREE">Master's Degree</option>
+              <option value="PHD">PhD</option>
+            </select>
           </div>
           <div>
             <label htmlFor='address'>Address:</label>

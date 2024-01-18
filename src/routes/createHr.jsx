@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 function CreateHr() {
   const { id } = useParams();
   const [values, setValues] = useState({
-    id: id,
+    id: 0,
     firstName: '',
     lastName: '',
     email: '',
@@ -40,7 +40,8 @@ function CreateHr() {
     e.preventDefault();
     axios.post('http://localhost:8080/api/hr/', values)
       .then(res => {
-        navigate('/')
+        navigate('/admin/hr')
+        // console.log("create hr!")
       })
       .catch(err => console.log(err.response.data))
   }
@@ -49,12 +50,12 @@ function CreateHr() {
     <div className='d-flex w-100 vh-100 justify-content-center align-items-center'>
       <div className='w-50 border bg-dark text-white p-5'>
         <form onSubmit={handleSubmit}>
-          <div>
+          {/* <div>
             <h1>CREATE HR</h1>
             <label htmlFor='id'>ID Number:</label>
             <input type='text' name='id' className='form-control' placeholder='Enter ID Number'
               onChange={e => setValues({ ...values, id: e.target.value })} />
-          </div>
+          </div> */}
           <div>
             <label htmlFor='fname'>First Name:</label>
             <input type='text' name='firstName' className='form-control' placeholder='Enter First Name'
@@ -75,11 +76,11 @@ function CreateHr() {
             <input type='password' name='password' className='form-control' placeholder='Enter Password'
               onChange={e => setValues({ ...values, password: e.target.value })} />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor='pid'>Project ID:</label>
             <input type='number' name='pid' className='form-control' placeholder='Enter Project ID'
               onChange={e => setValues({ ...values, project: { id: e.target.value } })} />
-          </div>
+          </div> */}
           <br />
           <button className='btn btn-warning'>CREATE</button>
           <Link className="btn-group text-decoration-none"  to={`/`}>

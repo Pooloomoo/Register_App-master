@@ -1,35 +1,27 @@
 import { Form, Link } from "react-router-dom";
 import axios from "axios";
 
-const handleDelete = (id) => {
-    axios.delete('http://localhost:8080/api/hr/' + id)
-        .then(res => {
-            alert("HR ID " + id + " deleted");
-            window.location.reload();
-        })
-        .catch(err => console.log(err.response.data))
-}
+
 
 function hr(props) {
-    const { index, data } = props;
+    const hr = props.hr;
+    const handleDelete = props.handleDelete;
 
     // let status = index % 2;
     return (
-        <tr key={index}>
-            <td>{data.id}</td>
-            <td>{data.item1}</td>
-            <td>{data.item2}</td>
-            <td>{data.item3}</td>
-            <td>{data.item4}</td>
-            <td>{data.item5}</td>
-            <td>{data.item6}</td>
+        <tr key={hr.id}>
+            <td>{hr.id}</td>
+            <td>{hr.firstName}</td>
+            <td>{hr.lastName}</td>
+            <td>{hr.email}</td>
+            <td>{hr.password}</td>
             <td>
-                <Link className="text-decoration-none" to={`/edit/hr/${data.id}`}>
+                <Link className="text-decoration-none" to={`/edit/hr/${hr.id}`}>
                     <button className="btn btn-warning text-light d-md-block" type="submit">Edit</button>
                 </Link>
 
                 <button className="btn btn-danger btn-sm"
-                    onClick={() => handleDelete(data.id)}>Delete</button>
+                    onClick={() => handleDelete(hr.id)}>Delete</button>
 
             </td>
         </tr>
