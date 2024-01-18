@@ -37,7 +37,7 @@ function CreateUser() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/user/', values)
+    axios.post('http://localhost:8080/api/user/', values)
       .then(res => {
         navigate('/adminUser')
       })

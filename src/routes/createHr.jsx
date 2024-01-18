@@ -38,7 +38,7 @@ function CreateHr() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/hr/', values)
+    axios.post('http://localhost:8080/api/hr/', values)
       .then(res => {
         navigate('/')
       })

@@ -38,7 +38,7 @@ function Edit() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.put('http://localhost:8080/hr/' + id, values)
+    axios.put('http://localhost:8080/api/hr/' + id, values)
       .then(res => {
         navigate('/')
       })
