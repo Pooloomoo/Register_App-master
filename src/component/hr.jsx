@@ -4,7 +4,7 @@ import axios from "axios";
 const handleDelete = (id) => {
     axios.delete('http://localhost:8080/api/hr/' + id)
         .then(res => {
-            alert("Row " + id + " deleted");
+            alert("HR ID " + id + " deleted");
             window.location.reload();
         })
         .catch(err => console.log(err.response.data))
@@ -16,7 +16,7 @@ function hr(props) {
     // let status = index % 2;
     return (
         <tr key={index}>
-            <td>{index + 1}</td>
+            <td>{data.id}</td>
             <td>{data.item1}</td>
             <td>{data.item2}</td>
             <td>{data.item3}</td>

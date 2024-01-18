@@ -39,29 +39,17 @@ export default function userTable() {
             });
     }
 
-    function deleteRow(index) {
-        list.splice(index, 1);
-        const newList = [...list];
-        setList(newList);
-    }
-
-    function changeRow(index, newItem) {
-        const newList = [...list];
-        newList[index] = newItem;
-        setList(newList);
-    }
-
     const userList = list.map((item, index) =>
-        <User key={item.id} data={item} index={index} deleteHandler={deleteRow} changeHandler={changeRow}></User>
+        <User key={item.id} data={item} index={index}></User>
     );
 
     return (
         <div className="card mb-4 border-0">
             <h1 className="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11">USER LIST
                 <Link className="btn-group text-decoration-none" to={`/`}>
-                    <button id="button1" type="button" className="btn btn-warning text-light d-md-block ">Switch to HR Table</button>
+                    <button id="button1" type="button" className="btn btn-warning text-light d-md-block">Switch to HR Table</button>
                     <Link className="btn-group text-decoration-none" to={`/create/user/`}>
-                        <button id="button1" type="button" className="btn btn-warning text-light d-md-block ">CREATE</button>
+                        <button id="button1" type="button" className="btn btn-warning text-light d-md-block">CREATE</button>
                     </Link>
                 </Link>
             </h1>
@@ -69,7 +57,7 @@ export default function userTable() {
                 <table id="example1" className="table table-hover table-dark rounded-4 overflow-hidden">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">User ID</th>
                             <th scope="col">FirstName</th>
                             <th scope="col">LastName</th>
                             <th scope="col">Email</th>

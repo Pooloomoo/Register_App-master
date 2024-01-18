@@ -37,29 +37,16 @@ export default function hrTable() {
             });
     }
 
-    function deleteRow(index) {
-        list.splice(index, 1);
-        const newList = [...list];
-        setList(newList);
-    }
-
-    function changeRow(index, newItem) {
-        const newList = [...list];
-        newList[index] = newItem;
-        setList(newList);
-    }
-
-
     const hrList = list.map((item, index) =>
-        <Hr key={item.id} data={item} index={index} deleteHandler={deleteRow} changeHandler={changeRow}></Hr>
+        <Hr key={item.id} data={item} index={index}></Hr>
     );
 
     return (
         <div className="card mb-4 border-0">
             <h1 className="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11">HR LIST
-                <Link className="text-decoration-none" to={`/adminUser`}>
+                <Link className="btn-group text-decoration-none" to={`/adminUser`}>
                     <button id="button1" type="button" className="btn btn-warning text-light">Switch to User Table</button>
-                    <Link className="text-decoration-none" to={`/create/hr/`}>
+                    <Link className="btn-group text-decoration-none" to={`/create/hr/`}>
                         <button id="button1" type="button" className="btn btn-warning text-light">ADD +</button>
                     </Link>
                 </Link>
@@ -68,7 +55,7 @@ export default function hrTable() {
                 <table id="example1" className="table table-hover table-dark rounded-4 overflow-hidden ">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">HR ID</th>
                             <th scope="col">FirstName</th>
                             <th scope="col">LastName</th>
                             <th scope="col">Email</th>

@@ -4,7 +4,7 @@ import axios from "axios";
 const handleDelete = (id) => {
     axios.delete('http://localhost:8080/api/user/' + id)
         .then(res => {
-            alert("Row " + id + " deleted");
+            alert("User ID " + id + " deleted");
             window.location.reload();
         })
         .catch(err => console.log(err.response.data))
