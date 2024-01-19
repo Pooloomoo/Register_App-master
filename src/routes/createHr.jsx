@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Link} from "react-router-dom";
 
 function CreateHr() {
+  // navbar needed
   const id = 0;
   const [hrs, setHrs] = useState({
     id: id,
@@ -19,9 +20,8 @@ function CreateHr() {
     e.preventDefault();
     axios.post('http://localhost:8080/api/hr/', hrs)
       .then(res => {
-        console.log("post new HR success!");
+        console.log("New HR added!");
         navigate('/admin/hr');
-        // console.log("create hr!")
       })
       .catch(err => console.log("post HR error: " + err.response.data))
   }
@@ -53,11 +53,6 @@ function CreateHr() {
             <input type='password' name='password' className='form-control' placeholder='Enter Password'
               onChange={e => setHrs({ ...hrs, password: e.target.value })} />
           </div>
-          {/* <div>
-            <label htmlFor='pid'>Project ID:</label>
-            <input type='number' name='pid' className='form-control' placeholder='Enter Project ID'
-              onChange={e => setHrs({ ...hrs, project: { id: e.target.value } })} />
-          </div> */}
           <br />
           <button className='btn btn-warning'>CREATE</button>
           <Link className="btn-group text-decoration-none"  to={`/admin/hr`}>

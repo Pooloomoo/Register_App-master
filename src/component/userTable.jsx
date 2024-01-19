@@ -11,7 +11,6 @@ export default function userTable() {
 
     useEffect(() => {
         loadData();
-        
         return () => console.log("Component Mounted");
     }, [reLoadTable]);
 
@@ -31,17 +30,17 @@ export default function userTable() {
             console.log("Fetched user data successfully!");
           })
           .catch((error) => {
-            console.error('Error fetching user:', error);
+            console.error('Error fetching user: ' + error);
           });
     };
 
     return (
         <div className="card mb-4 border-0">
             <h1 className="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11">USER LIST
-                <Link className="btn-group text-decoration-none" to={`/`}>
+                <Link className="btn-group text-decoration-none" to={`/admin/hr`}>
                     <button id="button1" type="button" className="btn btn-warning text-light d-md-block">Switch to HR Table</button>
                     <Link className="btn-group text-decoration-none" to={`/create/user/`}>
-                        <button id="button1" type="button" className="btn btn-warning text-light d-md-block">CREATE</button>
+                        <button id="button1" type="button" className="btn btn-warning text-light d-md-block">Create</button>
                     </Link>
                 </Link>
             </h1>

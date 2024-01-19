@@ -11,9 +11,7 @@ export default function hrTable() {
     useEffect(() => {
         // console.log("Component Mounted");
         loadData();
-        return () => {
-            console.log("Component Unmounted");
-        };
+        return () => console.log("Component Unmounted");
     }, [reloadTable]);
 
     const handleDelete = (id) => {
@@ -33,17 +31,17 @@ export default function hrTable() {
             console.log("Fetched HR data successfully!");
           })
           .catch((error) => {
-            console.error('Error fetching hr:', error);
+            console.error('Error fetching hr: ', error);
           });
     };
 
     return (
         <div className="card mb-4 border-0">
             <h1 className="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11">HR LIST
-                <Link className="btn-group text-decoration-none" to={`/adminUser`}>
+                <Link className="btn-group text-decoration-none" to={`/admin/user`}>
                     <button id="button1" type="button" className="btn btn-warning text-light">Switch to User Table</button>
                     <Link className="btn-group text-decoration-none" to={`/create/hr`}>
-                        <button id="button1" type="button" className="btn btn-warning text-light">ADD +</button>
+                        <button id="button1" type="button" className="btn btn-warning text-light">Create</button>
                     </Link>
                 </Link>
             </h1>
