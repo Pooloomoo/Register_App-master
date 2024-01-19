@@ -241,7 +241,7 @@ function HRCreateProject() {
               </div>
 
               {/* Project Image */}
-              {/* <div className="mb-3">
+              <div className="mb-3">
                 <label htmlFor="projectImage" className="form-label">
                   Project Image URL:
                 </label>
@@ -251,8 +251,9 @@ function HRCreateProject() {
                   className="form-control"
                   onChange={(e) => setProjectImage(e.target.files[0])}
                   required={false}
+                  accept={".jpg, .png, .jpeg"}
                 />
-              </div> */}
+              </div>
 
               {/* Submit Button */}
               <button
