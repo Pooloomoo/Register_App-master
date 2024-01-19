@@ -37,7 +37,7 @@ export default function userTable() {
     return (
         <div className="card mb-4 border-0">
             <h1 className="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11 bg-white">USER LIST
-            <div className="linkButton" style={{display: "flex"}}>
+            <div className="d-flex justify-content-between">
                 <Link className="btn-group text-decoration-none" to={`/admin/hr`}>
                     <button id="button1" type="button" className="btn btn-warning text-light d-md-block">Switch to HR Table</button>
                 </Link>
