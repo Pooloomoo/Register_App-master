@@ -4,9 +4,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function CreateUser() {
-  const id = 0;
+  // const id = 0;
   const [users, setUsers] = useState({
-    id: id,
+    // id: id,
     firstName: "",
     lastName: "",
     email: "",

@@ -22,9 +22,9 @@ export default function ProjectDetail(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const id = 0;
+    // const id = 0;
     const status = {
-      "id": id,
+      // "id": id,
       "score": null,
       "userStatus": "Apply_Success",
     };
@@ -36,7 +36,7 @@ export default function ProjectDetail(props) {
 
       const userID = 1;
       const userProject = {
-        id: id,
+        // id: id,
         user: {id: userID},
         project: {id: projectId},
         status: {id: lastStatusId + 1}

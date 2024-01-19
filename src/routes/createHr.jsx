@@ -5,9 +5,9 @@ import {Link} from "react-router-dom";
 
 function CreateHr() {
   // navbar needed
-  const id = 0;
+  // const id = 0;
   const [hrs, setHrs] = useState({
-    id: id,
+    // id: id,
     firstName: '',
     lastName: '',
     email: '',
