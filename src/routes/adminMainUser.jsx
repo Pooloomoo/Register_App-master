@@ -1,15 +1,11 @@
-// import NavBar from "../component/NavBar";
 import UserTable from "../component/userTable";
-// import Footer from "../component/footer";
+import NavBar from "../component/์NavBar";
+
 function adminMainUser() {
     return (
     <div className="Body">
-        {/* <NavBar/> */}
+        <NavBar/>
         <UserTable/>
-        <br/>
-        <br/>
-        {/* <Footer/> */}
-        
     </div>
     )
 }
