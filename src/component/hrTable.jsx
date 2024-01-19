@@ -35,22 +35,7 @@ export default function hrTable() {
           .catch((error) => {
             console.error('Error fetching hr:', error);
           });
-      };
-
-                // let newList = hrData.map((data) =>
-                // ({
-                //     id: data.id,
-                //     item1: data.firstName,
-                //     item2: data.lastName,
-                //     item3: data.email,
-                //     item4: data.password,
-                //     item5: data.project.id,
-                //     item6: data.project.pName
-                // })
-
-    // const hrList = hrs.map((hr) =>
-    //     <Hr key={hr.id} data={hr}></Hr>
-    // );
+    };
 
     return (
         <div className="card mb-4 border-0">

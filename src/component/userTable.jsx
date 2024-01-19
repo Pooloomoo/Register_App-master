@@ -2,45 +2,38 @@ import { React, useState, useEffect } from "react";
 import "../../StyleComponent/index.css";
 import User from "./user";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function userTable() {
 
-    const [list, setList] = useState([]);
+    const [users, setUsers] = useState([]);
+    const [reLoadTable, setReloadTable] = useState(false);
 
     useEffect(() => {
-        // console.log("Component Mounted");
         loadData();
+        
+        return () => console.log("Component Mounted");
+    }, [reLoadTable]);
 
-        return unMounted;
-    }, []);
-
-    function unMounted() {
-        // console.log("Component Unmounted");
+    const handleDelete = (id) => {
+        axios.delete('http://localhost:8080/api/user/' + id)
+            .then(res => {
+                console.log("User ID " + id + " deleted");
+                setReloadTable(prev => !prev);
+            })
+            .catch(err => console.log(err.response.data))
     }
 
-    function loadData() {
-        fetch('http://localhost:8080/api/user/')
-            .then(response => response.json())
-            .then(userData => {
-                let newList = userData.map((data) =>
-                ({
-                    id: data.id,
-                    item1: data.firstName,
-                    item2: data.lastName,
-                    item3: data.email,
-                    item4: data.password,
-                    item5: data.phoneNumber,
-                    item6: data.education,
-                    item7: data.address
-                })
-                );
-                setList(newList);
-            });
-    }
-
-    const userList = list.map((item, index) =>
-        <User key={item.id} data={item} index={index}></User>
-    );
+    const loadData = () => {
+        axios.get('http://localhost:8080/api/user/')
+          .then((response) => {
+            setUsers(response.data); // Update the state with the data
+            console.log("Fetched user data successfully!");
+          })
+          .catch((error) => {
+            console.error('Error fetching user:', error);
+          });
+    };
 
     return (
         <div className="card mb-4 border-0">
@@ -68,7 +61,7 @@ export default function userTable() {
                         </tr>
                     </thead>
                     <tbody>
-                        {userList}
+                        {users.map((user) => <User key={user.id} user={user} handleDelete={handleDelete}/>)}
                     </tbody>
                 </table>
             </div>
