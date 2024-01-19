@@ -21,21 +21,25 @@ function HRCreateProject() {
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    const id = 0;
-    const project = {
-      id: id,
-      projectName,
-      projectDetail,
-      startDate: startingDate,
-      endDate: closingDate,
-      salary: projectSalary,
-      position: projectPosition,
-      amount: projectAmount,
-      educationLevel: projectEducation,
+  
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     };
-    axios.post("http://localhost:8080/project/", project, {
-      headers: { "Content-Type": "application/json" },
-    })
+
+    const formData = new FormData();
+    formData.append("projectName", projectName);
+    formData.append("projectDetail", projectDetail);
+    formData.append("startDate", startingDate);
+    formData.append("endDate", closingDate);
+    formData.append("salary", projectSalary);
+    formData.append("position", projectPosition);
+    formData.append("amount", projectAmount);
+    formData.append("educationLevel", projectEducation);
+    formData.append("image", projectImage);
+  
+    axios.post("http://localhost:8080/api/project/", formData, config)
       .then(() => {
         console.log("New Project added");
       })
@@ -43,7 +47,17 @@ function HRCreateProject() {
         console.error("Error adding project:", error);
       });
   };
+  
+  const uploadImage = (files) =>{
+    const imageData = new FormData();
+    imageData.append("file", files[0]);
+    imageData.append("upload_preset", "v964qffd");
 
+    axios.post("https://api.cloudinary.com/v1_1/dvdqlboxo/image/upload", imageData)
+    .then((res)=>{
+      console.log(res);
+    })
+  };
   
 
   return (
@@ -200,7 +214,7 @@ function HRCreateProject() {
               </div>
 
               {/* Project Image */}
-              {/* <div className="mb-3">
+               <div className="mb-3">
                 <label htmlFor="projectImage" className="form-label">
                   Project Image URL:
                 </label>
@@ -208,12 +222,11 @@ function HRCreateProject() {
                   type="file"
                   id="projectImage"
                   className="form-control"
-                  onChange={(e) => setProjectImage(e.target.files[0])}
+                  onChange={(e) => {uploadImage(e.target.files)}}
                   required={false}
                 />
-              </div> */}
+              </div> 
 
-              {/* Submit Button */}
               <button
                 type="submit"
                 className="btn btn-warning link-light text-dark mb-3 lh-1"

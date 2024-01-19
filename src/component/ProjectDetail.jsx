@@ -40,7 +40,7 @@ export default function ProjectDetail({showPopup, onClose, project}) {
         project: {id: projectId},
         status: {id: lastStatusId + 1}
       };
-      await axios.post("http://localhost:9000/userproject/", userProject, {
+      await axios.post("http://localhost:8080/userproject/", userProject, {
         headers: { "Content-Type": "application/json" },
       })
       console.log("New userProject added");

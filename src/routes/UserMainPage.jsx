@@ -13,6 +13,8 @@ export default function UserMainPage() {
       .catch((error) => console.error('Error fetching userProjects:', error));
   }, []);
 
+
+
   return (
     <div>
         {projects.map((project) => (
