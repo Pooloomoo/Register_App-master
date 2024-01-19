@@ -1,0 +1,72 @@
+/* เพิ่มไปที่ส่วนหัวของไฟล์หรือไฟล์ CSS ที่คุณใช้งาน */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(57, 55, 55);
+    width: 40%;
+    color: aliceblue;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+  }
+  .inform {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .form-edit {
+    display: flex;
+    margin: 20px 0px;
+  }
+  
+  .label1 {
+    flex: 1;
+    text-align: left;
+    margin-right: 10px;
+  }
+  
+  .input {
+    flex: 1;
+  }
+  
+  .input1 {
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .submit{
+    text-align: center;
+    border-radius: 10px;
+  }
+
+/*Detail*/
+.Head_detail{
+    margin: 20px 30px;
+    justify-content: center;
+    background-color: rgb(57, 55, 55);
+    color: aliceblue;
+    border-radius: 20px;
+}
+
+.detail-left{
+    width: 40%;
+}
+
+.detail-center{
+    width: 40%;
+}
+
+.eiei{
+    display: flex;
+    margin: 20px 0px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+  
