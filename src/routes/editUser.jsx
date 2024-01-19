@@ -5,43 +5,33 @@ import {Link} from "react-router-dom";
 
 function Edit() {
   const { id } = useParams();
-  const [values, setValues] = useState({
+  const [users, setUsers] = useState({
     id: id,
-    fName: '',
-    lName: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
-    phone: '',
-    education: '',
+    phoneNumber: 0,
+    educationLevel: '',
     address: ''
   })
   useEffect(() => {
     axios.get('http://localhost:8080/api/user/' + id)
       .then(res => {
-        setValues({
-          ...values,
-          id: res.data.id,
-          fName: res.data.fName,
-          lName: res.data.lName,
-          email: res.data.email,
-          password: res.data.password,
-          phone: res.data.phone,
-          education: res.data.education,
-          address: res.data.address
-        })
+        setUsers(res.data)
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log("fecting user error: " + err))
   }, [])
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.put('http://localhost:8080/api/user/' + id, values)
+    axios.put('http://localhost:8080/api/user/' + id, users)
       .then(res => {
-        navigate('/')
+        navigate(-1)
       })
-      .catch(err => console.log(err.response.data))
+      .catch(err => console.log("put error: " + err.response.data))
   }
 
   return (
@@ -49,48 +39,45 @@ function Edit() {
       <div className='w-50 border bg-dark text-white p-5'>
         <form onSubmit={handleSubmit}>
           <div>
-            <h1>EDIT USER</h1>
-            <label htmlFor='id'>ID Number:</label>
-            <input disabled type='text' name='id' className='form-control' placeholder='Enter ID Number'
-              value={values.id} onChange={e => setValues({ ...values, id: e.target.value })} />
+            <h1>{`EDIT USER ID: ${users.id}`}</h1>
           </div>
           <div>
-            <label htmlFor='fname'>First Name:</label>
+            <label htmlFor='firstName'>First Name:</label>
             <input type='text' name='fName' className='form-control' placeholder='Enter First Name'
-              value={values.fName} onChange={e => setValues({ ...values, fName: e.target.value })} />
+              value={users.firstName} onChange={e => setUsers({ ...users, firstName: e.target.value })} />
           </div>
           <div>
-            <label htmlFor='lname'>Last Name:</label>
+            <label htmlFor='lastName'>Last Name:</label>
             <input type='text' name='lName' className='form-control' placeholder='Enter Last Name'
-              value={values.lName} onChange={e => setValues({ ...values, lName: e.target.value })} />
+              value={users.lastName} onChange={e => setUsers({ ...users, lastName: e.target.value })} />
           </div>
           <div>
             <label htmlFor='email'>Email:</label>
             <input type='email' name='email' className='form-control' placeholder='Enter Email'
-              value={values.email} onChange={e => setValues({ ...values, email: e.target.value })} />
+              value={users.email} onChange={e => setUsers({ ...users, email: e.target.value })} />
           </div>
           <div>
             <label htmlFor='password'>Password:</label>
-            <input type='password' name='password' className='form-control' placeholder='Enter Password'
-              value={values.password} onChange={e => setValues({ ...values, password: e.target.value })} />
+            <input type='text' name='password' className='form-control' placeholder='Enter Password'
+              value={users.password} onChange={e => setUsers({ ...users, password: e.target.value })} />
           </div>
           <div>
-            <label htmlFor='phone'>Phone:</label>
+            <label htmlFor='phoneNumber'>Phone:</label>
             <input type='phone' name='phone' className='form-control' placeholder='Enter Password'
-              value={values.phone} onChange={e => setValues({ ...values, phone: e.target.value })} />
+              value={users.phoneNumber} onChange={e => setUsers({ ...users, phoneNumber: e.target.value })} />
           </div>
           <div>
-            <label htmlFor='education'>Education:</label>
+            <label htmlFor='educationLevel'>Education:</label>
             <input type='education' name='education' className='form-control' placeholder='Enter Password'
-              value={values.education} onChange={e => setValues({ ...values, education: e.target.value })} />
+              value={users.educationLevel} onChange={e => setUsers({ ...users, educationLevel: e.target.value })} />
           </div>
           <div>
             <label htmlFor='address'>Address:</label>
             <input type='address' name='address' className='form-control' placeholder='Enter Password'
-              value={values.address} onChange={e => setValues({ ...values, address: e.target.value })} />
+              value={users.address} onChange={e => setUsers({ ...users, address: e.target.value })} />
           </div><br />
           <button className='btn btn-warning'>Update</button>
-          <Link className="btn-group text-decoration-none" to={`/`}>
+          <Link className="btn-group text-decoration-none" to={'/admin/user'}>
             <button id="button1" className="btn btn-warning">Cancel</button>
           </Link>
         </form>

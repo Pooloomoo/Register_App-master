@@ -82,7 +82,7 @@ function Edit() {
           </div>
           <br />
           <button className='btn btn-warning'>Update</button>
-          <Link className="btn-group text-decoration-none"  to={`/`}>
+          <Link className="btn-group text-decoration-none"  to={`/admin/hr`}>
                 <button id="button1" className="btn btn-warning">Cancel</button>
           </Link>
         </form>
