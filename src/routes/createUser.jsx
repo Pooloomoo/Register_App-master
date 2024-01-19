@@ -4,18 +4,17 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 function CreateUser() {
-  const { id } = useParams();
+  const id = 0;
   const [values, setValues] = useState({
-    id: 0,
-    firstName: 'adsa',
-    lastName: 'asdas',
+    id: id,
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     phoneNumber: 0,
     educationLevel: '',
     address: ''
   });
-  const [education, setEducation] = useState('');
 
   const navigate = useNavigate();
 
@@ -26,6 +25,7 @@ function CreateUser() {
     })
       .then(() => {
         console.log("New User added");
+        navigate(-1);
       })
       .catch((error) => {
         console.error("Error adding user:", error);

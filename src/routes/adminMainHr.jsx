@@ -1,13 +1,11 @@
-// import NavBar from "../component/navBar";
+import NavBar from "../component/์NavBar";
 import HrTable from "../component/hrTable";
 // import Footer from "../component/footer";
 function adminMainHr() {
     return (
     <div className="Body">
-        {/* <NavBar/> */}
+        <NavBar/>
         <HrTable/>
-        <br/>
-        <br/>
         {/* <Footer/> */}
     </div>
     )

@@ -27,19 +27,15 @@ export default function hrTable() {
     }
 
     const loadData = () => {
-        fetch('http://localhost:8080/api/hr/')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json(); // Parse the JSON data
-            })
-            .then((data) => {
-                setHrs(data); // Update the state with the parsed data
-                console.log("Fetched HR data:", data);
-            })
-            .catch((error) => console.error('Error fetching hr:', error));
-    }
+        axios.get('http://localhost:8080/api/hr/')
+          .then((response) => {
+            setHrs(response.data); // Update the state with the data
+            console.log("Fetched HR data successfully!");
+          })
+          .catch((error) => {
+            console.error('Error fetching hr:', error);
+          });
+      };
 
                 // let newList = hrData.map((data) =>
                 // ({
