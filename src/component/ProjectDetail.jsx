@@ -9,7 +9,7 @@ export default function ProjectDetail({showPopup, onClose, project}) {
 
   
   useEffect(() => {
-    axios.get('http://localhost:9000/status/')
+    axios.get('http://localhost:8080/status/')
     .then((response) => {
       setStatuses(response.data);
       const lastStatus = response.data[response.data.length - 1];
