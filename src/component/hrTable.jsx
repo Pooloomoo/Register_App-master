@@ -37,13 +37,15 @@ export default function hrTable() {
 
     return (
         <div className="card mb-4 border-0">
-            <h1 className="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11">HR LIST
+            <h1 className="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11 bg-white">HR LIST
+            <div className="linkButton" style={{display: "flex"}}>
                 <Link className="btn-group text-decoration-none" to={`/admin/user`}>
                     <button id="button1" type="button" className="btn btn-warning text-light">Switch to User Table</button>
-                    <Link className="btn-group text-decoration-none" to={`/create/hr`}>
-                        <button id="button1" type="button" className="btn btn-warning text-light">Create</button>
-                    </Link>
                 </Link>
+                <Link className="btn-group text-decoration-none" to={`/create/hr`}>
+                    <button id="button1" type="button" className="btn btn-warning text-light">Create</button>
+                </Link>
+            </div>
             </h1>
             <div className="card-body mb-4 border-0">
                 <table id="example1" className="table table-hover table-dark rounded-4 overflow-hidden ">
