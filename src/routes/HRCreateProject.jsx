@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import HrNav from "../component/HrNav";
 import "../../StyleComponent/index.css";
 import axios from "axios";
-import TextAreaForm from "../component/TextAreaForm";
 
 function HRCreateProject() {
   // State for form fields
@@ -16,8 +15,41 @@ function HRCreateProject() {
   const [projectEducation, setProjectEducation] = useState("");
   const [projectImage, setProjectImage] = useState("");
 
-  // const [HREmails, setHREmails] = useState(['']);
+  
+  const TextAreaForm = (props) => {
+    const maxCharacters = props.maxCharacters;
+    const [projectDetail, setProjectDetail] = useState('');
+    const handleProjectDetailChange = (e) => {
+      const inputValue = e.target.value;
+      if (inputValue.length <= maxCharacters) {
+        setProjectDetail(inputValue);
+      }
+    };
+    
+    const remainingCharacters = maxCharacters - projectDetail.length;
+    
+    return (
+      <div className="mb-3">
+          <textarea
+            id="projectDetail"
+            className="form-control"
+            value={projectDetail}
+            style={{ height: '150px' }}
+            onChange={handleProjectDetailChange}
+            placeholder="Enter project detail"
+            maxLength={maxCharacters}
+            required
+            ></textarea>
+          <small className="form-text text-muted">
+            {remainingCharacters} characters remaining (max {maxCharacters})
+          </small>
+        </div>
+    );
+  };
 
+
+  // const [HREmails, setHREmails] = useState(['']);
+  
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -77,17 +109,26 @@ function HRCreateProject() {
                 <label htmlFor="projectDetail" className="form-label">
                   Project Detail:
                 </label>
-                {/* <textarea
+                <textarea
                   id="projectDetail"
                   className="form-control"
                   value={projectDetail}
                   style={{ height: "150px" }}
-                  onChange={(e) => setProjectDetail(e.target.value)}
+                  onChange={
+                    (e) => {
+                      const inputValue = e.target.value;
+                      if (inputValue.length <= 600) {
+                        setProjectDetail(inputValue);
+                      }
+                    }
+                  }
                   placeholder="Enter project detail"
                   maxLength={600}
                   required
-                ></textarea> */}
-                <TextAreaForm maxCharacters={600}/>
+                ></textarea>
+                <small className="form-text text-muted">
+                  {600 - projectDetail.length} characters remaining (max 600)
+                </small>
               </div>
 
 
