@@ -1,8 +1,8 @@
 
 .content_register{
     background-color: #333;
-    width: 100%;
-    height: 100vh;
+    width: auto;
+    height: 120vh;
     color: #fff;
     margin: auto; 
     display: flex; 
@@ -12,69 +12,70 @@
 }
 
 .content_register_complete {
-    background-color: #fff;
-    width: 602px;
-    height: 100vh;
-    color: #000;
-    margin: auto auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  background-color: #fff;
+  width: 602px;
+  height: 100vh;
+  color: #000;
+  margin: auto auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .h1 {
-    padding-top: 10px;
-    text-align: center;
+  padding-top: 10px;
+  text-align: center;
 }
 
 .regis_form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-grow: 1;   
-    margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  margin: 10px;
 }
 
 .name_lastname_content {
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    gap: 55px;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  gap: 55px;
 }
 
-.name_input{
-    display: flex;
-    flex-direction: column;
+.name_input {
+  display: flex;
+  flex-direction: column;
 }
 
-#nameInput, #lastNameInput{
-    width: 370px;
-    height: 32px;
+#nameInput,
+#lastNameInput {
+  width: 370px;
+  height: 32px;
 }
 
-.lastname_input{
-    display: flex;
-    flex-direction: column;
+.lastname_input {
+  display: flex;
+  flex-direction: column;
 }
 
-label{
-    padding: 5px;
+label {
+  padding: 5px;
 }
 
-.hide , .offscreen
-{
-    display: none;
+.hide,
+.offscreen {
+  display: none;
 }
 
 .instructions {
-    font-size: 0.75rem;
-    border-radius: 0.5rem;
-    background: #000;
-    color: #fff;
-    padding: 0.25rem;
-    position: relative;
-    bottom: -10px;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
 }
 
 .userEducation_box,
@@ -82,15 +83,12 @@ label{
 .address_box,
 .email_box,
 .pwd_box,
-.pwdMatch_box 
-{
-    width: 100%;
-    margin:auto;
-    display: flex;
-    flex-direction: column;
-    
+.pwdMatch_box {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
-
 
 input[type="text"],
 input[type="password"],
@@ -98,41 +96,41 @@ input[type="email"],
 input[type="number"],
 button,
 textarea {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 20px;
   padding: 0.25rem;
   border-radius: 0.5rem;
   height: 34px;
 }
 
-#userEducation{
-    font-size: 15px;
-    height: 34px;
+#userEducation {
+  font-size: 15px;
+  height: 34px;
 }
 
 .invalid {
-    color: red;
-    margin-left: 0.25rem;
+  color: red;
+  margin-left: 0.25rem;
 }
 
 .valid {
-    color: limegreen;
-    margin-left: 0.25rem;
+  color: limegreen;
+  margin-left: 0.25rem;
 }
 
-.policy{
-    margin: 10px 6px; 
-    padding-top: 7px 
+.policy {
+  margin: 10px 6px;
+  padding-top: 7px;
 }
 
-.submit_btn_box{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+.submit_btn_box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
-.submit_btn{
-    width: 100px;
-    height: 50px;
-    border-radius: 5px;
+.submit_btn {
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
 }
