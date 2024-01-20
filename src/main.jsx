@@ -101,6 +101,10 @@ const router = createBrowserRouter([
   {
     path: "/hr/edit/project/:id",
     element: <HrEditProject />,
+  },
+  {
+    path: "/hr/create/project",
+    element: <HRCreateProject />,
   }
 ]);
 /* createRoutesFromElements(

@@ -5,7 +5,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function HrProjectBox(props) {
-
+  // why nned HrProjectBox?
   const project = props.project;
   const handleDelete = props.handleDelete;
 
