@@ -1,6 +1,6 @@
   import { useNavigate } from "react-router-dom";
   import { useState, useEffect, useRef } from "react";
-  import NavBar from "../component/navBar";
+  import NavBar from "../component/NavBar";
   import Footer from "../component/footer";
   import axios from "../api/axios";
   import "../../StyleComponent/RegisterForm.css";
@@ -9,7 +9,7 @@
   import { Link } from "react-router-dom";
   import Tooltip from "react-bootstrap/Tooltip";
 
-    const id = 0;
+  const id = 0;
 
   const USER_REGEX = /^[a-zA-Z][a-zA-Z]{3,23}$/;
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
