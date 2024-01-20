@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import HrNav from "../component/HrNav";
+import HrNav from "../../component/HrNav";
 import "../../StyleComponent/index.css";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 function HRCreateProject() {
   // State for form fields
@@ -14,43 +15,8 @@ function HRCreateProject() {
   const [projectAmount, setProjectAmount] = useState(0);
   const [projectEducation, setProjectEducation] = useState("");
   const [projectImage, setProjectImage] = useState("");
-
+  const navigate = useNavigate();
   
-  const TextAreaForm = (props) => {
-    const maxCharacters = props.maxCharacters;
-    const [projectDetail, setProjectDetail] = useState('');
-    const handleProjectDetailChange = (e) => {
-      const inputValue = e.target.value;
-      if (inputValue.length <= maxCharacters) {
-        setProjectDetail(inputValue);
-      }
-    };
-    
-    const remainingCharacters = maxCharacters - projectDetail.length;
-    
-    return (
-      <div className="mb-3">
-          <textarea
-            id="projectDetail"
-            className="form-control"
-            value={projectDetail}
-            style={{ height: '150px' }}
-            onChange={handleProjectDetailChange}
-            placeholder="Enter project detail"
-            maxLength={maxCharacters}
-            required
-            ></textarea>
-          <small className="form-text text-muted">
-            {remainingCharacters} characters remaining (max {maxCharacters})
-          </small>
-        </div>
-    );
-  };
-
-
-  // const [HREmails, setHREmails] = useState(['']);
-  
-  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     // const id = 0;
@@ -71,6 +37,7 @@ function HRCreateProject() {
     })
       .then(() => {
         console.log("New Project added");
+        navigate(-1);
       })
       .catch((error) => {
         console.error("Error adding project:", error);
@@ -244,12 +211,20 @@ function HRCreateProject() {
               </div>
 
               {/* Submit Button */}
-              <button
-                type="submit"
-                className="btn btn-warning link-light text-dark"
-              >
-                Create Project
-              </button>
+              
+              <div className="d-flex justify-content-between">
+                <div className="me-auto">
+                  <button type="submit" className="btn btn-warning link-light text-dark d-md-block">
+                    Create Project
+                  </button>
+                  <Link className="btn-group text-decoration-none" to={`/hr`}>
+                    <button id="cancleButton" type="button" className="btn btn-warning text-dark d-md-block link-light">
+                      Cancle
+                    </button>
+                  </Link>
+                </div>
+              </div>
+              
             </form>
           </div>
         </div>
@@ -263,41 +238,33 @@ function HRCreateProject() {
 
 export default HRCreateProject;
 
-{
-  /* HR Email List
-  <div className="mb-3">
-  <label htmlFor="HREmailList" className="form-label">HR permissions email list:</label>
-  {HREmails.map((email, index) => (
-    <div key={index} className="mb-2">
-    <input
-        type="text"
-        id={`HREmailList${index}`}
-        className="form-control"
-        value={email}
-        onChange={(e) => handleHREmailChange(index, e.target.value)}
-        placeholder={(index == 0) ? `Enter your email` : `Enter other HR email`}
-        required
-        />
-        </div>
-        ))}
-        <button type="button" className="btn btn-secondary" onClick={addHREmailInput}>Add Email</button>
-      </div> */
-}
-
-// const handleHREmailChange = (index, value) => {
-//   const newEmails = [...HREmails];
-//   newEmails[index] = value;
-//   setHREmails(newEmails);
-// };
-
-// Function to add a new email input
-// const addHREmailInput = () => {
-//   setHREmails([...HREmails, '']);
-// };
-
-// function formatDate(date) {
-//   const day = date.getDate().toString().padStart(2, '0');
-//   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
-//   const year = date.getFullYear();
-//   return `${day}-${month}-${year}`;
-// }
+  // const TextAreaForm = (props) => {
+  //   const maxCharacters = props.maxCharacters;
+  //   const [projectDetail, setProjectDetail] = useState('');
+  //   const handleProjectDetailChange = (e) => {
+  //     const inputValue = e.target.value;
+  //     if (inputValue.length <= maxCharacters) {
+  //       setProjectDetail(inputValue);
+  //     }
+  //   };
+    
+  //   const remainingCharacters = maxCharacters - projectDetail.length;
+    
+  //   return (
+  //     <div className="mb-3">
+  //         <textarea
+  //           id="projectDetail"
+  //           className="form-control"
+  //           value={projectDetail}
+  //           style={{ height: '150px' }}
+  //           onChange={handleProjectDetailChange}
+  //           placeholder="Enter project detail"
+  //           maxLength={maxCharacters}
+  //           required
+  //           ></textarea>
+  //         <small className="form-text text-muted">
+  //           {remainingCharacters} characters remaining (max {maxCharacters})
+  //         </small>
+  //       </div>
+  //   );
+  // };

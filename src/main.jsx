@@ -6,7 +6,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import "../StyleComponent/index.css";
-import HRCreateProject from "./routes/HRCreateProject";
+import HRCreateProject from "./routes/HR/HRCreateProject";
 import ErrorPage from "./routes/ErrorPage";
 import { Route } from "react-router-dom";
 import RootLayout from "./component/RootLayout";
@@ -17,14 +17,14 @@ import RegisterPage from "./component/RegisterPage";
 import HrPage from "./routes/HrPage";
 import TermOfService from "./routes/TermOfService";
 import PrivacyPolicy from "./routes/PrivacyPolicy";
-import EditHr from './routes/editHr';
-import EditUser from './routes/editUser';
-import CreateUser from './routes/createUser';
-import CreateHr from './routes/createHr';
-import AdminMainHr from './routes/adminMainHr';
-import AdminMainUser from './routes/adminMainUser';
+import EditHr from './routes/admin/editHr';
+import EditUser from './routes/admin/editUser';
+import CreateUser from './routes/admin/createUser';
+import CreateHr from './routes/admin/createHr';
+import AdminMainHr from './routes/admin/adminMainHr';
+import AdminMainUser from './routes/admin/adminMainUser';
 import UserProfile from "./routes/userProfile";
-import HrEditProject from "./routes/HrEditProject";
+import HrEditProject from "./routes/HR/HrEditProject";
 
 
 const router = createBrowserRouter([

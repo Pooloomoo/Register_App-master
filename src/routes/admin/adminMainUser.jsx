@@ -1,5 +1,5 @@
-import UserTable from "../component/userTable";
-import NavBar from "../component/์NavBar";
+import UserTable from "../../component/userTable";
+import NavBar from "../../component/์NavBar";
 
 function adminMainUser() {
     return (
