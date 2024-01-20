@@ -1,12 +1,12 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import Footer from "../component/footer";
+import Footer from "../components/footer";
 import axios from "../api/axios";
 import "../../StyleComponent/RegisterForm.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Overlay from "react-bootstrap/Overlay";
 import Tooltip from "react-bootstrap/Tooltip";
-import NavBar from "../component/์NavBar";
+import NavBar from "../components/์NavBar";
 const USER_REGEX = /^[a-zA-Z][a-zA-Z]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
 const REGISTER_URL = "/register";

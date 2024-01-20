@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../StyleComponent/projectBox.css'
+import '../../../StyleComponent/projectBox.css'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css';
 import { useNavigate, Link } from 'react-router-dom';

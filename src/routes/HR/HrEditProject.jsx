@@ -1,5 +1,5 @@
 import React from 'react'
-import HrNav from '../../component/HR/HrNav'
+import HrNav from '../../components/HR/HrNav'
 import { useState, useEffect } from 'react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
 import axios from 'axios';

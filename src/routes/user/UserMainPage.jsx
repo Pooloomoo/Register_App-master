@@ -1,6 +1,6 @@
 import React , { useState, useEffect } from 'react'
-import ProjectBox from '../../component/projectBox'
-import NavBar from '../../component/์NavBar';
+import ProjectBox from '../../components/projectBox'
+import NavBar from '../../components/์NavBar';
 import axios from 'axios';
 
 export default function UserMainPage() {

@@ -1,7 +1,7 @@
-// import Table from "../component/table";
-// import Edit_user from "../component/Edit_user";
-// import Detail from "../component/Detail";
-import Tutorial from "../../component/CSV_Read";
+// import Table from "../components/table";
+// import Edit_user from "../components/Edit_user";
+// import Detail from "../components/Detail";
+import Tutorial from "../../components/CSV_Read";
 
 //<Table id={0}></Table>
 

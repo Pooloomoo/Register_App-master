@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../StyleComponent/projectdetail.css";
+import "../../../StyleComponent/projectDetail.css";
 import axios from "axios";
 
 export default function ProjectDetail(props) {

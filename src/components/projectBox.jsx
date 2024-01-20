@@ -1,7 +1,7 @@
 import React from "react";
 import "../../StyleComponent/index.css";
 import { useState } from "react";
-import ProjectDetail from "./ProjectDetail";
+import ProjectDetail from "../components/user/ProjectDetail";
 
 export default function ProjectBox(props) {
   const project = props.project;

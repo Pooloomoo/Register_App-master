@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import Logo from "../assets/Logo.svg";
+import Logo from "../../assets/Logo.svg";
 
 export default function HrNav() {
   return (

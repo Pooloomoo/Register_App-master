@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import "../../StyleComponent/index.css";
+import "../../../StyleComponent/index.css";
 import Hr from "./hr";
 import { Link } from "react-router-dom";
 import axios from "axios";
