@@ -3,29 +3,31 @@ import '../../StyleComponent/projectBox.css'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css';
 
-const handleDelete = () => {
-  Swal.fire({
-    title: "Do you want to save the changes?",
-    showDenyButton: true,
-    confirmButtonText: "Save",
-    denyButtonText: `Cancel`,
-    customClass: {
-      confirmButton: 'custom-confirm-button',
-      denyButton: 'custom-deny-button',
-      okbutton: 'swal2-confirm'
-    },
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire("Saved!", "", "success");
-    } else if (result.isDenied) {
-      Swal.fire("Changes are not saved", "", "info");
-    }
-  });
-}
-
 export default function HrProjectBox(props) {
 
   const project = props.project;
+  const handleDelete = props.handleDelete;
+
+  const alertDelete = () => {
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Cancel`,
+      customClass: {
+        confirmButton: 'custom-confirm-button',
+        denyButton: 'custom-deny-button',
+        okbutton: 'swal2-confirm'
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Saved!", "", "success");
+        handleDelete(project.id);
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
+  }
 
   return (
    <div className="container d-flex justify-content-center mt-5" >
@@ -43,7 +45,7 @@ export default function HrProjectBox(props) {
               <div className="buttonContainer">
             <button className='btn btn-warning text-dark link-light'>Edit</button>
             <button 
-            onClick={handleDelete}
+            onClick={alertDelete}
             className='btn btn-danger ms-2 text-dark link-light'>Delete</button>
               </div>
             </div>
