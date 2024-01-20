@@ -37,10 +37,10 @@ export default function HrProjectBox(props) {
       <div className="card mb-3" style={{ minWidth: "800px"}}>
         <div className="row g-0 ">
           <div className="col-md-3" style={{ boxShadow: '5px 4px 1px orange' }}>
-            <img src="https://assets.justinmind.com/wp-content/uploads/2018/11/Lorem-Ipsum-alternatives-768x492.png" alt="" style={{ maxWidth: "200px", width:'100%', height:'100%' }}/>
+            <img src="https://assets.justinmind.com/wp-content/uploads/2018/11/Lorem-Ipsum-alternatives-768x492.png" alt="" style={{ maxWidth: "200px", minWidth: "200px", width:'100%'}}/>
           </div>
           <div className="col-md-9" >
-            <div className="card-body bg-dark "id="ProjectBox" style={{ boxShadow: '4px 4px 1px orange', paddingBottom:'32px' }}>
+            <div className="card-body bg-dark "id="ProjectBox" style={{ boxShadow: '4px 4px 1px orange', paddingBottom:'32px', minHeight: "128.13px" }}>
               <h5 className="card-title text-light">{project.projectName}</h5>
               <p className="card-text text-light">
                 { project.projectDetail }
