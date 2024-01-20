@@ -40,12 +40,14 @@ const HrEditProject = () => {
     }
 
   return (
-    <div className='d-flex w-100 vh-100 justify-content-center align-items-center'>
-      <div className='w-50 border bg-dark text-white p-5 h-100 d-flex flex-column'>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <h1>{`EDIT PROJECT ID: ${projects.id}`}</h1>
-          </div>
+    <div className="container">
+      <HrNav />
+      <div className='d-flex w-100 vh-100 justify-content-center align-items-center'>
+        <div className='w-50 border bg-dark text-white p-5 h-100'>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <h1>{`EDIT PROJECT ID: ${projects.id}`}</h1>
+            </div>
           <div>
             <label htmlFor='projectName' className="form-label">Project Name:</label>
             <input type='text' name='projectName' className='form-control' placeholder='Enter Project Name'
@@ -120,8 +122,8 @@ const HrEditProject = () => {
         </form>
 
       </div>
-
     </div>
+  </div>
   )
 }
 
