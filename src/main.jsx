@@ -10,11 +10,11 @@ import HRCreateProject from "./routes/HR/HRCreateProject";
 import ErrorPage from "./routes/ErrorPage";
 import { Route } from "react-router-dom";
 import RootLayout from "./component/RootLayout";
-import UserMainPage from "./routes/UserMainPage";
+import UserMainPage from "./routes/user/UserMainPage";
 import ForgetPassword from "./routes/ForgetPassword";
 import RegisterForm from "./routes/RegisterForm";
 import RegisterPage from "./component/RegisterPage";
-import HrPage from "./routes/HrPage";
+import HrPage from "./routes/HR/HrPage";
 import TermOfService from "./routes/TermOfService";
 import PrivacyPolicy from "./routes/PrivacyPolicy";
 import EditHr from './routes/admin/editHr';
@@ -23,7 +23,7 @@ import CreateUser from './routes/admin/createUser';
 import CreateHr from './routes/admin/createHr';
 import AdminMainHr from './routes/admin/adminMainHr';
 import AdminMainUser from './routes/admin/adminMainUser';
-import UserProfile from "./routes/userProfile";
+import UserProfile from "./routes/user/userProfile";
 import HrEditProject from "./routes/HR/HrEditProject";
 
 

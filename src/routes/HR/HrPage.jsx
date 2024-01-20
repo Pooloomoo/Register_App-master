@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import HrNav from "../component/HrNav";
-import HrProjectBox from "../component/HrProjectBox";
+import HrNav from "../../component/HrNav";
+import HrProjectBox from "../../component/HrProjectBox";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
