@@ -83,7 +83,6 @@ function HRCreateProject() {
     <div>
       <HrNav />
       <div className="vh-100">
-        {" "}
         {/* Add custom class for background color */}
         <div className="container mt-5">
           <div className="createBox p-4">
