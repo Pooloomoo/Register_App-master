@@ -24,49 +24,50 @@ import CreateHr from './routes/createHr';
 import AdminMainHr from './routes/adminMainHr';
 import AdminMainUser from './routes/adminMainUser';
 import UserProfile from "./routes/userProfile";
+import HrEditProject from "./routes/HrEditProject";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
   },
   {
     path: "/",
     element: <UserMainPage />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
   },
   {
     path: "/register",
     element: <RegisterForm />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
   },
   {
     path: "/forgot",
     element: <ForgetPassword />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
   },
   {
     path: "/term-of-service",
     element: <TermOfService />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
   },
   {
     path: "/privacy-policy",
     element: <PrivacyPolicy />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
   },
 
   {
     path: "/hr",
     element: <HrPage />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
   },
   {
     path: "/profile",
     element: <HRCreateProject />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
   },
   {
     path: "/edit/user/:id",
@@ -95,8 +96,12 @@ const router = createBrowserRouter([
   {
     path: "/hr/user-profile",
     element: <UserProfile />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
   },
+  {
+    path: "/hr/edit/project/:id",
+    element: <HrEditProject />,
+  }
 ]);
 /* createRoutesFromElements(
     <Route path="/" element={<RootLeyout />}>

@@ -10,7 +10,7 @@ export default function HrPage() {
     axios.get('http://localhost:8080/api/project/')
       .then(response => {
         setHrProjects(response.data);
-        console.log("fetch project successfully!");
+        console.log("Fetched project data successfully!");
         })
       .catch((error) => console.error('Error fetching HR projects:', error));
   }, [reloadProject]);
@@ -19,7 +19,7 @@ export default function HrPage() {
     axios.delete('http://localhost:8080/api/project/' + id)
         .then(res => {
             console.log("Project ID " + id + " deleted");
-            // window.location.reload();
+            // window.location.reload();ss
             setReloadProject(prev => !prev);
         })
         .catch(err => console.log(err.response.data))

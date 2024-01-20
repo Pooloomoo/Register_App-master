@@ -2,6 +2,7 @@ import React from 'react'
 import '../../StyleComponent/projectBox.css'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function HrProjectBox(props) {
 
@@ -29,6 +30,8 @@ export default function HrProjectBox(props) {
     });
   }
 
+  const navigate = useNavigate();
+
   return (
    <div className="container d-flex justify-content-center mt-5" >
       <div className="card mb-3" style={{ maxWidth: "800px"}}>
@@ -43,7 +46,11 @@ export default function HrProjectBox(props) {
                 { project.projectDetail }
               </p>
               <div className="buttonContainer">
-            <button className='btn btn-warning text-dark link-light'>Edit</button>
+            <Link className="text-decoration-none" to={`/hr/edit/project/${project.id}`}>
+              <button className='btn btn-warning text-dark link-light'>
+                Edit
+              </button>           
+            </Link>
             <button 
             onClick={alertDelete}
             className='btn btn-danger ms-2 text-dark link-light'>Delete</button>

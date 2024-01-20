@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 function Edit() {
   const { id } = useParams();
   const [hrs, setHrs] = useState({
-    id: id,
+    // id: id,
     firstName: '',
     lastName: '',
     email: '',
