@@ -1,4 +1,4 @@
-import UserTable from "../../component/userTable";
+import UserTable from "../../component/admin/userTable";
 import NavBar from "../../component/์NavBar";
 
 function adminMainUser() {

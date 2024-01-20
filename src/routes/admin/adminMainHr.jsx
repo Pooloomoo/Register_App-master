@@ -1,5 +1,5 @@
 import NavBar from "../../component/์NavBar";
-import HrTable from "../../component/hrTable";
+import HrTable from "../../component/admin/hrTable";
 
 function adminMainHr() {
     return (

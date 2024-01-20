@@ -4,7 +4,6 @@ function user(props) {
     const user= props.user;
     const handleDelete = props.handleDelete;
 
-    // let status = index % 2;
     return (
         <tr>
             <td>{user.id}</td>
