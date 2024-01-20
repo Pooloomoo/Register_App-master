@@ -23,6 +23,7 @@ import CreateUser from './routes/createUser';
 import CreateHr from './routes/createHr';
 import AdminMainHr from './routes/adminMainHr';
 import AdminMainUser from './routes/adminMainUser';
+import UserProfile from "./routes/userProfile";
 
 
 const router = createBrowserRouter([
@@ -90,6 +91,11 @@ const router = createBrowserRouter([
   {
     path: "/admin/user",
     element: <AdminMainUser/>,
+  },
+  {
+    path: "/hr/user-profile",
+    element: <UserProfile />,
+    errorElement: <ErrorPage />,
   },
 ]);
 /* createRoutesFromElements(
