@@ -174,14 +174,8 @@ function HRCreateProject() {
                   onInput={(e) => {
                     const enteredValue = e.target.value;
                     // Check if the entered value is negative
-                    if (enteredValue < 0) {
-                      // If negative, set the value to 0
-                      setProjectSalary(0);
-                    } else {
-                      // If non-negative, update the state with the entered value
-                      setProjectSalary(enteredValue);
-                    }
-                  }}
+                    (enteredValue < 0) ? setProjectSalary(0) : setProjectSalary(enteredValue);
+                    }}
                 />
               </div>
 
@@ -211,14 +205,8 @@ function HRCreateProject() {
                   onInput={(e) => {
                     const enteredValue = e.target.value;
                     // Check if the entered value is negative
-                    if (enteredValue < 0) {
-                      // If negative, set the value to 0
-                      setProjectAmount(0);
-                    } else {
-                      // If non-negative, update the state with the entered value
-                      setProjectAmount(enteredValue);
-                    }
-                  }}
+                    (enteredValue < 0) ? setProjectAmount(0) : setProjectAmount(enteredValue);
+                    }}
                 />
               </div>
 

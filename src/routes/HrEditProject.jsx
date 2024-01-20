@@ -50,78 +50,86 @@ const HrEditProject = () => {
             </div>
           <div className="mb-3">
             <label htmlFor='projectName' className="form-label">Project Name:</label>
-            <input type='text' name='projectName' className='form-control' placeholder='Enter Project Name'
+            <input type='text' name='projectName' className='form-control' placeholder='Enter Project Name' required
               value={projects.projectName} onChange={e => setProjects({ ...projects, projectName: e.target.value })} />
           </div>
           <div className="mb-3">
             <label htmlFor='projectDetail' className="form-label">Last Name:</label>
-            <input type='text' name='projectDetail' className='form-control' placeholder='Enter Project Detail'
+            <input type='text' name='projectDetail' className='form-control' placeholder='Enter Project Detail' required
               value={projects.projectDetail} onChange={e => setProjects({ ...projects, projectDetail: e.target.value })} />
           </div>
           <div className="mb-3">
-                <label htmlFor="projectDetail" className="form-label">Project Detail:</label>
-                <textarea
-                  id="projectDetail"
-                  className="form-control"
-                  placeholder="Enter Project Detail"
-                  value={projects.projectDetail}
-                  style={{ height: "150px" }}
-                  onChange={
-                    (e) => {
-                      const inputValue = e.target.value;
-                      if (inputValue.length <= 600) setProjects({ ...projects, projectDetail: inputValue});
-                    }
-                  }
-                  maxLength={600}
-                  required
-                ></textarea>
-                <small className="form-text text-muted">
-                  {600 - projects.projectDetail.length} characters remaining (max 600)
-                </small>
-              </div>
-          <div className="mb-3">
-            <label htmlFor='startDate' className="form-label">Start Date:</label>
-            <input type='startDate' name='startDate' className='form-control' placeholder='Enter Start Date'
-              value={projects.startDate} onChange={e => setProjects({ ...projects, startDate: e.target.value })} />
+            <label htmlFor="projectDetail" className="form-label">Project Detail:</label>
+            <textarea
+              id="projectDetail"
+              className="form-control"
+              placeholder="Enter Project Detail"
+              value={projects.projectDetail}
+              style={{ height: "150px" }}
+              onChange={
+                (e) => {
+                  const inputValue = e.target.value;
+                  if (inputValue.length <= 600) setProjects({ ...projects, projectDetail: inputValue});
+                }
+              }
+              maxLength={600}
+              required
+            ></textarea>
+            <small className="form-text text-muted">
+              {600 - projects.projectDetail.length} characters remaining (max 600)
+            </small>
           </div>
           <div className="mb-3">
-                <label htmlFor="startingDate" className="form-label">
-                  Application Starting Date:
-                </label>
-                <input
-                  type="date"
-                  id="startingDate"
-                  className="form-control"
-                  // value={formatDate(startingDate)}
-                  onChange={(e) => setStartingDate(e.target.value)}
-                  required
-                />
-              </div>
-          <div className="mb-3">
-            <label htmlFor='endDate' className="form-label">End Date:</label>
-            <input type='text' name='endDate' className='form-control' placeholder='Enter End Date'
-              value={projects.endDate} onChange={e => setProjects({ ...projects, endDate: e.target.value })} />
+            <label htmlFor="startDate" className="form-label">Start Date:</label>
+            <input
+              type="date" id="startDate" className="form-control" placeholder='Enter Start Date' required
+              value={projects.startDate} onChange={e => setProjects({ ...projects, startDate: e.target.value })}
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor='salary' className="form-label">Salary:</label>
-            <input type='text' name='salary' className='form-control' placeholder='Enter Salary'
-              value={projects.salary} onChange={e => setProjects({ ...projects, salary: e.target.value })} />
+            <label htmlFor="endDate" className="form-label">End Date:</label>
+            <input
+              type="date" id="endDate" className="form-control" placeholder='Enter End Date' required
+              value={projects.endDate} onChange={e => setProjects({ ...projects, endDate: e.target.value })}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="salary" className="form-label">Salary:</label>
+            <input type="number" id="salary" className="form-control" placeholder='Enter Salary' required
+              value={projects.salary} onInput={(e) => {
+                const enteredValue = e.target.value;
+                // Check if the entered value is negative
+                (enteredValue < 0) ? setProjects({...projects, salary: 0}) : setProjects({ ...projects, salary: e.target.value });
+                }}
+            />
           </div>
           <div className="mb-3">
             <label htmlFor='position' className="form-label">Position:</label>
-            <input type='text' name='position' className='form-control' placeholder='Enter Position'
+            <input type='text' name='position' className='form-control' placeholder='Enter Position' required
               value={projects.position} onChange={e => setProjects({ ...projects, position: e.target.value })} />
           </div>
           <div className="mb-3">
-            <label htmlFor='amount' className="form-label">Amount:</label>
-            <input type='text' name='amount' className='form-control' placeholder='Enter Amount'
-              value={projects.amount} onChange={e => setProjects({ ...projects, amount: e.target.value })} />
-          </div>
+                <label htmlFor="projectAmount" className="form-label">Amount:</label>
+                <input type='text' name='amount' className='form-control' placeholder='Enter Amount' required
+                  value={projects.amount} onInput={e => {
+                  const enteredValue = e.target.value;
+                  // Check if the entered value is negative
+                  (enteredValue < 0) ? setProjects({...projects, amount: 0}) : setProjects({ ...projects, amount: e.target.value });
+                  }}
+                />
+              </div>
           <div className="mb-3">
-            <label htmlFor='educationLevel' className="form-label">Education:</label>
-            <input type='text' name='educationLevel' className='form-control' placeholder='Enter Education'
-              value={projects.educationLevel} onChange={e => setProjects({ ...projects, educationLevel: e.target.value })} />
-          </div>
+                <label htmlFor="projectEducation" className="form-label">Project Education:</label>
+                <select id="projectEducation" className="form-control" value={projects.educationLevel}
+                  onChange={(e) => setProjects({...projects, educationLevel: e.target.value})}
+                >
+                  <option value="">Select Education</option>
+                  <option value="HIGH_SCHOOL">High School</option>
+                  <option value="BACHELORS_DEGREE">Bachelor's Degree</option>
+                  <option value="MASTERS_DEGREE">Master's Degree</option>
+                  <option value="PHD">PhD</option>
+                </select>
+              </div>
           {/* <div>
             <label htmlFor='imageURL'>Project Image:</label>
             <input type='text' name='imageURL' className='form-control' placeholder='Change The Image'
