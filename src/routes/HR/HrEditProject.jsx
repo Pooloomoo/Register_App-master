@@ -39,6 +39,11 @@ const HrEditProject = () => {
       .catch(err => console.log("Put project error: " + err.response.data))
     }
 
+  const handleCancel = () => {
+    navigate(-1);
+  }
+    
+
   return (
     <div className="container">
       <HrNav />
@@ -137,9 +142,9 @@ const HrEditProject = () => {
           </div> */}
           <br />
           <button className='btn btn-warning'>Update</button>
-          <Link className="btn-group text-decoration-none"  to={`/hr`}>
-            <button id="cancleButton" className="btn btn-warning">Cancel</button>
-          </Link>
+          <button id="cancelButton" className="btn btn-warning" onClick={(e) => { e.preventDefault(); handleCancel(); }}>
+            Cancel
+        </button>
         </form>
 
       </div>

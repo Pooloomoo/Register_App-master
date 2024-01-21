@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ProjectDetail(props) {
   const project = props.project;
@@ -30,11 +31,20 @@ export default function ProjectDetail(props) {
               <td>{project.educationLevel}</td>
             </tr>
             <tr>
+              <th>Application Starting Date:</th>
+              <td>{project.startDate}</td>
+            </tr>
+            <tr>
               <th>Application Closing Date:</th>
               <td>{project.endDate}</td>
             </tr>
           </tbody>
         </table>
+        <div className="btn-group text-decoration-none">
+          <Link to={`/hr/edit/project/${project.id}`}>
+            <button id="editProject" type="button" className="btn btn-warning text-light">Edit Project</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
