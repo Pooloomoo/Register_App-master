@@ -15,10 +15,7 @@ const UserProjectRow = (props) => {
       <td>{userProject.status.score || "Null"}</td>
       <td>{userProject.status.userStatus}</td>
       <td>
-        <Link
-          className="text-decoration-none"
-          to={`/`}
-        >
+        <Link className="text-decoration-none" to={`/hr/edit/userproject/${userProject.id}`} >
           <button className="btn btn-warning text-light d-md-block">
             Edit
           </button>

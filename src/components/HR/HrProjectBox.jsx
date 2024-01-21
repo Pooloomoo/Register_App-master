@@ -46,7 +46,7 @@ export default function HrProjectBox(props) {
                 { project.projectDetail }
               </p>
               <div className="buttonContainer d-flex align-items-center">
-                <Link className="text-decoration-none me-2" to={`/hr/edit/user/project/${project.id}`}>
+                <Link className="text-decoration-none me-2" to={`/hr/user/project/${project.id}`}>
                   <button className="btn btn-warning text-dark link-light">
                     Manage Users
                   </button>
