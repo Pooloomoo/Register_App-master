@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../../StyleComponent/projectDetail.css";
 import axios from "axios";
 
-export default function ProjectDetail(props) {
+export default function ProjectDetailPopUp(props) {
   const { showPopup, onClose, project } = props;
   const [statuses, setStatuses] = useState([]);
   const [lastStatusId, setLastStatusId] = useState(null);
@@ -79,6 +79,10 @@ export default function ProjectDetail(props) {
               <tr>
                 <th>Education:</th>
                 <td>{project.educationLevel}</td>
+              </tr>
+              <tr>
+                <th>Application Starting Date:</th>
+                <td>{project.startDate}</td>
               </tr>
               <tr>
                 <th>Application Closing Date:</th>

@@ -23,3 +23,8 @@
   .swal2-confirm{
     line-height: 0;
   }
+
+  /* Add this CSS to your stylesheet or use inline styles */
+/* .btn-hover:hover {
+  filter: brightness(90%);
+} */

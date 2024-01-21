@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 const Form_Edit = ({ label, onInputChange, value }) => {
   const handleInputChange = (event) => {
-    onInputChange(label, event.target.value);
+    onInputChange(label, event.target.value); 
   };
 
   return (

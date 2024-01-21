@@ -50,10 +50,9 @@ function HRCreateProject() {
     <div>
       <HrNav />
       <div className="vh-100">
-        {/* Add custom class for background color */}
-        <div className="container mt-5">
-          <div className="createBox p-4">
+        <div className="container mt-5 ">
             <h2 className="mb-4">Create Project</h2>
+          <div className="createBox p-4 bg-dark">
             <form onSubmit={handleSubmit}>
               {/* Project Name */}
               <div className="mb-3">
@@ -84,17 +83,17 @@ function HRCreateProject() {
                   onChange={
                     (e) => {
                       const inputValue = e.target.value;
-                      if (inputValue.length <= 600) {
+                      if (inputValue.length <= 500) {
                         setProjectDetail(inputValue);
                       }
                     }
                   }
                   placeholder="Enter project detail"
-                  maxLength={600}
+                  maxLength={500}
                   required
                 ></textarea>
                 <small className="form-text text-muted">
-                  {600 - projectDetail.length} characters remaining (max 600)
+                  {500 - projectDetail.length} characters remaining (max 600)
                 </small>
               </div>
 

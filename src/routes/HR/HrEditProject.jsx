@@ -69,14 +69,14 @@ const HrEditProject = () => {
               onChange={
                 (e) => {
                   const inputValue = e.target.value;
-                  if (inputValue.length <= 600) setProjects({ ...projects, projectDetail: inputValue});
+                  if (inputValue.length <= 500) setProjects({ ...projects, projectDetail: inputValue});
                 }
               }
-              maxLength={600}
+              maxLength={500}
               required
             ></textarea>
             <small className="form-text text-muted">
-              {600 - projects.projectDetail.length} characters remaining (max 600)
+              {500 - projects.projectDetail.length} characters remaining (max 600)
             </small>
           </div>
           <div className="mb-3">

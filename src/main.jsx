@@ -6,7 +6,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import "../StyleComponent/index.css";
-import HRCreateProject from "./routes/HR/HRCreateProject";
+import HRCreateProject from "./routes/HR/HrCreateProject";
 import ErrorPage from "./routes/ErrorPage";
 import { Route } from "react-router-dom";
 import RootLayout from "./components/RootLayout";
@@ -25,6 +25,8 @@ import AdminMainHr from './routes/admin/adminMainHr';
 import AdminMainUser from './routes/admin/adminMainUser';
 import UserProfile from "./routes/user/userProfile";
 import HrEditProject from "./routes/HR/HrEditProject";
+import HrProfile from "./routes/HR/HrProfile";
+import HrEditUser from "./routes/HR/HrEditUser";
 
 
 const router = createBrowserRouter([
@@ -105,6 +107,14 @@ const router = createBrowserRouter([
   {
     path: "/hr/create/project",
     element: <HRCreateProject />,
+  },
+  {
+    path: "/hr/profile",
+    element: <HrProfile />
+  },
+  {
+    path: "/hr/edit/user/project/:id",
+    element: <HrEditUser />
   }
 ]);
 /* createRoutesFromElements(

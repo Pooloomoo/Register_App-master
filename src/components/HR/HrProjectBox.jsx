@@ -45,15 +45,23 @@ export default function HrProjectBox(props) {
               <p className="card-text text-light">
                 { project.projectDetail }
               </p>
-              <div className="buttonContainer">
-            <Link className="text-decoration-none" to={`/hr/edit/project/${project.id}`}>
-              <button className='btn btn-warning text-dark link-light'>
-                Edit
-              </button>           
-            </Link>
-            <button 
-            onClick={alertDelete}
-            className='btn btn-danger ms-2 text-dark link-light'>Delete</button>
+              <div className="buttonContainer d-flex align-items-center">
+                <Link className="text-decoration-none me-2" to={`/hr/edit/user/project/${project.id}`}>
+                  <button className="btn btn-warning text-dark link-light">
+                    Manage Users
+                  </button>
+                </Link>
+                <Link className="text-decoration-none me-2" to={`/hr/edit/project/${project.id}`}>
+                  <button className="btn btn-warning text-dark link-light">
+                    Edit Project
+                  </button>
+                </Link>
+                <button
+                  onClick={alertDelete}
+                  className="btn btn-danger text-dark  link-light"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>
