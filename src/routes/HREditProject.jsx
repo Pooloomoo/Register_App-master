@@ -8,6 +8,7 @@
   export default function HReditProject() {
       
       const navigate =useNavigate();
+      const [fileSelected, setFileSelected] = useState(false);
 
       const [project, setProject]= useState({
           id:null,
@@ -37,23 +38,36 @@
         return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
       };
 
+      const isFileSelected = (files) => {
+        return files.length > 0;
+      };
+
+      const onLoadProject = (result) => {
+        const formattedProject = {
+          ...result.data,
+          startDate: convertDateFormat(result.data.startDate),
+          endDate: convertDateFormat(result.data.endDate),
+        };
+        setProject(formattedProject);
+    
+        if (!isFileSelected(formattedProject.projectImage)) {
+          setFileSelected(true);
+        }
+      };
+    
       const loader = async () => {
         try {
           const result = await axios.get(`http://localhost:8080/api/project/${id}`);
-          const formattedProject = {
-            ...result.data,
-            startDate: convertDateFormat(result.data.startDate),
-            endDate: convertDateFormat(result.data.endDate),
-          };
-          setProject(formattedProject);
+          onLoadProject(result);
         } catch (error) {
           console.error('Error loading project:', error);
+          setFileSelected(false);
         }
       };
-
-      useEffect(()=>{
-          loader();
-      },[])   
+    
+      useEffect(() => {
+        loader();
+      }, []);   
 
       const sentFormatDate = (dateString) => {
         const dateObject = new Date(dateString);
@@ -83,6 +97,8 @@
               console.log(updatedProject.projectImage);
               return updatedProject;
             });
+
+            setFileSelected(true);
           } catch (error) {
             console.error(error);
             if (error.response) {
@@ -93,8 +109,31 @@
       };
 
       
+
+      
       const onSubmit = async (e) => {
         e.preventDefault(); 
+
+        if (fileSelected){
+          try {
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            const formattedProject = {
+              id: id,
+              ...project,
+              startDate: sentFormatDate(project.startDate),
+              endDate: sentFormatDate(project.endDate),
+            };
+        
+            const res = await axios.put(`http://localhost:8080/api/project/${id}`, formattedProject);
+            console.log(res.data);
+            console.log("Put data in process");
+          } catch (err) {
+            console.log(err);
+          }
+  
+          navigate('/hr') ;
+        }
+
         try {
           const formattedProject = {
             id: id,

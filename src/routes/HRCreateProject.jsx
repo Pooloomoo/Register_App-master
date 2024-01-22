@@ -40,7 +40,7 @@ function HRCreateProject() {
             ...prevProject,
             projectImage: response.data.url
           };
-          console.log(updatedProject.projectImage); // ลองเปลี่ยนจาก projectImage เป็น updatedProject.projectImage
+          console.log(updatedProject.projectImage); 
           return updatedProject;
         });
       } catch (error) {
@@ -115,7 +115,7 @@ function HRCreateProject() {
                   value={projectName}
                   onChange={onInputChange}
                   placeholder="Enter project name"
-                  /* required */
+                  required
                 />
               </div>
 
@@ -288,41 +288,3 @@ function HRCreateProject() {
 
 export default HRCreateProject;
 
-{
-  /* HR Email List
-  <div className="mb-3">
-  <label htmlFor="HREmailList" className="form-label">HR permissions email list:</label>
-  {HREmails.map((email, index) => (
-    <div key={index} className="mb-2">
-    <input
-        type="text"
-        id={`HREmailList${index}`}
-        className="form-control"
-        value={email}
-        onChange={(e) => handleHREmailChange(index, e.target.value)}
-        placeholder={(index == 0) ? `Enter your email` : `Enter other HR email`}
-        required
-        />
-        </div>
-        ))}
-        <button type="button" className="btn btn-secondary" onClick={addHREmailInput}>Add Email</button>
-      </div> */
-}
-
-// const handleHREmailChange = (index, value) => {
-//   const newEmails = [...HREmails];
-//   newEmails[index] = value;
-//   setHREmails(newEmails);
-// };
-
-// Function to add a new email input
-// const addHREmailInput = () => {
-//   setHREmails([...HREmails, '']);
-// };
-
-// function formatDate(date) {
-//   const day = date.getDate().toString().padStart(2, '0');
-//   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
-//   const year = date.getFullYear();
-//   return `${day}-${month}-${year}`;
-// }
