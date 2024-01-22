@@ -9,8 +9,18 @@ export default function UserMainPage() {
   
   useEffect(() => {
     axios.get('http://localhost:8080/api/project/')
-      .then((response) => setProjects(response.data))
+      .then((response) => {
+        const sortedProjects = [...response.data].sort((a, b) => {
+          const dateA = new Date(a.startDate);
+          const dateB = new Date(b.startDate);
+        
+          console.log(`${dateB} Bdate, ${dateA} Adate`);
+          return dateB - dateA;
+        })
+        setProjects(sortedProjects);
+      })
       .catch((error) => console.error('Error fetching userProjects:', error));
+      
   }, []);
 
 

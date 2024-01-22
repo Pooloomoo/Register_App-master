@@ -8,14 +8,22 @@ export default function HrPage() {
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/project/')
-      .then((response) => setHrProjects(response.data))
+    .then((response) => {
+      const sortedProjects = [...response.data].sort((a, b) => {
+        const dateA = new Date(a.startDate);
+        const dateB = new Date(b.startDate);
+      
+        console.log(`${dateB} Bdate, ${dateA} Adate`);
+        return dateB - dateA;
+      })
+      setHrProjects(sortedProjects);
+    })
       .catch((error) => console.error('Error fetching HR projects:', error));
   }, []);
 
   return (
     <div>
         <HrNav/>
-        <AddBtn/>
         {hrProjects.map((project) => (
         <HrProjectBox key={project.id} project={project} id={project.id}/>
       ))}

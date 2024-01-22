@@ -6,7 +6,7 @@ export default function AddBtn() {
     <div className='container d-flex justify-content-end col-8'>
       <NavLink 
       to="/hrcreateproject"
-      className="btn btn-success mb-3"
+      className="btn btn-success"
       style={{maxWidth:'65px'}}>
         Add
       </NavLink>

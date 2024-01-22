@@ -3,6 +3,7 @@ import HrNav from "../component/HrNav";
 import "../../StyleComponent/index.css";
 import axios from "axios";
 import TextAreaForm from "../component/TextAreaForm";
+import { useNavigate } from "react-router-dom";
 
 
 const id = 0;
@@ -19,7 +20,7 @@ function HRCreateProject() {
     educationLevel: "",
     projectImage: "",
   });
-  
+  const navigate = useNavigate();
   const {projectName, projectDetail,startDate,endDate,salary,position,amount,educationLevel,projectImage} = project;
 
   // const [HREmails, setHREmails] = useState(['']);
@@ -56,7 +57,8 @@ function HRCreateProject() {
       })
       .catch((error) => {
         console.error("Error adding project:", error);
-      });
+      })
+    navigate('/hr') ;
   };
   
   /* const uploadImage = (files) => {

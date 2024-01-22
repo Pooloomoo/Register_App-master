@@ -3,13 +3,16 @@
   import TextAreaForm from '../component/TextAreaForm';
   import { useParams } from 'react-router-dom';
   import axios from 'axios';
+  import { useNavigate } from 'react-router-dom';
 
   export default function HReditProject() {
       
+      const navigate =useNavigate();
+
       const [project, setProject]= useState({
           id:null,
           projectName: "",
-          projectDetail:"",
+          projectDetail:"", 
           startDate:"",
           endDate:"",
           salary: null,
@@ -73,6 +76,8 @@
         } catch (err) {
           console.log(err);
         }
+
+        navigate('/hr') ;
       };
       
       const onInputChange = (e) => {

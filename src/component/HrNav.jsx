@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../assets/Logo.svg";
+import AddBtn from "./AddBtn";
 
 export default function HrNav() {
   return (
@@ -19,6 +20,8 @@ export default function HrNav() {
         </div>
 
         <div className="d-flex align-items-center ms-auto">
+          
+
           <ul className="nav justify-content-center mb-md-0 me-3">
             <li>
               <NavLink
@@ -38,6 +41,13 @@ export default function HrNav() {
               >
                 User
               </NavLink>
+            </li>
+          </ul>
+
+          <ul className="nav justify-content-center mb-md-0 me-3">
+            <li>
+              <AddBtn className=" px-2 "/>
+              
             </li>
           </ul>
         </div>
