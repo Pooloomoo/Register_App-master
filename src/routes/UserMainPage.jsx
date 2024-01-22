@@ -14,8 +14,8 @@ export default function UserMainPage() {
           const dateA = new Date(a.startDate);
           const dateB = new Date(b.startDate);
         
-          console.log(`${dateB} Bdate, ${dateA} Adate`);
-          return dateB - dateA;
+          console.log(` ${dateA} Adate, ${dateB} Bdate`);
+          return dateA - dateB;
         })
         setProjects(sortedProjects);
       })
