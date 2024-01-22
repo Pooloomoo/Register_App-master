@@ -13,8 +13,8 @@ export default function UserMainPage() {
         const sortedProjects = [...response.data].sort((a, b) => {
           const dateA = new Date(a.startDate);
           const dateB = new Date(b.startDate);
-        
-          console.log(` ${dateA} Adate, ${dateB} Bdate`);
+          // console.log(` ${dateA} Adate, ${dateB} Bdate`);
+          console.log("Fetched project data successfully!")
           return dateA - dateB;
         })
         setProjects(sortedProjects);

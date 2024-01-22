@@ -16,7 +16,7 @@ export default function HrPage() {
         const sortedHrProjects = [...response.data].sort((a, b) => {
           const dateA = new Date(a.startDate);
           const dateB = new Date(b.startDate);
-          console.log(` ${dateA} Adate, ${dateB} Bdate`);
+          // console.log(` ${dateA} Adate, ${dateB} Bdate`);
           return dateA - dateB;
         })
         setHrProjects(sortedHrProjects);
