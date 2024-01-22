@@ -8,6 +8,12 @@ export default function HrProjectBox(props) {
   // why nned HrProjectBox?
   const project = props.project;
   const handleDelete = props.handleDelete;
+  const startDate = new Date(project.startDate);
+  const endDate = new Date(project.endDate);
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  
+  const formattedStartDate = startDate.toLocaleDateString('us-US', options);
+  const formattedEndDate = endDate.toLocaleDateString('us-US', options);
 
   const alertDelete = () => {
     Swal.fire({
@@ -48,8 +54,8 @@ export default function HrProjectBox(props) {
               <div className="d-flex" style={{width: "100%"}}>
                 <div className="d-flex align-items-center">
                   <div className="d-flex flex-column align-items-start" style={{marginTop: "20px"}}>
-                    <small className="text-white">{`Project Start Date: ${project.startDate}`}</small>
-                    <small className="text-white">{`Project End Date: ${project.endDate}`}</small>
+                    <small className="text-white">{`Project Start Date: ${formattedStartDate}`}</small>
+                    <small className="text-white">{`Project End Date: ${formattedEndDate}`}</small>
                   </div>
                   <div className="buttonContainer d-flex align-items-center" style={{ height: '50px', paddingRight: "10px"}}>
                     <Link className="text-decoration-none me-2" to={`/hr/user/project/${project.id}`}>

@@ -6,6 +6,12 @@ import ProjectDetail from "./user/ProjectDetailPopUp";
 export default function ProjectBox(props) {
   const project = props.project;
   const [popup, setPopus] = useState(false);
+  const startDate = new Date(project.startDate);
+  const endDate = new Date(project.endDate);
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  
+  const formattedStartDate = startDate.toLocaleDateString('us-US', options);
+  const formattedEndDate = endDate.toLocaleDateString('us-US', options);
 
   const TogglePopup=()=>{
     setPopus(!popup);
@@ -24,6 +30,10 @@ export default function ProjectBox(props) {
               <p className="card-text text-light">
                 {project.projectDetail}
               </p>
+              <div className="d-flex flex-column align-items-start" style={{marginTop: "20px"}}>
+                    <small className="text-white">{`Project Start Date: ${formattedStartDate}`}</small>
+                    <small className="text-white">{`Project End Date: ${formattedEndDate}`}</small>
+                  </div>
               <button onClick={TogglePopup} className="btn btn-warning text-light link-dark lh-1" style={{ position: "absolute", bottom: 10, right: 10}}>
                 Submit
               </button>

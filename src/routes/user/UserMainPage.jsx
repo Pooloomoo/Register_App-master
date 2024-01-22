@@ -10,7 +10,7 @@ export default function UserMainPage() {
   useEffect(() => {
     axios.get('http://localhost:8080/api/project/')
       .then((response) => setProjects(response.data))
-      .catch((error) => console.error('Error fetching userProjects:', error));
+      .catch((error) => console.error('Error fetching userProjects: ', error));
   }, []);
 
   return (
