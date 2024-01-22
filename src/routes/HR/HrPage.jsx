@@ -13,7 +13,13 @@ export default function HrPage() {
     axios
       .get("http://localhost:8080/api/project/")
       .then((response) => {
-        setHrProjects(response.data);
+        const sortedHrProjects = [...response.data].sort((a, b) => {
+          const dateA = new Date(a.startDate);
+          const dateB = new Date(b.startDate);
+          console.log(` ${dateA} Adate, ${dateB} Bdate`);
+          return dateA - dateB;
+        })
+        setHrProjects(sortedHrProjects);
         console.log("Fetched project data successfully!");
       })
       .catch((error) => console.error("Error fetching HR projects:", error));
