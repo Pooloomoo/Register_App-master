@@ -19,6 +19,7 @@
           position:"",
           amount:"",
           educationLevel:"",
+          projectImage:"",
       })
 
       const changeDetail = (newData) => {
@@ -28,7 +29,7 @@
         }));
       };
 
-      const {projectName,projectDetail,startDate,endDate,salary,position,amount,educationLevel} = project;
+      const {projectName,projectDetail,startDate,endDate,salary,position,amount,educationLevel,projectImage} = project;
       const {id} = useParams();
 
       const convertDateFormat = (dateString) => {
@@ -59,6 +60,38 @@
         const formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`;
         return formattedDate;
       };
+
+
+      const submitImage = async (files) => {
+        if (files.length > 0) {
+          const file = files[0];
+        
+          const data = new FormData();
+          data.append("file", file);
+          data.append("api_key", "468596158793514");
+          data.append("upload_preset", "ml_default");
+          data.append("cloud_name", "dhqymz8ub");
+        
+          try {
+            const response = await axios.post("https://api.cloudinary.com/v1_1/dhqymz8ub/auto/upload", data);
+            console.log(response.data.url);
+            setProject((prevProject) => {
+              const updatedProject = {
+                ...prevProject,
+                projectImage: response.data.url
+              };
+              console.log(updatedProject.projectImage);
+              return updatedProject;
+            });
+          } catch (error) {
+            console.error(error);
+            if (error.response) {
+              console.error("Cloudinary API Error Response:", error.response.data);
+            }
+          }
+        }
+      };
+
       
       const onSubmit = async (e) => {
         e.preventDefault(); 
@@ -256,7 +289,7 @@
                     </div>
       
                     {/* Project Image */}
-                    {/* <div className="mb-3">
+                    <div className="mb-3">
                       <label htmlFor="projectImage" className="form-label">
                         Project Image URL:
                       </label>
@@ -264,10 +297,12 @@
                         type="file"
                         id="projectImage"
                         className="form-control"
-                        onChange={(e) => setProjectImage(e.target.files[0])}
-                        required={false}
+                        name="projectImage"
+                        onChange={(e) => {submitImage(e.target.files)}}
+                        required={false} 
+                        placeholder={projectImage} 
                       />
-                    </div> */}
+                    </div> 
       
                     {/* Submit Button */}
                     <button

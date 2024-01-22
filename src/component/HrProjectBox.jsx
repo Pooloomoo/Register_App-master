@@ -51,9 +51,9 @@ export default function HrProjectBox(props) {
           <div className="col-md-3 " style={{ boxShadow: "5px 4px 1px orange" }}
           >
             <img
-              src={project.image}
+              src={project.projectImage}
               alt=""
-              style={{ maxWidth: "200px", width: "100%", height: "100%" ,minWidth: "200px", minHeight: "145px", maxHeight: "145px"}}
+              style={{ maxWidth: "200px", maxHeight:"200px" ,width: "100%", height: "100%" ,minWidth: "200px", minHeight: "145px"}}
             />
           </div>
           <div className="col-md-9">

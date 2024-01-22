@@ -17,9 +17,9 @@ export default function ProjectBox(props) {
         <div className="row g-0 ">
           <div className="col-md-3" style={{ boxShadow: "5px 4px 1px orange" }}>
             <img
-              src={project.image}
+              src={project.projectImage}
               alt="image"
-              style={{ maxWidth: "200px", width: "100%", height: "100%" }}
+              style={{ maxWidth: "200px",maxHeight:"200px", width: "100%", height: "100%" }}
             />
           </div>
           <div className="col-md-9">

@@ -5,7 +5,6 @@ import axios from "axios";
 import TextAreaForm from "../component/TextAreaForm";
 import { useNavigate } from "react-router-dom";
 
-
 const id = 0;
 
 function HRCreateProject() {
@@ -23,63 +22,35 @@ function HRCreateProject() {
   const navigate = useNavigate();
   const {projectName, projectDetail,startDate,endDate,salary,position,amount,educationLevel,projectImage} = project;
 
-  // const [HREmails, setHREmails] = useState(['']);
-
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  
-    const projectInfo ={
-      id, ...project
-    };
-
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-   /*  const formData = new FormData();
-    formData.append("projectName", projectName);
-    formData.append("projectDetail", projectDetail);
-    formData.append("startDate", startDate);
-    formData.append("endDate", endDate);
-    formData.append("salary", salary);
-    formData.append("position", position);
-    formData.append("amount", amount);
-    formData.append("educationLevel", educationLevel);
-    formData.append("image", projectImage); */
-  
-    axios.post("http://localhost:8080/api/project/", /* formData, */ projectInfo,config)
-      .then(() => {
-        console.log("New Project added");
-      })
-      .catch((error) => {
-        console.error("Error adding project:", error);
-      })
-    navigate('/hr') ;
+  const submitImage = async (files) => {
+    if (files.length > 0) {
+      const file = files[0];
+    
+      const data = new FormData();
+      data.append("file", file);
+      data.append("api_key", "468596158793514");
+      data.append("upload_preset", "ml_default");
+      data.append("cloud_name", "dhqymz8ub");
+    
+      try {
+        const response = await axios.post("https://api.cloudinary.com/v1_1/dhqymz8ub/auto/upload", data);
+        console.log(response.data.url);
+        setProject((prevProject) => {
+          const updatedProject = {
+            ...prevProject,
+            projectImage: response.data.url
+          };
+          console.log(updatedProject.projectImage); // ลองเปลี่ยนจาก projectImage เป็น updatedProject.projectImage
+          return updatedProject;
+        });
+      } catch (error) {
+        console.error(error);
+        if (error.response) {
+          console.error("Cloudinary API Error Response:", error.response.data);
+        }
+      }
+    }
   };
-  
-  /* const uploadImage = (files) => {
-    const imageData = new FormData();
-    imageData.append("file", files[0]);
-    imageData.append("upload_preset", "v964qffd");
-  
-    axios.post("https://api.cloudinary.com/v1_1/dvdqlboxo/image/upload", imageData)
-      .then((res) => {
-        console.log(res);
-        // Assuming Cloudinary returns a URL, you might want to update the state with it
-        setProject((prevProject) => ({
-          ...prevProject,
-          projectImage: res.data.secure_url,
-        }));
-      })
-      .catch((error) => {
-        console.error("Error uploading image:", error);
-      });
-  }; */
-  
 
   const onInputChange = (e) => {
     const { name, value } = e.target;
@@ -95,6 +66,29 @@ function HRCreateProject() {
       ...prevProject,
       projectDetail: newData,
     }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+    const projectInfo ={
+      id, ...project
+    };
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    axios.post("http://localhost:8080/api/project/", projectInfo,config)
+      .then(() => {
+        console.log("New Project added");
+      })
+      .catch((error) => {
+        console.error("Error adding project:", error);
+      })
+    navigate('/hr') ;
   };
 
   return (
@@ -130,16 +124,6 @@ function HRCreateProject() {
                 <label htmlFor="projectDetail" className="form-label">
                   Project Detail:
                 </label>
-                {/* <textarea
-                  id="projectDetail"
-                  className="form-control"
-                  value={projectDetail}
-                  style={{ height: "150px" }}
-                  onChange={(e) => setProjectDetail(e.target.value)}
-                  placeholder="Enter project detail"
-                  maxLength={600}
-                  required
-                ></textarea> */}
                 <TextAreaForm key={project.id}  project={project}  maxCharacters={600} changeDetail={changeDetail}/>
               </div>
 
@@ -271,7 +255,7 @@ function HRCreateProject() {
               </div>
 
               {/* Project Image */}
-               {/* <div className="mb-3">
+               <div className="mb-3">
                 <label htmlFor="projectImage" className="form-label">
                   Project Image URL:
                 </label>
@@ -279,10 +263,11 @@ function HRCreateProject() {
                   type="file"
                   id="projectImage"
                   className="form-control"
-                  onChange={(e) => {uploadImage(e.target.files)}}
+                  name="projectImage"
+                  onChange={(e) => {submitImage(e.target.files)}}
                   required={false}  
                 />
-              </div>  */}
+              </div> 
 
               <button
                 type="submit"
