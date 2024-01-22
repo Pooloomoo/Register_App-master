@@ -10,19 +10,19 @@ export default function UserProjectTable(props) {
   return (
       <div className="card mb-4 border-0">
           <h1 className="card-header d-flex justify-content-between align-items-center mb-4 border-0 col-sm-11 bg-white">
-            userProject LIST
+            User Project List
           </h1>
           <div className="card-body mb-4 border-0">
               <table id="example1" className="table table-hover table-dark rounded-4 overflow-hidden ">
                   <thead>
                       <tr>
-                        <th scope="col">userprojectid</th>
+                        {/* <th scope="col">userprojectid</th> */}
                         {/* <th scope="col">project.projectName</th> */}
                         <th scope="col">user.id</th>
                         <th scope="col">user.firstName</th>
                         <th scope="col">user.lastName</th>
                         <th scope="col">user.education</th>
-                        <th scope="col">status.id</th>
+                        <th scope="col">Phone Number</th>
                         <th scope="col">status.score</th>
                         <th scope="col">status.userStatus</th>
                         <th scope="col">edit</th>

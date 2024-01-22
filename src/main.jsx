@@ -25,7 +25,6 @@ import AdminMainHr from './routes/admin/adminMainHr';
 import AdminMainUser from './routes/admin/adminMainUser';
 import UserProfile from "./routes/user/userProfile";
 import HrEditProject from "./routes/HR/HrEditProject";
-import HrProfile from "./routes/HR/HrProfile";
 import HrManageUserProject from './routes/HR/HrManageUserProject';
 import HrEditUserProject from "./routes/HR/HrEditUserProject";
 
@@ -107,10 +106,6 @@ const router = createBrowserRouter([
   {
     path: "/hr/create/project",
     element: <HRCreateProject />,
-  },
-  {
-    path: "/hr/profile",
-    element: <HrProfile />
   },
   {
     path: "/hr/user/project/:id",

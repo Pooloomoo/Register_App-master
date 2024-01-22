@@ -6,12 +6,12 @@ const UserProjectRow = (props) => {
 
   return (
     <tr key={userProject.id}>
-      <td>{userProject.id}</td>
+      {/* <td>{userProject.id}</td> */}
       <td>{userProject.user.id}</td>
       <td>{userProject.user.firstName}</td>
       <td>{userProject.user.lastName}</td>
       <td>{userProject.user.educationLevel}</td>
-      <td>{userProject.status.id}</td>
+      <td>{userProject.user.phoneNumber}</td>
       <td>{userProject.status.score || "Null"}</td>
       <td>{userProject.status.userStatus}</td>
       <td>

@@ -46,10 +46,10 @@ export default function HrNav() {
           <ul className="nav justify-content-center mb-md-0 me-3">
             <li>
               <NavLink
-                to="/hr/profile"
+                to="/"
                 className="nav-link px-2 text-warning link-secondary"
               >
-                Profile
+                Logout
               </NavLink>
             </li>
           </ul>
