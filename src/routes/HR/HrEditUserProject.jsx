@@ -10,29 +10,45 @@ export default function UserProjectEditUserProject() {
   const [userProject, setUserProject] = useState({
     user: {},
     project: {},
-    status: {
-      score: '',
-      userStatus: ''
-    },
+    status: {},
   })
+  const [status, setStatus] = useState({
+    id: 0,
+    score: '',
+    userStatus: ''
+  });
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/userproject/' + id)
       .then(res => {
         setUserProject(res.data);
+        setStatus({
+          id: res.data.status.id,
+          score: res.data.status.score ?? '',
+          userStatus: res.data.status.userStatus ?? ''
+        });        
         console.log("Fetched userProject data successfully!");
       })
       .catch(err => console.log("Fecting userProject error: " + err))
     }, [])
-    
+
+    // useEffect(() => {
+    //   axios.get('http://localhost:8080/api/status/' + userProject.status.id)
+    //     .then(res => {
+    //       setStatus(res.data);
+    //       console.log("Fetched userProject data successfully!");
+    //     })
+    //     .catch(err => console.log("Fecting userProject error: " + err))
+    //   }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.put('http://localhost:8080/api/userproject/' + id, userProject)
+    axios.put('http://localhost:8080/api/status/' + userProject.status.id, status)
     .then(res => {
-        navigate(-1)
+      console.log("Status ID: " + status.id + " is updated!");
+        navigate(-1);
       })
-      .catch(err => console.log("put userProject error: " + err.response.data))
+      .catch(err => console.log("put status error: " + err.response.data))
     }
 
   const handleCancel = () => {
@@ -57,16 +73,16 @@ export default function UserProjectEditUserProject() {
               <h2>{`Status ID: ${userProject.status.id}`}</h2>
               <label htmlFor='score'>User Score:</label>
               <input type='text' name='score' className='form-control'
-                placeholder='Enter User Score' value={userProject.status.score || ''}
-                onChange={(e) => setUserProject({ ...userProject, status: { score: e.target.value } })}
+                placeholder='Enter User Score' value={status.score}
+                onChange={(e) => setStatus({ ...status, score: e.target.value })}
               />
             </div>
             <div className="mb-3">
               <label htmlFor='userStatus' className='form-label'>User Status:</label>
               <select
                 id="userStatus-select" className="form-control"
-                value={userProject.status.userStatus} required 
-                onChange={(e) => setUserProject({ ...userProject, status: {userStatus: e.target.value} })}
+                value={status.userStatus}
+                onChange={(e) => setStatus({ ...status, userStatus: e.target.value})}
               >
                 <option value="">Select User Status</option>
                 <option value="Apply_Success">Apply Success</option>
