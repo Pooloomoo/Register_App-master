@@ -1,0 +1,8 @@
+form{
+    height: 50vh;
+    align-items: center;
+    margin-top: 5%;
+}
+.submitBtn{
+    margin-top: 10px;
+}

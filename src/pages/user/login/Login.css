@@ -1,0 +1,71 @@
+.login-container {
+    text-align: center;
+}
+
+
+.login-content {
+    background: #333;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    border-radius: 2px;
+    width: 500px;
+    display: inline-block;
+    margin-top: 30px;
+    vertical-align: middle;
+    position: relative;    
+    padding: 35px;
+}
+
+.social-btn {
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.social-btn img {
+    height: 32px;
+    float: left;
+    margin-top: 10px;
+}
+
+.social-btn.google {
+    margin-top: 7px;
+}
+
+.social-btn.facebook img {
+    height: 24px;
+    margin-left: 3px;
+}
+
+.social-btn.github img {
+    height: 24px;
+    margin-left: 3px;
+}
+
+.signup-link {
+    color: #fff;
+    font-size: 14px;
+}
+.tosignup{
+    text-decoration: none;
+    color: #ffc107;
+}
+.tosignup:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.tosignup:active{
+    text-decoration: none;
+    color: gray;
+}
+
+.login-title {
+    font-size: 2em;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #ffc107;
+}
+.form-item{
+    width: 80%;
+    margin: 1.5rem auto;
+}
