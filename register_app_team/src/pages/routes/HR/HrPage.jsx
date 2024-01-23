@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import HrNav from "../../components/HR/HrNav";
-import HrProjectBox from "../../components/HR/HrProjectBox";
+import HrNav from "../../../components/HR/HrNav";
+import HrProjectBox from "../../../components/HR/HrProjectBox";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import CreateButton from "../../components/CreateButton ";
+import CreateButton from "../../../components/CreateButton ";
 
 export default function HrPage() {
   const [hrProjects, setHrProjects] = useState([]);
@@ -39,7 +39,7 @@ export default function HrPage() {
 
   return (
     <div>
-      <HrNav />
+      {/* <HrNav /> */}
       {/* <div className="d-flex justify-content-between">
         <div className="ms-auto">
           <Link className="btn-group text-decoration-none" to={`/hr/create/project/`}>

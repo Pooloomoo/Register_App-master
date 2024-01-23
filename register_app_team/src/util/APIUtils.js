@@ -1,5 +1,6 @@
 import { ACCESS_TOKEN, API_BASE_URL } from '../constants';
 import { SidebarData } from '../constants/SidebarData';
+import axios from 'axios';
 
 const request = async (options) => {
   const headers = new Headers({
@@ -51,6 +52,19 @@ export function signup(signupRequest) {
     body: JSON.stringify(signupRequest),
   });
 }
+
+export function postUserData(userData) {
+  axios.post("http://localhost:8080/api/user/", userData, {
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(() => {
+        console.log("User data created successfully!");
+      })
+      .catch((error) => {
+        console.error("Error adding user data: ", error);
+      });
+}
+  
 
 export function getMenu(user) {
   return SidebarData;

@@ -1,9 +1,9 @@
 import React from 'react'
-import HrNav from '../../components/HR/HrNav'
+import HrNav from '../../../components/HR/HrNav'
 import { useParams, Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import UserProjectTable from '../../components/HR/UserProjectTable';
-import ProjectDetail from '../../components/HR/ProjectDetail';
+import UserProjectTable from '../../../components/HR/UserProjectTable';
+import ProjectDetail from '../../../components/HR/ProjectDetail';
 import axios from 'axios';
 
 export default function HrEditUser() {

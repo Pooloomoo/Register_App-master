@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../components/์NavBar";
+// import NavBar from "../components/์NavBar";
 import { Link } from "react-router-dom";
 import '../../StyleComponent/index.css';
 import { useRouteError } from "react-router-dom";

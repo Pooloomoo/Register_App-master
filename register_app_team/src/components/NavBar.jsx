@@ -2,10 +2,11 @@ import React from "react";
 import Logo from "../assets/Logo.svg";
 import { useState } from "react";
 import LoginPopup from "./LoginPopup";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import '../StyleComponent/NavBar.css';
 
-export default function NavBar() {
-  const [login, setLogin] = useState(false);
+export default function NavBar({onLogout}) {
+ /*  const [login, setLogin] = useState(false);
 
   const openLogin = () => {
     setLogin(true);
@@ -13,14 +14,16 @@ export default function NavBar() {
   const closeLogin = () => {
     setLogin(false);
   };
+ */
+  const navigate = useNavigate();
 
   const directToSignUp=()=>{
     navigate('/register');
   }
   return (
-    <div>
+    <div className="navcontainer">
       <header
-        className="d-flex align-items-center justify-content-between py-1 border-"
+        className="d-flex align-items-center justify-content-between py-1"
         style={{backgroundColor: '#333'}}
         id="Nav"
       >
@@ -38,7 +41,7 @@ export default function NavBar() {
             <li>
               <NavLink
                 to="/"
-                className="nav-link px-2 text-warning link-secondary"
+                className="nav-link px-2 home-link text-warning link-secondary"
               >
                 Home
               </NavLink>
@@ -49,14 +52,48 @@ export default function NavBar() {
             <li>
               <NavLink
                 to="/hr"
-                className="nav-link px-2 text-warning link-secondary"
+                className="nav-link px-2 home-link text-warning link-secondary"
               >
                 HR
               </NavLink>
             </li>
           </ul>
 
-          <div className="text-end">
+          <ul className="nav justify-content-center mb-md-0 me-3">
+            <li>
+              <NavLink
+              to='/user-profile'
+              className="nav-link px-2 home-link text-warning link-secondary"> 
+                  Status
+              </NavLink>
+            </li>
+          </ul>
+
+          <ul className="nav justify-content-center mb-md-0 me-3">
+            <li className="btn btn-warning text-light link-dark"
+            onClick={onLogout}>
+              log out
+            </li>
+          </ul>
+
+          <ul className="nav justify-content-center mb-md-0 me-3">
+            <li>
+              <NavLink
+              to='/user-profile'
+              className="nav-link px-2 home-link text-warning link-secondary"> 
+                  Status
+              </NavLink>
+            </li>
+          </ul>
+
+          <ul className="nav justify-content-center mb-md-0 me-3">
+            <li className="btn btn-warning text-light link-dark"
+            onClick={onLogout}>
+              log out
+            </li>
+          </ul>
+
+        {/*   <div className="text-end">
             <button
               type="button"
               onClick={openLogin}
@@ -81,7 +118,7 @@ export default function NavBar() {
                 Sign-up
               </button>
             </NavLink>
-          </div>
+          </div> */}
         </div>
       </header>
     </div>

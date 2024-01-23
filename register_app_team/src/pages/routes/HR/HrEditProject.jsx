@@ -1,5 +1,6 @@
 import React from 'react'
-import HrNav from '../../components/HR/HrNav'
+import HrNav from "../../../components/HR/HrNav";
+import "../../../StyleComponent/index.css";
 import { useState, useEffect } from 'react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -141,8 +142,8 @@ const HrEditProject = () => {
               value={projects.imageURL} onChange={e => setProjects({ ...projects, imageURL: e.target.value })} />
           </div> */}
           <br />
-          <button className='btn btn-warning'>Update</button>
-          <button id="cancelButton" className="btn btn-warning" onClick={(e) => { e.preventDefault(); handleCancel(); }}>
+          <button className='btn btn-warning '>Update</button>
+          <button id="cancelButton" className="btn btn-warning ms-3" onClick={(e) => { e.preventDefault(); handleCancel(); }}>
             Cancel
         </button>
         </form>

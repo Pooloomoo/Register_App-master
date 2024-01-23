@@ -1,10 +1,10 @@
-import { React, useState, useEffect } from "react";
-import "../../../StyleComponent/index.css";
+import React, { useState, useEffect } from 'react';
+import "../../StyleComponent/index.css";
 import Hr from "./hr";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-export default function hrTable() {
+export default function HrTable() {
     const [hrs, setHrs] = useState([]);
     const [reloadTable, setReloadTable] = useState(false);
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../StyleComponent/projectBox.css'
+import '../../StyleComponent/projectbox.css'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css';
 import { useNavigate, Link } from 'react-router-dom';
@@ -43,7 +43,7 @@ export default function HrProjectBox(props) {
       <div className="card mb-3" style={{ minWidth: "800px"}}>
         <div className="row g-0 ">
           <div className="col-md-3" style={{ boxShadow: '5px 4px 1px orange' }}>
-            <img src="https://assets.justinmind.com/wp-content/uploads/2018/11/Lorem-Ipsum-alternatives-768x492.png" alt="" style={{ maxWidth: "250px", minWidth: "200px", width:"100%", minHeight: "140px"}}/>
+          <img src={project.projectImages} alt="" style={{ width:'100%', height:'100%', maxWidth:'200px'}}/>
           </div>
           <div className="col-md-9" >
             <div className="card-body bg-dark "id="ProjectBox" style={{ boxShadow: '4px 4px 1px orange', paddingBottom: '15px', minHeight: "140px" }}>

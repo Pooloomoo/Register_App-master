@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import HrNav from '../../components/HR/HrNav'
+import HrNav from '../../../components/HR/HrNav'
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -57,7 +57,7 @@ export default function UserProjectEditUserProject() {
 
   return (
     <div className="container">
-      <HrNav />
+      {/* <HrNav /> */}
       <div className='d-flex w-100 vh-100 justify-content-center align-items-center'>
         <div className='w-50 border bg-dark text-white p-5'>
           <form onSubmit={handleSubmit}>

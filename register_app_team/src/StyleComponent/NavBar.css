@@ -1,0 +1,24 @@
+.navcontainer{
+    width: 100%;
+}
+/* Add this CSS to NavBar.css */
+
+/* Reset default focus outline */
+.nav-link:focus {
+    outline: none;
+  }
+  
+  /* Style for Home link */
+  .nav-link.home-link:hover {
+    color: #ffc107; /* Text color when hovering over Home */
+    text-decoration: none; /* Underline when hovering over Home */
+  }
+  
+  /* Style for HR link */
+  .nav-link.hr-link:hover {
+    color: #ffc107; /* Text color when hovering over HR */
+    text-decoration: none; /* Underline when hovering over HR */
+  }
+  
+  /* Add these class names to your corresponding NavLink components in the NavBar component */
+  

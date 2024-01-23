@@ -1,10 +1,10 @@
 // AuthPopup.js
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../../StyleComponent/Login.css";
+import "../StyleComponent/Login.css";
 import { NavLink } from "react-router-dom";
 import { IoLogIn } from "react-icons/io5";
-import RegisterForm from "../routes/RegisterForm";
+// import RegisterForm from "../routes/RegisterForm";
 
 export default function LoginPopup({ showPopup, onClose }) {
   const [email, setEmail] = useState("");

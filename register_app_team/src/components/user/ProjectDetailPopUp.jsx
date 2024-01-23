@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../../StyleComponent/projectDetail.css";
+import "../../StyleComponent/projectdetail.css";
 import axios from "axios";
 
 export default function ProjectDetailPopUp(props) {

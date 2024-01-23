@@ -1,58 +1,97 @@
 import React, { useState } from "react";
-import HrNav from "../../components/HR/HrNav";
+import HrNav from "../../../components/HR/HrNav";
 import "../../../StyleComponent/index.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-function HRCreateProject() {
+function HrCreateProject() {
   // State for form fields
-  const [projectName, setProjectName] = useState("");
-  const [projectDetail, setProjectDetail] = useState("");
-  const [startingDate, setStartingDate] = useState("");
-  const [closingDate, setClosingDate] = useState("");
-  const [projectSalary, setProjectSalary] = useState(0.0);
-  const [projectPosition, setProjectPosition] = useState("");
-  const [projectAmount, setProjectAmount] = useState(0);
-  const [projectEducation, setProjectEducation] = useState("");
-  const [projectImage, setProjectImage] = useState("");
+  const [project, setProject] = useState({
+    projectName: "",
+    projectDetail: "",
+    startDate: "",
+    endDate: "",
+    salary: 0.0,
+    position: "",
+    amount: 0,
+    educationLevel: "",
+    projectImage: "",
+  });
   const navigate = useNavigate();
+  const {projectName, projectDetail,startDate,endDate,salary,position,amount,educationLevel,projectImage} = project;
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const id = 0;
-    const project = {
-      // id: id,
-      projectName,
-      projectDetail,
-      startDate: startingDate,
-      endDate: closingDate,
-      salary: projectSalary,
-      position: projectPosition,
-      amount: projectAmount,
-      educationLevel: projectEducation,
-      // imageURL: projectImage
+  
+    const projectInfo ={
+      ...project
     };
-    axios.post("http://localhost:8080/api/project/", project, {
-      headers: { "Content-Type": "application/json" },
-    })
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    axios.post("http://localhost:8080/api/project/", projectInfo,config)
       .then(() => {
         console.log("New Project added");
-        navigate(-1);
       })
       .catch((error) => {
         console.error("Error adding project:", error);
-      });
+      })
+    navigate('/hr') ;
   };
 
-  
+  const submitImage = async (files) => {
+    if (files.length > 0) {
+      const file = files[0];
+    
+      const data = new FormData();
+      data.append("file", file);
+      data.append("api_key", "468596158793514");
+      data.append("upload_preset", "ml_default");
+      data.append("cloud_name", "dhqymz8ub");
+    
+      try {
+        const response = await axios.post("https://api.cloudinary.com/v1_1/dhqymz8ub/auto/upload", data);
+        console.log(response.data.url);
+        setProject((prevProject) => {
+          const updatedProject = {
+            ...prevProject,
+            projectImage: response.data.url
+          };
+          console.log(updatedProject.projectImage); 
+          return updatedProject;
+        });
+      } catch (error) {
+        console.error(error);
+        if (error.response) {
+          console.error("Cloudinary API Error Response:", error.response.data);
+        }
+      }
+    }
+  };
+
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    console.log(`Name: ${name}, Value: ${value}`);
+    setProject((prevProject) => ({
+      ...prevProject,
+      [name]: value,
+    }));
+  };
 
   return (
     <div>
-      <HrNav />
+      {/* <HrNav /> */}
       <div className="vh-100">
-        <div className="container mt-5 ">
+        {" "}
+        {/* Add custom class for background color */}
+        <div className="container mt-5">
+          <div className="createBox p-4">
             <h2 className="mb-4">Create Project</h2>
-          <div className="createBox p-4 bg-dark">
+                       
             <form onSubmit={handleSubmit}>
               {/* Project Name */}
               <div className="mb-3">
@@ -63,8 +102,9 @@ function HRCreateProject() {
                   type="text"
                   id="projectName"
                   className="form-control"
+                  name="projectName"
                   value={projectName}
-                  onChange={(e) => setProjectName(e.target.value)}
+                  onChange={onInputChange}
                   placeholder="Enter project name"
                   required
                 />
@@ -84,7 +124,7 @@ function HRCreateProject() {
                     (e) => {
                       const inputValue = e.target.value;
                       if (inputValue.length <= 500) {
-                        setProjectDetail(inputValue);
+                        onInputChange(e);
                       }
                     }
                   }
@@ -100,91 +140,121 @@ function HRCreateProject() {
 
               {/* Application Starting Date */}
               <div className="mb-3">
-                <label htmlFor="startingDate" className="form-label">
+                <label htmlFor="startDate" className="form-label">
                   Application Starting Date:
                 </label>
                 <input
                   type="date"
-                  id="startingDate"
+                  id="startDate"
+                  name="startDate"
                   className="form-control"
-                  // value={formatDate(startingDate)}
-                  onChange={(e) => setStartingDate(e.target.value)}
+                  value={startDate}
+                  onChange={onInputChange}
                   required
                 />
               </div>
 
               {/* Application Closing Date */}
               <div className="mb-3">
-                <label htmlFor="closingDate" className="form-label">
+                <label htmlFor="endDate" className="form-label">
                   Application Closing Date:
                 </label>
                 <input
                   type="date"
-                  id="closingDate"
+                  id="endDate"
                   className="form-control"
-                  // value={formatDate(startingDate)}
-                  onChange={(e) => setClosingDate(e.target.value)}
+                  name="endDate"
+                  value={endDate}
+                  onChange={onInputChange}
                   required
                 />
               </div>
 
               <div className="mb-3">
-                <label htmlFor="projectSalary" className="form-label">
+                <label htmlFor="salary" className="form-label">
                   Salary:
                 </label>
                 <input
                   type="number"
-                  id="projectSalary"
+                  id="salary"
+                  name="salary"
                   className="form-control"
-                  value={projectSalary}
+                  value={salary}
                   onInput={(e) => {
                     const enteredValue = e.target.value;
                     // Check if the entered value is negative
-                    (enteredValue < 0) ? setProjectSalary(0) : setProjectSalary(enteredValue);
-                    }}
+                    if (enteredValue < 0) {
+                      // If negative, set the value to 0
+                      setProject((prevProject) => ({
+                        ...prevProject,
+                        salary: 0,
+                      }));
+                    } else {
+                      // If non-negative, update the state with the entered value
+                      setProject((prevProject) => ({
+                        ...prevProject,
+                        salary: enteredValue,
+                      }));
+                    }
+                  }}
                 />
               </div>
 
               <div className="mb-3">
-                <label htmlFor="projectPosition" className="form-label">
+                <label htmlFor="position" className="form-label">
                   Position:
                 </label>
                 <input
                   type="text"
-                  id="projectPosition"
+                  id="position"
                   className="form-control"
-                  value={projectPosition}
+                  name="position"
+                  value={position}
                   placeholder="Enter position"
-                  onChange={(e) => setProjectPosition(e.target.value)}
+                  onChange={onInputChange}
                 />
               </div>
 
               <div className="mb-3">
-                <label htmlFor="projectAmount" className="form-label">
+                <label htmlFor="amount" className="form-label">
                   Amount:
                 </label>
                 <input
                   type="number"
-                  id="projectAmount"
+                  id="amount"
+                  name="amount"
                   className="form-control"
-                  value={projectAmount}
+                  value={amount}
                   onInput={(e) => {
                     const enteredValue = e.target.value;
                     // Check if the entered value is negative
-                    (enteredValue < 0) ? setProjectAmount(0) : setProjectAmount(enteredValue);
-                    }}
+                    if (enteredValue < 0) {
+                      // If negative, set the value to 0
+                      setProject((prevProject) => ({
+                        ...prevProject,
+                        amount: 0,
+                      }));
+                    } else {
+                      // If non-negative, update the state with the entered value
+                      setProject((prevProject) => ({
+                        ...prevProject,
+                        amount: enteredValue,
+                      }));
+                    }
+                  }}
                 />
               </div>
 
               <div className="mb-3">
-                <label htmlFor="projectEducation" className="form-label">
+                <label htmlFor="educationLevel" className="form-label">
                   Project Education:
                 </label>
                 <select
-                  id="projectEducation"
+                  id="educationLevel"
                   className="form-control"
-                  value={projectEducation}
-                  onChange={(e) => setProjectEducation(e.target.value)}
+                  name="educationLevel"
+                  value={educationLevel}
+                  onChange={onInputChange}
                 >
                   <option value="">Select Education</option>
                   <option value="HIGH_SCHOOL">High School</option>
@@ -195,7 +265,7 @@ function HRCreateProject() {
               </div>
 
               {/* Project Image */}
-              <div className="mb-3">
+               <div className="mb-3">
                 <label htmlFor="projectImage" className="form-label">
                   Project Image URL:
                 </label>
@@ -203,27 +273,18 @@ function HRCreateProject() {
                   type="file"
                   id="projectImage"
                   className="form-control"
-                  onChange={(e) => setProjectImage(e.target.files[0])}
-                  required={false}
-                  accept={".jpg, .png, .jpeg"}
+                  name="projectImage"
+                  onChange={(e) => {submitImage(e.target.files)}}
+                  required={false}  
                 />
-              </div>
+              </div> 
 
-              {/* Submit Button */}
-              
-              <div className="d-flex justify-content-between">
-                <div className="me-auto">
-                  <button type="submit" className="btn btn-warning link-light text-dark d-md-block">
-                    Create Project
-                  </button>
-                  <Link className="btn-group text-decoration-none" to={`/hr`}>
-                    <button id="cancleButton" type="button" className="btn btn-warning text-dark d-md-block link-light">
-                      Cancle
-                    </button>
-                  </Link>
-                </div>
-              </div>
-              
+              <button
+                type="submit"
+                className="btn btn-warning link-light text-dark mb-3"
+              >
+                Create Project
+              </button>
             </form>
           </div>
         </div>
@@ -235,7 +296,7 @@ function HRCreateProject() {
   );
 }
 
-export default HRCreateProject;
+export default HrCreateProject;
 
   // const TextAreaForm = (props) => {
   //   const maxCharacters = props.maxCharacters;

@@ -1,10 +1,10 @@
 import { React, useState, useEffect } from "react";
-import "../../StyleComponent/index.css";
+import "../StyleComponent/index.css";
 import User from "./admin/user";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-export default function userTable() {
+export default function UserTable() {
 
     const [users, setUsers] = useState([]);
     const [reLoadTable, setReloadTable] = useState(false);
