@@ -51,7 +51,7 @@ function HRCreateProject() {
       <div className="vh-100">
         <div className="container mt-5 ">
             <h2 className="mb-4">Create Project</h2>
-          <div className="createBox p-4 bg-dark">
+          <div className="createBox p-4">
             <form onSubmit={handleSubmit}>
               {/* Project Name */}
               <div className="mb-3">
@@ -212,7 +212,7 @@ function HRCreateProject() {
               
               <div className="d-flex justify-content-between">
                 <div className="me-auto">
-                  <button type="submit" className="btn btn-warning link-light text-dark d-md-block">
+                  <button type="submit" className="btn btn-warning link-light text-dark d-md-block mb-3">
                     Create Project
                   </button>
                   <Link className="btn-group text-decoration-none" to={`/hr`}>

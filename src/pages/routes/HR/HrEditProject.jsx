@@ -47,7 +47,7 @@ const HrEditProject = () => {
   return (
     <div className="container">
       <div className='d-flex flex-column min-vh-100 justify-content-center align-items-center'>
-        <div className='border bg-dark text-white p-5 flex-grow-1'
+        <div className=' p-5 flex-grow-1'
         style={{width:'80%'}}>
           <form onSubmit={handleSubmit}>
             <div>
@@ -141,8 +141,8 @@ const HrEditProject = () => {
               value={projects.imageURL} onChange={e => setProjects({ ...projects, imageURL: e.target.value })} />
           </div> */}
           <br />
-          <button className='btn btn-warning'>Update</button>
-          <button id="cancelButton" className="btn btn-warning" onClick={(e) => { e.preventDefault(); handleCancel(); }}>
+          <button className='btn btn-warning '>Update</button>
+          <button id="cancelButton" className="btn btn-warning ms-3" onClick={(e) => { e.preventDefault(); handleCancel(); }}>
             Cancel
         </button>
         </form>

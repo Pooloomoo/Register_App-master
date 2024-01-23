@@ -5,8 +5,6 @@ import NavBar from './NavBar';
 const ChildrenLayout = ({ children }) => (
   <div>
     <div className="mb-5">
-    <NavBar />
-
     </div>
     {children}
   </div>

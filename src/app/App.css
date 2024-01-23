@@ -120,10 +120,10 @@ main {
   display: flex;
   align-items: center;
   height: 3.2rem;
-  color: var(--text-primary);
+  /* color: var(--text-primary); */
   text-decoration: none;
-  -webkit-filter: grayscale(100%) opacity(0.7);
-  filter: grayscale(100%) opacity(0.7);
+  /* -webkit-filter: grayscale(100%) opacity(0.7); */
+  /* filter: grayscale(100%) opacity(0.7); */
   -webkit-transition: var(--transition-speed);
   transition: var(--transition-speed);
 }

@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route ,createBrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  createBrowserRouter,
+} from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { getCurrentUser, getMenu, removeCurrentUser } from "../util/APIUtils";
 import { userContext } from "../util/userContext";
-import { COMPANY_NAME } from '../constants';
-import Main , {routeList}from "../components/layout/Main";
+import { COMPANY_NAME } from "../constants";
+import Main, { routeList } from "../components/layout/Main";
 import Navbar from "../components/NavBar";
 import Sidebar from "../components/layout/Sidebar";
 import Footer from "../components/layout/Footer";
@@ -15,11 +20,11 @@ import Home from "../pages/home/Home";
 import NotFound from "../pages/notfound/NotFound";
 import Signup from "../pages/user/signup/Signup";
 import "./App.css";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { RouterProvider } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import "../StyleComponent/index.css";
-import HRCreateProject from "../pages/routes/HR/HRCreateProject"
+import HRCreateProject from "../pages/routes/HR/HRCreateProject";
 // import ErrorPage from "./routes/ErrorPage";
 import RootLayout from "../components/RootLayout";
 import UserMainPage from "../pages/routes/user/UserMainPage";
@@ -29,17 +34,18 @@ import RegisterForm from "../pages/routes/RegisterForm";
 import HrPage from "../pages/routes/HR/HrPage";
 import TermOfService from "../pages/routes/TermOfService";
 import PrivacyPolicy from "../pages/routes/PrivacyPolicy";
-import EditHr from '../pages/routes/admin/editHr';
-import EditUser from '../pages/routes/admin/editUser';
-import CreateUser from '../pages/routes/admin/createUser';
-import CreateHr from '../pages/routes/admin/createHr';
-import AdminMainHr from '../pages/routes/admin/adminMainHr';
-import AdminMainUser from '../pages/routes/admin/adminMainUser';
+import EditHr from "../pages/routes/admin/editHr";
+import EditUser from "../pages/routes/admin/editUser";
+import CreateUser from "../pages/routes/admin/createUser";
+import CreateHr from "../pages/routes/admin/createHr";
+import AdminMainHr from "../pages/routes/admin/adminMainHr";
+import AdminMainUser from "../pages/routes/admin/adminMainUser";
 import UserProfile from "../pages/routes/user/userProfile";
 import HrEditProject from "../pages/routes/HR/HrEditProject";
-import HrManageUserProject from '../pages/routes/HR/HrManageUserProject';
+import HrManageUserProject from "../pages/routes/HR/HrManageUserProject";
 import HrEditUserProject from "../pages/routes/HR/HrEditUserProject";
-import errorPage from "../pages/routes/errorPage";
+import ErrorPage from "../pages/routes/errorPage";
+import NavBar from "../components/NavBar";
 function App(props) {
   const [authenticated, setAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -48,7 +54,7 @@ function App(props) {
 
   useEffect(() => {
     loadCurrentlyLoggedInUser();
-   /* if (currentUser) {
+    /* if (currentUser) {
       console.log("userfound");
       setAuthenticated(true);
     }*/
@@ -62,7 +68,7 @@ function App(props) {
     console.log("toggle show sidebar");
   };
 
-  const loadCurrentlyLoggedInUser =  async () => {
+  const loadCurrentlyLoggedInUser = async () => {
     setLoading(true);
     /*getCurrentUser()
       .then((response) => {
@@ -75,14 +81,14 @@ function App(props) {
         removeCurrentUser();
         setLoading(false);
       });*/
-      //setTimeout(()=>{setLoading(false)}, 500);
+    //setTimeout(()=>{setLoading(false)}, 500);
 
     try {
       let response = await getCurrentUser();
       setCurrentUser(response);
       setAuthenticated(true);
       setLoading(false);
-    } catch (error){
+    } catch (error) {
       removeCurrentUser();
       setLoading(false);
     }
@@ -98,24 +104,34 @@ function App(props) {
     //Alert.success("You're safely logged out!");
     toast("You're safely logged out!");
     window.history.pushState({}, undefined, "/");
-
   };
   const internalRouter = createBrowserRouter([
     {
       path: "/",
-      element: <InternalRoot currentUser={currentUser} showSidebar={showSidebar} toggleSidebar={toggleSidebar} handleLogout={handleLogout} />,
-      errorElement: <errorPage />,
+      element: (
+        <InternalRoot
+          currentUser={currentUser}
+          showSidebar={showSidebar}
+          toggleSidebar={toggleSidebar}
+          handleLogout={handleLogout}
+        />
+      ),
+      errorElement: <ErrorPage />,
 
       children: [
         {
-          errorElement: <errorPage />,
+          errorElement: <ErrorPage />,
           children: [
-            
             // ...routeList
 
             {
               path: "/",
               element: <RootLayout />,
+              // errorElement: <ErrorPage />,
+            },
+            {
+              path: "/user-profile",
+              element: <UserProfile />,
               // errorElement: <ErrorPage />,
             },
             {
@@ -150,32 +166,27 @@ function App(props) {
             },
             {
               path: "/edit/user/:id",
-              element: <EditUser/>
+              element: <EditUser />,
             },
             {
               path: "/edit/hr/:id",
-              element: <EditHr/>
+              element: <EditHr />,
             },
             {
               path: "/create/user",
-              element: <CreateUser/>
+              element: <CreateUser />,
             },
             {
               path: "/create/hr",
-              element: <CreateHr/>
+              element: <CreateHr />,
             },
             {
               path: "/admin/hr",
-              element: <AdminMainHr/>,
+              element: <AdminMainHr />,
             },
             {
               path: "/admin/user",
-              element: <AdminMainUser/>,
-            },
-            {
-              path: "/hr/user-profile",
-              element: <UserProfile />,
-              // errorElement: <ErrorPage />,
+              element: <AdminMainUser />,
             },
             {
               path: "/hr/edit/project/:id",
@@ -187,32 +198,42 @@ function App(props) {
             },
             {
               path: "/hr/user/project/:id",
-              element: <HrManageUserProject />
+              element: <HrManageUserProject />,
             },
             {
               path: "/hr/edit/userproject/:id",
-              element: <HrEditUserProject />
-            }
+              element: <HrEditUserProject />,
+            },
           ],
         },
       ],
     },
   ]);
 
-
   const externalRouter = createBrowserRouter([
     {
       path: "/",
-      element: <ExternalRoot  handleLogout={handleLogout} />,
-      errorElement: <errorPage />,
+      element: <ExternalRoot handleLogout={handleLogout} />,
+      errorElement: <ErrorPage />,
       children: [
         {
-          errorElement: <errorPage />,
+          errorElement: <ErrorPage />,
           children: [
-            {index:true, Component: Home},
-            {path:"login", element: <Login {...props} handleLoginSuccess={loadCurrentlyLoggedInUser} />},
-            {path:"signup", element : <Signup authenticated={authenticated} {...props} />},
-            {path:"forgot", element : <ForgetPassword/>}
+            { index: true, Component: Home },
+            {
+              path: "login",
+              element: (
+                <Login
+                  {...props}
+                  handleLoginSuccess={loadCurrentlyLoggedInUser}
+                />
+              ),
+            },
+            {
+              path: "signup",
+              element: <Signup authenticated={authenticated} {...props} />,
+            },
+            { path: "forgot", element: <ForgetPassword /> },
           ],
         },
       ],
@@ -223,21 +244,19 @@ function App(props) {
     return <LoadingIndicator />;
   } else {
     if (authenticated) {
-      
-      return (
-          <RouterProvider router={internalRouter}/>
-      );
+      return <RouterProvider router={internalRouter} />;
     } else {
-      return (
-        <RouterProvider router={externalRouter} />
-      );
+      return <RouterProvider router={externalRouter} />;
     }
   }
 }
 
-
-
-function InternalRoot({currentUser, showSidebar , toggleSidebar, handleLogout}){
+function InternalRoot({
+  currentUser,
+  showSidebar,
+  toggleSidebar,
+  handleLogout,
+}) {
   const ctxValue = {
     user: currentUser,
     doLogout: handleLogout,
@@ -246,32 +265,33 @@ function InternalRoot({currentUser, showSidebar , toggleSidebar, handleLogout}){
 
   return (
     <div className="wrapper">
+      <userContext.Provider value={ctxValue}>
+        {/* <Sidebar companyName={COMPANY_NAME} showSidebar={showSidebar} toggleSidebar={toggleSidebar} onLogout={handleLogout} /> */}
+        <div className="content-wrapper">
+          {/* <Navbar showSidebar={showSidebar} toggleSidebar={toggleSidebar} onLogout={handleLogout} /> */}
+          {currentUser ? (
+            <>
+              <Navbar onLogout={handleLogout} />
+            </>
+          ) : null}
+          <Main />
+          {/* <Footer /> */}
+        </div>
+      </userContext.Provider>
 
-        <userContext.Provider value={ctxValue}>
-          {/* <Sidebar companyName={COMPANY_NAME} showSidebar={showSidebar} toggleSidebar={toggleSidebar} onLogout={handleLogout} /> */}
-          <div className="content-wrapper">
-            {/* <Navbar showSidebar={showSidebar} toggleSidebar={toggleSidebar} onLogout={handleLogout} /> */}
-            <Navbar/>
-            <Main />
-            <Footer />
-          </div>
-        </userContext.Provider>
-
-        <ToastContainer autoClose={3000} pauseOnHover />
-
+      <ToastContainer autoClose={3000} pauseOnHover />
     </div>
   );
 }
 
-function ExternalRoot({handleLogout }){
-
+function ExternalRoot({ handleLogout }) {
   return (
     <div className="app">
       <div className="app-top-box">
         <AppHeader onLogout={handleLogout} />
       </div>
-      <div className="app-body">        
-        <Outlet/>
+      <div className="app-body">
+        <Outlet />
       </div>
       <ToastContainer autoClose={3000} pauseOnHover />
     </div>
