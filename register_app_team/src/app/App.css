@@ -35,7 +35,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #6449b8;
+  background: #ffc107;
 }
 
 a {
@@ -55,8 +55,8 @@ a {
 }
 
 main {
-  padding: 1rem;
-  margin-top: var(--top-header-height);
+  /* padding: 1rem; */
+  /* margin-top: var(--top-header-height); */
   scrollbar-width: thin;
   scrollbar-color: blue gray;
 }

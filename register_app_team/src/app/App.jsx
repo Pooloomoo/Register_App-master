@@ -10,7 +10,7 @@ import { getCurrentUser, getMenu, removeCurrentUser } from "../util/APIUtils";
 import { userContext } from "../util/userContext";
 import { COMPANY_NAME } from "../constants";
 import Main, { routeList } from "../componentsAuth/layout/Main";
-import Navbar from "../componentsAuth/NavBar";
+// import Navbar from "../componentsAuth/NavBar";
 // import Sidebar from "../components/layout/Sidebar";
 // import Footer from "../components/layout/Footer";
 import LoadingIndicator from "../componentsAuth/common/LoadingIndicator";
@@ -29,7 +29,7 @@ import HRCreateProject from "../pages/routes/HR/HrCreateProject";
 import RootLayout from "../components/RootLayout";
 import UserMainPage from "../pages/routes/user/UserMainPage";
 import ForgetPassword from "../pages/routes/ForgetPassword";
-import RegisterForm from "../pages/routes/RegisterForm";
+// import RegisterForm from "../pages/routes/RegisterForm";
 // import RegisterPage from "./components/RegisterPage";
 import HrPage from "../pages/routes/HR/HrPage";
 import TermOfService from "../pages/routes/TermOfService";
@@ -45,7 +45,7 @@ import HrEditProject from "../pages/routes/HR/HrEditProject";
 import HrManageUserProject from "../pages/routes/HR/HrManageUserProject";
 import HrEditUserProject from "../pages/routes/HR/HrEditUserProject";
 import ErrorPage from "../pages/routes/errorPage";
-// import NavBar from "../components/NavBar";
+import NavBar from "../components/NavBar";
 function App(props) {
   const [authenticated, setAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -137,11 +137,6 @@ function App(props) {
             {
               path: "/home",
               element: <UserMainPage />,
-              // errorElement: <ErrorPage />,
-            },
-            {
-              path: "/register",
-              element: <RegisterForm />,
               // errorElement: <ErrorPage />,
             },
             {
@@ -267,11 +262,11 @@ function InternalRoot({
     <div className="wrapper">
       <userContext.Provider value={ctxValue}>
         {/* <Sidebar companyName={COMPANY_NAME} showSidebar={showSidebar} toggleSidebar={toggleSidebar} onLogout={handleLogout} /> */}
-        <div className="content-wrapper">
+        <div className="content-wrapper" style={{margin:'0'}}>
           {/* <Navbar showSidebar={showSidebar} toggleSidebar={toggleSidebar} onLogout={handleLogout} /> */}
           {currentUser ? (
             <>
-              <Navbar onLogout={handleLogout} />
+              <NavBar onLogout={handleLogout} />
             </>
           ) : null}
           <Main />

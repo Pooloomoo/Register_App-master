@@ -76,23 +76,6 @@ export default function NavBar({onLogout}) {
             </li>
           </ul>
 
-          <ul className="nav justify-content-center mb-md-0 me-3">
-            <li>
-              <NavLink
-              to='/user-profile'
-              className="nav-link px-2 home-link text-warning link-secondary"> 
-                  Status
-              </NavLink>
-            </li>
-          </ul>
-
-          <ul className="nav justify-content-center mb-md-0 me-3">
-            <li className="btn btn-warning text-light link-dark"
-            onClick={onLogout}>
-              log out
-            </li>
-          </ul>
-
         {/*   <div className="text-end">
             <button
               type="button"

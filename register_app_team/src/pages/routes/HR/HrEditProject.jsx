@@ -1,6 +1,5 @@
 import React from 'react'
-import HrNav from "../../../components/HR/HrNav";
-import "../../../StyleComponent/index.css";
+import HrNav from '../../../components/HR/HrNav'
 import { useState, useEffect } from 'react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -47,9 +46,9 @@ const HrEditProject = () => {
 
   return (
     <div className="container">
-      <HrNav />
       <div className='d-flex flex-column min-vh-100 justify-content-center align-items-center'>
-        <div className='w-50 border bg-dark text-white p-5 flex-grow-1'>
+        <div className=' p-5 flex-grow-1'
+        style={{width:'80%'}}>
           <form onSubmit={handleSubmit}>
             <div>
               <h1>{`EDIT PROJECT ID: ${projects.id}`}</h1>
@@ -58,11 +57,6 @@ const HrEditProject = () => {
             <label htmlFor='projectName' className="form-label">Project Name:</label>
             <input type='text' name='projectName' className='form-control' placeholder='Enter Project Name' required
               value={projects.projectName} onChange={e => setProjects({ ...projects, projectName: e.target.value })} />
-          </div>
-          <div className="mb-3">
-            <label htmlFor='projectDetail' className="form-label">Last Name:</label>
-            <input type='text' name='projectDetail' className='form-control' placeholder='Enter Project Detail' required
-              value={projects.projectDetail} onChange={e => setProjects({ ...projects, projectDetail: e.target.value })} />
           </div>
           <div className="mb-3">
             <label htmlFor="projectDetail" className="form-label">Project Detail:</label>
@@ -82,7 +76,7 @@ const HrEditProject = () => {
               required
             ></textarea>
             <small className="form-text text-muted">
-              {500 - projects.projectDetail.length} characters remaining (max 600)
+              {500 - projects.projectDetail.length} characters remaining (max 500)
             </small>
           </div>
           <div className="mb-3">

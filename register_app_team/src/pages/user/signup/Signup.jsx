@@ -32,6 +32,9 @@ function SignupForm(props) {
     username: "",
     email: "",
     password: "",
+    user: {
+      id: ""
+    }
   });
   const navigate = useNavigate();
 
@@ -76,63 +79,61 @@ function SignupForm(props) {
     const target = event.target;
     const inputName = target.name;
     const inputValue = target.value;
-    let x = { ...formData, [inputName]: inputValue };
-    //console.log(x);
-    setFormData(x);
+      // Update formData
+    let updatedFormData = { ...formData, [inputName]: inputValue };
+    setFormData(updatedFormData);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      user: { email: formData.email },
+    }));
+    
+    // Conditionally update userData
+    if (inputName === "email" || inputName === "password") {
+      let updatedUserData = { ...userData, [inputName]: inputValue };
+      setUserData(updatedUserData);
+    }
   }
+  
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+    // Now you can access updated `userData` for the console log.
+    console.log("user data:", userData);
+    
+    try {
+      const userDataResponse = await axios.post(
+        "http://localhost:8080/api/user/",
+        userData,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    
+    } catch (error) {
+      console.error("Adding user data error: " + error);
+      Alert.error(
+        (error && error.message) ||
+        "Oops! Something went wrong. Please try again!"
+      );
+    }
+    
+    // Continue with the signup request
     const signUpRequest = Object.assign({}, formData);
-
     try {
       const response = await signup(signUpRequest);
       Alert.success(
         "You're successfully registered. Please login to continue!"
       );
-      setUserData((prevUserData) => {
-        console.log("Updated User Data:", {
-          ...prevUserData,
-          firstName: name,
-          lastName,
-          email: formData.email,
-          password: formData.password,
-          phoneNumber: phone,
-          educationLevel: userEducation,
-          address,
-        })});
-    } catch (error) {
-      //console.log(error);
-      Alert.error(
-        (error && error.message) ||
-          "Oops! Something went wrong. Please try again!"
-      );
-    }
-    
-    
-    console.log("user data: " + userData.firstName + userData.lastName + userData.email + userData.educationLevel + userData.phoneNumber + userData.password + userData.address);
-    try {
-      // const response = await signup(formData);
-      // Alert.success(
-      //   "You're successfully registered. Please login to continue!"
-      // );
-      const userDataResponse = await axios.post(
-        "http://localhost:8080/api/user/", userData,
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      console.log(userDataResponse.data);
-
       navigate("/login");
     } catch (error) {
-      console.error("Adding user data error: " + error);
+      console.error("Sign-up error: " + error);
       Alert.error(
         (error && error.message) ||
-          "Oops! Something went wrong. Please try again!"
+        "Oops! Something went wrong. Please try again!"
       );
     }
+    
+
   }
 
   useEffect(() => {
@@ -146,6 +147,7 @@ function SignupForm(props) {
     const result = USER_REGEX.test(lastName);
     // console.log("LASTNAME_REGEX " + result);
     // console.log(lastName);
+
     setValidLastName(result);
   }, [lastName]);
 
@@ -190,9 +192,16 @@ function SignupForm(props) {
             id="nameInput"
             placeholder="Name"
             className="form-control"
+            name="userData.firstName"
             ref={nameRef}
             autoComplete="off"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              let x = { ...userData,
+                firstName: e.target.value };
+             //console.log(x);
+             setUserData(x);
+              
+            }}
             required
             /* aria-invalid = {validName ? "false" : "true"}
                             aria-describedby="nameNote" */
@@ -221,9 +230,16 @@ function SignupForm(props) {
             id="lastNameInput"
             placeholder="Last Name"
             className="form-control"
+            name="userData.lastName"
             ref={lastNameRef}
             autoComplete="off"
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={(e) => {
+              let x = { ...userData,
+                lastName: e.target.value };
+             //console.log(x);
+             setUserData(x);
+              
+            }}
             required
             /* aria-invalid = {validLastName ? "false" : "true"}
                             aria-describedby="lastNameNote" */
@@ -251,8 +267,15 @@ function SignupForm(props) {
             id="userEducation"
             ref={eduRef}
             className="form-control"
-            value={userEducation || ""} //set the value to '' when first start will has and empty value string
-            onChange={(e) => setUserEducation(e.target.value)}
+            name="userData.educationLevel"
+            // value={userEducation || ""} //set the value to '' when first start will has and empty value string
+            onChange={(e) => {
+              let x = { ...userData,
+                educationLevel: e.target.value };
+             //console.log(x);
+             setUserData(x);
+              
+            }}
             required
             onClick={() => setUserEducationFocus(true)}
             onBlur={() => setUserEducationFocus(false)}
@@ -312,7 +335,13 @@ function SignupForm(props) {
             placeholder="Phone Number"
             ref={phoneRef}
             autoComplete="off"
-            onChange={(e) => setPhone(e.target.value)}
+            name="userData.phoneNumber"
+            onChange={(e) => {
+              let x = { ...userData,
+                phoneNumber: e.target.value };
+             //console.log(x);
+             setUserData(x);
+            }}
             required
             maxLength={10}
             /* aria-invalid = {validPhone ? "false" : "true"}
@@ -344,7 +373,13 @@ function SignupForm(props) {
             autoComplete="off"
             required
             ref={addressRef}
-            onChange={(e) => setAddress(e.target.value)}
+            name="userData.address"
+            onChange={(e) => {
+              let x = { ...userData,
+                address: e.target.value };
+             //console.log(x);
+             setUserData(x);
+            }}
             onFocus={() => setAddressFocus(true)}
             onBlur={() => setAddressFocus(false)}
           />

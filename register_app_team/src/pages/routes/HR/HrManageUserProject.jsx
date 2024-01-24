@@ -73,7 +73,6 @@ export default function HrEditUser() {
 
   return (
     <div>
-      <HrNav />
       <div className="d-flex justify-content-between align-items-center mt-3">
         <h1>Hr Edit User</h1>
         <Link className="btn-group text-decoration-none" to={`/hr/`}>
