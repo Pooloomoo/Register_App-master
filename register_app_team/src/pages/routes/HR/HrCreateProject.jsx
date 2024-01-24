@@ -125,6 +125,7 @@ function HrCreateProject() {
                       const inputValue = e.target.value;
                       if (inputValue.length <= 500) {
                         onInputChange(e);
+                        setProject((prev) => ({...prev, projectDetail: inputValue}));
                       }
                     }
                   }
@@ -180,6 +181,7 @@ function HrCreateProject() {
                   name="salary"
                   className="form-control"
                   value={salary}
+                  required
                   onInput={(e) => {
                     const enteredValue = e.target.value;
                     // Check if the entered value is negative
@@ -212,6 +214,7 @@ function HrCreateProject() {
                   value={position}
                   placeholder="Enter position"
                   onChange={onInputChange}
+                  required
                 />
               </div>
 
@@ -225,6 +228,7 @@ function HrCreateProject() {
                   name="amount"
                   className="form-control"
                   value={amount}
+                  required
                   onInput={(e) => {
                     const enteredValue = e.target.value;
                     // Check if the entered value is negative
@@ -255,8 +259,9 @@ function HrCreateProject() {
                   name="educationLevel"
                   value={educationLevel}
                   onChange={onInputChange}
+                  required
                 >
-                  <option value="">Select Education</option>
+                  <option value="" disabled defaultValue>Select Education</option>
                   <option value="HIGH_SCHOOL">High School</option>
                   <option value="BACHELORS_DEGREE">Bachelor's Degree</option>
                   <option value="MASTERS_DEGREE">Master's Degree</option>
@@ -275,7 +280,8 @@ function HrCreateProject() {
                   className="form-control"
                   name="projectImage"
                   onChange={(e) => {submitImage(e.target.files)}}
-                  required={false}  
+                  required={false}
+                  accept={".jpg, .png, .jpeg"}  
                 />
               </div> 
 

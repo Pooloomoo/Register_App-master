@@ -1,13 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "../../StyleComponent/projectdetail.css";
 import axios from "axios";
+import { getCurrentUser } from "../../util/APIUtils";
 
 export default function ProjectDetailPopUp(props) {
   const { showPopup, onClose, project } = props;
   const [statuses, setStatuses] = useState([]);
   const [lastStatusId, setLastStatusId] = useState(null);
   const [projectId, setProjectId] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [reloadStatus, setReloadStatus] = useState(false);
 
+  useEffect(() => {
+    async function fetchCurrentUser() {
+      try {
+        const user = await getCurrentUser();
+        setCurrentUser(user);
+      } catch (error) {
+        // Handle error fetching user data
+        console.error("Error fetching current user:", error);
+      }
+    }
+  
+    fetchCurrentUser();
+  }, []);
+  
   
   useEffect(() => {
     axios.get('http://localhost:8080/api/status/')
@@ -18,13 +35,14 @@ export default function ProjectDetailPopUp(props) {
     })
       .catch((error) => console.error('Error fetching statuses: ', error));
     setProjectId((project.id));
-  }, [statuses]);
+  }, [reloadStatus]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(currentUser)
+
     // const id = 0;
     const status = {
-      // "id": id,
       "score": null,
       "userStatus": "Apply_Success",
     };
@@ -33,11 +51,10 @@ export default function ProjectDetailPopUp(props) {
         headers: { "Content-Type": "application/json" },
       })
       console.log("New status added");
-
-      const userID = 1;
+      setReloadStatus((prev) => !prev);
       const userProject = {
         // id: id,
-        user: {id: userID},
+        user: {email: currentUser.email},
         project: {id: projectId},
         status: {id: lastStatusId + 1}
       };

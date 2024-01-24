@@ -101,10 +101,13 @@ function App(props) {
     setCurrentUser(null);
     setShowSidebar(false);
 
+
     //Alert.success("You're safely logged out!");
-    toast("You're safely logged out!");
-    window.history.pushState({}, undefined, "/");
+    //toast("You're safely logged out!");
+    //window.history.pushState({}, undefined, "/");
+    window.location.href="http://localhost:3000/";
   };
+  
   const internalRouter = createBrowserRouter([
     {
       path: "/",

@@ -21,8 +21,12 @@ export default function ProjectBox(props) {
     <div className="container d-flex justify-content-center mb-3" >
       <div className="card mb-3" style={{minWidth: "800px"}}>
         <div className="row g-0 ">
-          <div className="col-md-3" style={{ boxShadow: '5px 4px 1px orange' }}>
-          <img src={project.projectImages} alt="image" style={{width:'200px', height:'100%' }}/>
+        <div className="col-md-3" style={{ boxShadow: "5px 4px 1px orange" }}>
+            <img
+              src={project.projectImage || "https://res.cloudinary.com/dhqymz8ub/image/upload/v1705915848/project_psbis5.jpg"}
+              alt="image"
+              style={{ maxWidth: "200px",maxHeight:"200px", width: "200px", height: "200px" }}
+            />
           </div>
           <div className="col-md-9" >
             <div className="card-body bg-dark "id="ProjectBox" style={{ boxShadow: '4px 4px 1px orange', minHeight: "128px" }}>

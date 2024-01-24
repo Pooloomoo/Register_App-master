@@ -42,8 +42,13 @@ export default function HrProjectBox(props) {
    <div className="container d-flex justify-content-center mt-5" >
       <div className="card mb-3" style={{ minWidth: "800px"}}>
         <div className="row g-0 ">
-          <div className="col-md-3" style={{ boxShadow: '5px 4px 1px orange' }}>
-          <img src={project.projectImages} alt="" style={{ width:'100%', height:'100%', maxWidth:'200px'}}/>
+          <div className="col-md-3 " style={{ boxShadow: "5px 4px 1px orange" }}
+          >
+            <img
+              src={project.projectImage || "https://res.cloudinary.com/dhqymz8ub/image/upload/v1705915848/project_psbis5.jpg"}
+              alt=""
+              style={{ maxWidth: "200px", maxHeight:"200px" ,width: "200px", height: "200px" ,minWidth: "200px", minHeight: "145px"}}
+            />
           </div>
           <div className="col-md-9" >
             <div className="card-body bg-dark "id="ProjectBox" style={{ boxShadow: '4px 4px 1px orange', paddingBottom: '15px', minHeight: "140px" }}>
