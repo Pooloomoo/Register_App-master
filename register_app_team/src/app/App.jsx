@@ -46,6 +46,8 @@ import HrManageUserProject from "../pages/routes/HR/HrManageUserProject";
 import HrEditUserProject from "../pages/routes/HR/HrEditUserProject";
 import ErrorPage from "../pages/routes/errorPage";
 import NavBar from "../components/NavBar";
+import EditUserDetail from "..//pages/routes/user/EditUserDetail";
+
 function App(props) {
   const [authenticated, setAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -201,6 +203,10 @@ function App(props) {
             {
               path: "/hr/edit/userproject/:id",
               element: <HrEditUserProject />,
+            },
+            {
+              path: "/user/edit/user-detail/:id",
+              element: <EditUserDetail />,
             },
           ],
         },

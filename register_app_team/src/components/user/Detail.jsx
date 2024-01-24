@@ -2,10 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "../../StyleComponent/list.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+import { Link } from "react-router-dom";
 
 export default function Detail({currentUser, userProjects}) {
     const [data, setData] = useState([]);
-    const [userID, setUserID] = useState(0);
+    // const [userID, setUserID] = usesState(0);
     
 
 //     const userId = userProjects.map((userProject, index) => 
@@ -39,10 +40,6 @@ export default function Detail({currentUser, userProjects}) {
             })
     }, []);
 
-
-
-
-
     return (
         <div className="main_detail">
             <div className="inner_detail">
@@ -70,7 +67,9 @@ export default function Detail({currentUser, userProjects}) {
                         </tbody>
                     </table>
                 </div>
-                <button className="btn btn-warning lh-1 mt-3">Edit</button>
+                <Link className="text-decoration-none me-2" to={`/user/edit/user-detail/${1}`}>
+                    <button className="btn btn-warning lh-1 mt-3">Edit</button>
+                </Link>
             </div>
         </div>
     )

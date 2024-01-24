@@ -48,7 +48,7 @@ export default function Table(props) {
 
     return (
       <div className="Table_wrapper">
-        <Detail userProjects={userProjects} currentUser={currentUser} userID={userID}/>
+        {/* <Detail userProjects={userProjects} currentUser={currentUser} userID={userID}/> */}
         <div className="Table_project">
           <table className="table">
             <thead>
