@@ -69,4 +69,23 @@
     height: 150px;
 }
 
-  
+.main_detail{
+  width: 100%;
+
+  display: flex;
+  justify-content:center;
+  height: 300px;
+}
+
+.inner_detail{
+  width:95%;
+}
+
+.table_detail{
+  display: flex;
+  justify-content:space-around;
+  text-align: left;
+  /* background-color: rgb(57, 55, 55); */
+  color: aliceblue;
+  border-radius: 20px;
+}

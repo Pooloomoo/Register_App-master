@@ -27,7 +27,6 @@ export default function Edit_user() {
         event.preventDefault();
 
         // Assuming the user ID is available in the first element of the array
-        const userId = data[0]?.id;
 
         if (userId) {
             axios.put(`http://localhost:8200/api/User/${userId}`, data[0])
