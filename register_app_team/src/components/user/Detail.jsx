@@ -19,18 +19,18 @@ export default function Detail({currentUser, userProjects}) {
    
 
     useEffect(() => {
-        let uid = 0;
-        console.log("User project length " ,userProjects.length);
-        for (let i = 0; i < userProjects.length; i++) {
-            uid = userProjects[i].user.id;
-            console.log(currentUser.email , userProjects[i].user.email);
-            if (currentUser.email === userProjects[i].user.email) {
-                setUserID(uid);
-                break;
-            }
-        }    
-        console.log(uid);
-        axios.get("http://localhost:8080/api/user/" + uid)
+        // let uid = 0;
+        // console.log("User project length " ,userProjects.length);
+        // for (let i = 0; i < userProjects.length; i++) {
+        //     uid = userProjects[i].user.id;
+        //     console.log(currentUser.email , userProjects[i].user.email);
+        //     if (currentUser.email === userProjects[i].user.email) {
+        //         setUserID(uid);
+        //         break;
+        //     }
+        // }    
+        // console.log(uid);
+        axios.get("http://localhost:8080/api/user/" + 1)
             .then(res => {
                 setData(res.data)
                 console.log(res.data)

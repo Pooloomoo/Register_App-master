@@ -2,6 +2,7 @@ import "../../StyleComponent/table.css";
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
+import Detail from "./Detail";
 
 const FormHead = ({ colHead }) => {
   return (
@@ -14,7 +15,7 @@ const FormHead = ({ colHead }) => {
 export default function Table(props) {
 
   const {userProjects, currentUser} = props;
-
+  const [userID, setUserID] = useState(0);
 
   // useEffect(() => {
   //   axios.get("http://localhost:8080/api/project/")
@@ -32,14 +33,22 @@ export default function Table(props) {
       <td>{userProject.project.projectDetail}</td>
       <td>{userProject.status.score}</td>
       <td>{userProject.status.userStatus}</td>
-      
+      {/* {setUserID = (
+        // () => (
+        userProject.user.id
+      // )
+      )} */}
     </tr> :
     null
   ));
 
+  // console.log("userID: " + userID)
+  // console.log("userproject.user.id: " + userProject.user.id)
+// 
+
     return (
       <div className="Table_wrapper">
-
+        <Detail userProjects={userProjects} currentUser={currentUser} userID={userID}/>
         <div className="Table_project">
           <table className="table">
             <thead>
@@ -51,7 +60,7 @@ export default function Table(props) {
               </tr>
             </thead>
             <tbody>
-              
+            {userProjectRow}
             </tbody>
           </table>
         </div>
