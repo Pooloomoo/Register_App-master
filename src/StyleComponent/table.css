@@ -1,0 +1,26 @@
+.Table_wrapper{
+    width: 80%;
+    /* background-color: rgb(66, 64, 64); */
+    margin: auto;
+    color: aliceblue;
+    border-radius: 25px;
+}
+
+.Table_project{
+    display: flex;
+    width: 100%;
+    padding: 20px 50px;
+    justify-content: center;
+}
+
+.Table_head{
+    width: 100%;
+}
+
+.Table_head th{
+    border-bottom: 1px solid white;
+}
+
+
+
+
