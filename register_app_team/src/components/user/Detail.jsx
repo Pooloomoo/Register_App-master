@@ -17,7 +17,6 @@ export default function Detail({currentUser, userProjects}) {
 //       : null
 //   );
 
-   
 
     useEffect(() => {
         // let uid = 0;

@@ -79,19 +79,38 @@ function SignupForm(props) {
     const target = event.target;
     const inputName = target.name;
     const inputValue = target.value;
+   
       // Update formData
-    let updatedFormData = { ...formData, [inputName]: inputValue };
-    setFormData(updatedFormData);
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      user: { email: formData.email },
-    }));
-    
-    // Conditionally update userData
+    if (inputName === "email") {
+      let updatedUserData = { ...userData, [inputName]: inputValue };
+      let updatedUser = { ...formData, user: {email: inputValue} };
+      setFormData(updatedUser);
+      setFormData(updatedUserData);
+      
+      // console.log(formData.email)
+      // setFormData((prevFormData) => ({
+        // ...prevFormData,
+      // setFormData({
+        // ...updatedFormData, user: {email: inputName}
+      // })
+        // user: { email: formData.email },
+      // })
+      // );
+    } else {
+      let updatedFormData = { ...formData, [inputName]: inputValue };
+        setFormData(updatedFormData);
+    }
     if (inputName === "email" || inputName === "password") {
       let updatedUserData = { ...userData, [inputName]: inputValue };
       setUserData(updatedUserData);
     }
+      // setFormData((prevFormData) => ({
+      //   ...prevFormData,
+      //   user: { email: formData.email },
+      // }));
+    
+    // Conditionally update userData
+    
   }
   
 
