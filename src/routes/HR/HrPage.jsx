@@ -21,6 +21,7 @@ export default function HrPage() {
         })
         setHrProjects(sortedHrProjects);
         console.log("Fetched project data successfully!");
+        console.log(sortedHrProjects);
       })
       .catch((error) => console.error("Error fetching HR projects:", error));
   }, [reloadProject]);
